@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '@/lib/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
+import NaverMap from '@/components/NaverMap';
 
 type Restaurant = {
   id: string;
@@ -253,12 +254,13 @@ export default function Home() {
         </aside>
 
         {/* Map Placeholder */}
-        <div className="flex-1 relative bg-slate-100">
-          <div className="absolute inset-0 m-4 rounded-3xl border border-gray-200 bg-gradient-to-br from-slate-50 via-white to-slate-100 shadow-inner">
-            <div className="absolute inset-0 flex items-center justify-center text-gray-500 font-medium">
-              지도 영역 (Map API 연동 예정)
-            </div>
-          </div>
+        <div className="flex-1 bg-slate-100">
+          <NaverMap 
+            lat={36.3504} 
+            lng={127.3845}
+            zoom={15}
+            className="w-full h-full"
+          />
         </div>
       </div>
 
