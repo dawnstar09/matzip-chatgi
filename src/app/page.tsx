@@ -108,9 +108,33 @@ export default function Home() {
   const [currentUserName, setCurrentUserName] = useState<string>('');
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
   const [authReady, setAuthReady] = useState(false);
+  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const router = useRouter();
 
   const profileHref = isLoggedIn ? '/mypage' : '/login';
+
+  // 사용자 현재 위치 가져오기
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+        },
+        (error) => {
+          console.error('위치 정보를 가져올 수 없습니다:', error);
+          // 기본 위치 (대전 둔산동)로 설정
+          setUserLocation({ lat: 36.3504, lng: 127.3845 });
+        }
+      );
+    } else {
+      // Geolocation을 지원하지 않는 브라우저
+      console.warn('브라우저가 위치 정보를 지원하지 않습니다.');
+      setUserLocation({ lat: 36.3504, lng: 127.3845 });
+    }
+  }, []);
 
   // 실사용 시 로그인 상태를 Firebase Auth로 동기화
   useEffect(() => {
@@ -217,10 +241,16 @@ export default function Home() {
 
         {/* Map Placeholder */}
         <div className="flex-1 bg-slate-100 h-[50vh] md:h-auto">
-          <NaverMap 
-            center={{ lat: 36.3504, lng: 127.3845 }}
-            zoom={15}
-          />
+          {userLocation ? (
+            <NaverMap 
+              center={userLocation}
+              zoom={15}
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-gray-500">
+              위치 정보를 불러오는 중...
+            </div>
+          )}
         </div>
       </div>
 
