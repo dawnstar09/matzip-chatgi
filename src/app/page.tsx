@@ -188,11 +188,11 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-200 flex flex-col">
+    <div className="h-screen bg-gray-200 flex flex-col">
       {/* Main Content */}
-      <div className="flex-1 flex flex-col md:flex-row">
+      <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
         {/* Left Panel */}
-        <aside className="w-full md:max-w-md bg-white shadow-xl md:rounded-r-2xl p-4 md:p-6 flex flex-col gap-4 max-h-[50vh] md:max-h-none">
+        <aside className="w-full md:max-w-md bg-white shadow-xl md:rounded-r-2xl p-4 md:p-6 flex flex-col gap-4 max-h-[50vh] md:max-h-none overflow-hidden">
           <div className="flex items-center justify-between text-xs text-gray-500">
             <div className="space-y-1">
               <div className="text-[11px] text-gray-500">반경 500m 이내</div>
@@ -216,7 +216,7 @@ export default function Home() {
         </aside>
 
         {/* Map Placeholder */}
-        <div className="flex-1 bg-slate-100 h-[50vh] md:h-full">
+        <div className="flex-1 bg-slate-100 h-[50vh] md:h-auto">
           <NaverMap 
             center={{ lat: 36.3504, lng: 127.3845 }}
             zoom={15}
