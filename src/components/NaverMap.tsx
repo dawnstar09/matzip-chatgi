@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef, useState } from "react";
 import Script from "next/script";
 
 interface NaverMapProps {
@@ -11,29 +11,32 @@ interface NaverMapProps {
 const NaverMap = ({ center, zoom = 15 }: NaverMapProps) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstance = useRef<any>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const initMap = () => {
-    if (!mapRef.current || typeof window === 'undefined' || !window.Tmapv2) return;
+    if (!mapRef.current || typeof window === 'undefined' || !window.Tmapv2) {
+      console.log("TMAP not ready");
+      return;
+    }
 
     const defaultCenter = center || { lat: 37.3595704, lng: 127.105399 };
 
     try {
+      console.log("Initializing TMAP...");
+      
       mapInstance.current = new window.Tmapv2.Map(mapRef.current, {
-        center: new window.Tmapv2.Point(defaultCenter.lng, defaultCenter.lat),
+        center: new window.Tmapv2.LatLng(defaultCenter.lat, defaultCenter.lng),
         width: "100%",
         height: "400px",
         zoom: zoom,
       });
+      
+      console.log("TMAP initialized successfully");
+      setIsLoaded(true);
     } catch (error) {
       console.error("TMAP 초기화 오류:", error);
     }
   };
-
-  useEffect(() => {
-    if (window.Tmapv2 && mapRef.current) {
-      initMap();
-    }
-  }, [center, zoom]);
 
   const apiKey = process.env.NEXT_PUBLIC_TMAP_API_KEY;
 
@@ -50,9 +53,21 @@ const NaverMap = ({ center, zoom = 15 }: NaverMapProps) => {
       <Script
         src={`https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=${apiKey}`}
         strategy="afterInteractive"
-        onLoad={initMap}
+        onLoad={() => {
+          console.log("TMAP script loaded");
+          setTimeout(initMap, 100);
+        }}
+        onError={(e) => {
+          console.error("TMAP script load error:", e);
+        }}
       />
-      <div ref={mapRef} style={{ width: "100%", height: "400px" }} />
+      <div ref={mapRef} style={{ width: "100%", height: "400px", backgroundColor: '#f0f0f0' }}>
+        {!isLoaded && (
+          <div className="flex items-center justify-center h-full">
+            <p className="text-gray-500">지도를 불러오는 중...</p>
+          </div>
+        )}
+      </div>
     </>
   );
 };
