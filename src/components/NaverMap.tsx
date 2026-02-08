@@ -14,7 +14,7 @@ const MapComponent = dynamic(
   { 
     ssr: false,
     loading: () => (
-      <div style={{ width: '100%', height: '400px', backgroundColor: '#f0f0f0', borderRadius: '8px' }} className="flex items-center justify-center">
+      <div style={{ width: '100%', height: '100%', minHeight: '600px', backgroundColor: '#f0f0f0' }} className="flex items-center justify-center">
         <p className="text-gray-500">지도를 불러오는 중...</p>
       </div>
     )
