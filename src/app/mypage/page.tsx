@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth, db } from '@/lib/firebase';
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import useUserStore from '@/store/userStore';
+import MyPageContent from '@/components/MyPageContent';
 
 type Restaurant = {
   id: string;
@@ -84,6 +86,7 @@ function StarIcon({ filled }: { filled: boolean }) {
 
 export default function MyPage() {
   const router = useRouter();
+  const { user: storeUser } = useUserStore();
   const [loading, setLoading] = useState(true);
   const [userEmail, setUserEmail] = useState('');
   const [userName, setUserName] = useState('');
@@ -96,6 +99,7 @@ export default function MyPage() {
     });
     return initial;
   });
+  const [activeTab, setActiveTab] = useState<'restaurants' | 'weights'>('restaurants');
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
@@ -208,130 +212,137 @@ export default function MyPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-200 flex flex-col">
-      {/* Navigation Bar */}
-      <nav className="bg-black text-white px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-              <span className="text-black font-bold text-xl">M</span>
-            </div>
-            <span className="text-xl font-medium">TITLE</span>
-          </Link>
-        </div>
-        <div className="flex gap-4">
-          <button className="w-10 h-10 hover:bg-gray-800 rounded-full flex items-center justify-center">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-            </svg>
-          </button>
-          <button className="w-10 h-10 hover:bg-gray-800 rounded-full flex items-center justify-center">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-            </svg>
-          </button>
-          <Link
-            href="/mypage"
-            className="w-10 h-10 hover:bg-gray-800 rounded-full flex items-center justify-center"
-            aria-label="마이페이지"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-          </Link>
-        </div>
-      </nav>
-
-      <main className="flex-1 flex justify-center p-6">
+    <div className="min-h-screen bg-gray-100">
+      <main className="flex justify-center p-6">
         <div className="w-full max-w-5xl space-y-4">
-          {/* Favorites Card */}
-          <section className="bg-white rounded-2xl shadow p-6 border border-gray-100">
-            <div className="text-xs text-gray-500 mb-1">{userEmail}</div>
-            <h2 className="text-lg font-semibold text-gray-900">{userName || '마이페이지'}</h2>
-            <div className="mt-4 text-sm font-medium text-gray-800 flex items-center gap-2">
-              즐겨찾기한 음식점들
-              <span className="text-xs text-gray-400">Q · A</span>
-            </div>
-            <div className="mt-3 divide-y divide-gray-200 border border-gray-200 rounded-xl overflow-hidden">
-              {favorites.map((fav) => (
-                <div key={fav.id} className="flex items-start justify-between bg-white px-4 py-3">
-                  <div>
-                    <div className="text-sm font-semibold text-gray-900">{fav.name}</div>
-                    <div className="text-xs text-gray-500">{fav.address}</div>
-                  </div>
-                  <button
-                    type="button"
-                    className="text-gray-500 hover:text-yellow-500 transition-colors"
-                    onClick={() => toggleFavorite(fav.id)}
-                    aria-label={fav.isFavorite ? '즐겨찾기 해제' : '즐겨찾기 추가'}
-                  >
-                    <StarIcon filled={Boolean(fav.isFavorite)} />
-                  </button>
-                </div>
-              ))}
-              {favorites.length === 0 && (
-                <div className="px-4 py-3 text-sm text-gray-500">즐겨찾기한 음식점이 없습니다.</div>
-              )}
-            </div>
-            <div className="mt-2 text-xs text-gray-500">즐겨찾기 {favoriteCount}개</div>
-          </section>
-
-          {/* Recommendation Options */}
-          <section className="bg-white rounded-2xl shadow p-6 border border-gray-100 space-y-4">
-            <div className="text-[11px] text-gray-500">본인만의 특징을 반영한 메뉴를 추천받으세요!</div>
-            <h3 className="text-sm font-semibold text-gray-900">음식점 추천 옵션 설정</h3>
-            <div className="flex items-center justify-between text-sm font-medium text-gray-800">
-              <div className="flex items-center gap-2">
-                <input
-                  id="menu-option-toggle"
-                  type="checkbox"
-                  className="h-4 w-4 rounded border-gray-300 text-yellow-500 focus:ring-yellow-400"
-                  checked={checkedGroups['추천옵션'] ?? true}
-                  onChange={(e) =>
-                    setCheckedGroups((prev) => ({ ...prev, 추천옵션: e.target.checked }))
-                  }
-                />
-                <label htmlFor="menu-option-toggle">음식점 메뉴 추천 옵션</label>
-              </div>
-              <span className="text-xs text-gray-400">Q · A</span>
-            </div>
-
-            <div className="space-y-3">
-              {optionGroups.map((group) => (
-                <div key={group.title} className="bg-gray-100 border border-gray-300 rounded-lg overflow-hidden">
-                  <div className="grid grid-cols-12 divide-x divide-gray-300 text-sm">
-                    <button
-                      type="button"
-                      className={`col-span-2 py-3 font-semibold text-white ${isOptionActive(group.title, '전체') ? 'bg-blue-700' : 'bg-blue-500'} hover:bg-blue-600`}
-                      onClick={() => toggleGroupOption(group.title, '전체')}
-                    >
-                      전체
-                    </button>
-                    <div className="col-span-10 grid grid-cols-5">
-                      {group.options.map((opt) => (
-                        <button
-                          key={opt}
-                          type="button"
-                          className={`py-3 text-center transition-colors ${isOptionActive(group.title, opt) ? 'bg-blue-100 text-blue-900 font-semibold' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}
-                          onClick={() => toggleGroupOption(group.title, opt)}
-                        >
-                          {opt}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
+          {/* Tab Navigation */}
+          <div className="bg-white rounded-2xl shadow border border-gray-100 p-2 flex gap-2">
             <button
-              type="button"
-              onClick={handleLogout}
-              className="w-full py-3 mt-6 bg-gray-700 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors duration-200"
+              onClick={() => setActiveTab('restaurants')}
+              className={`flex-1 py-3 px-4 rounded-xl font-semibold transition-colors ${
+                activeTab === 'restaurants'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
             >
-              로그아웃
+              음식점 관리
             </button>
-          </section>
+            <button
+              onClick={() => setActiveTab('weights')}
+              className={`flex-1 py-3 px-4 rounded-xl font-semibold transition-colors ${
+                activeTab === 'weights'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
+              음식 추천 가중치
+            </button>
+          </div>
+
+          {/* Content based on active tab */}
+          {activeTab === 'restaurants' ? (
+            <>
+              {/* Favorites Card */}
+              <section className="bg-white rounded-2xl shadow p-6 border border-gray-100">
+                <div className="text-xs text-gray-500 mb-1">{userEmail}</div>
+                <h2 className="text-lg font-semibold text-gray-900">{userName || '마이페이지'}</h2>
+                <div className="mt-4 text-sm font-medium text-gray-800 flex items-center gap-2">
+                  즐겨찾기한 음식점들
+                  <span className="text-xs text-gray-400">Q · A</span>
+                </div>
+                <div className="mt-3 divide-y divide-gray-200 border border-gray-200 rounded-xl overflow-hidden">
+                  {favorites.map((fav) => (
+                    <div key={fav.id} className="flex items-start justify-between bg-white px-4 py-3">
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">{fav.name}</div>
+                        <div className="text-xs text-gray-500">{fav.address}</div>
+                      </div>
+                      <button
+                        type="button"
+                        className="text-gray-500 hover:text-yellow-500 transition-colors"
+                        onClick={() => toggleFavorite(fav.id)}
+                        aria-label={fav.isFavorite ? '즐겨찾기 해제' : '즐겨찾기 추가'}
+                      >
+                        <StarIcon filled={Boolean(fav.isFavorite)} />
+                      </button>
+                    </div>
+                  ))}
+                  {favorites.length === 0 && (
+                    <div className="px-4 py-3 text-sm text-gray-500">즐겨찾기한 음식점이 없습니다.</div>
+                  )}
+                </div>
+                <div className="mt-2 text-xs text-gray-500">즐겨찾기 {favoriteCount}개</div>
+              </section>
+
+              {/* Recommendation Options */}
+              <section className="bg-white rounded-2xl shadow p-6 border border-gray-100 space-y-4">
+                <div className="text-[11px] text-gray-500">본인만의 특징을 반영한 메뉴를 추천받으세요!</div>
+                <h3 className="text-sm font-semibold text-gray-900">음식점 추천 옵션 설정</h3>
+                <div className="flex items-center justify-between text-sm font-medium text-gray-800">
+                  <div className="flex items-center gap-2">
+                    <input
+                      id="menu-option-toggle"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-yellow-500 focus:ring-yellow-400"
+                      checked={checkedGroups['추천옵션'] ?? true}
+                      onChange={(e) =>
+                        setCheckedGroups((prev) => ({ ...prev, 추천옵션: e.target.checked }))
+                      }
+                    />
+                    <label htmlFor="menu-option-toggle">음식점 메뉴 추천 옵션</label>
+                  </div>
+                  <span className="text-xs text-gray-400">Q · A</span>
+                </div>
+
+                <div className="space-y-3">
+                  {optionGroups.map((group) => (
+                    <div key={group.title} className="bg-gray-100 border border-gray-300 rounded-lg overflow-hidden">
+                      <div className="grid grid-cols-12 divide-x divide-gray-300 text-sm">
+                        <button
+                          type="button"
+                          className={`col-span-2 py-3 font-semibold text-white ${isOptionActive(group.title, '전체') ? 'bg-blue-700' : 'bg-blue-500'} hover:bg-blue-600`}
+                          onClick={() => toggleGroupOption(group.title, '전체')}
+                        >
+                          전체
+                        </button>
+                        <div className="col-span-10 grid grid-cols-5">
+                          {group.options.map((opt) => (
+                            <button
+                              key={opt}
+                              type="button"
+                              className={`py-3 text-center transition-colors ${isOptionActive(group.title, opt) ? 'bg-blue-100 text-blue-900 font-semibold' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}
+                              onClick={() => toggleGroupOption(group.title, opt)}
+                            >
+                              {opt}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="w-full py-3 mt-6 bg-gray-700 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors duration-200"
+                >
+                  로그아웃
+                </button>
+              </section>
+            </>
+          ) : (
+            <section className="flex flex-col items-center justify-center p-6 bg-gray-50 min-h-[calc(100vh-300px)]">
+              <MyPageContent />
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="w-full max-w-2xl py-3 mt-6 bg-gray-700 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors duration-200"
+              >
+                로그아웃
+              </button>
+            </section>
+          )}
         </div>
       </main>
     </div>

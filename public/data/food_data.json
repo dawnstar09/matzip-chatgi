@@ -1,0 +1,6722 @@
+{
+  "categories": {
+    "밥류": [
+      "쌀밥류",
+      "잡곡밥류",
+      "볶음밥류",
+      "비빔밥류",
+      "주먹밥",
+      "기타밥류",
+      "김밥",
+      "초밥"
+    ],
+    "덮밥·국밥류": [
+      "국밥류",
+      "덮밥류",
+      "카레라이스"
+    ],
+    "빵·과자류": [
+      "빵류",
+      "패스트푸드",
+      "과자류",
+      "샌드위치",
+      "케이크",
+      "파이",
+      "디저트",
+      "기타"
+    ],
+    "과자류": [
+      "스낵",
+      "한과",
+      "과자"
+    ],
+    "면·만두류": [
+      "국수",
+      "면류",
+      "수제비",
+      "파스타",
+      "만두류"
+    ],
+    "기타": [
+      "기타"
+    ],
+    "죽·스프류": [
+      "죽류",
+      "기타",
+      "스프"
+    ],
+    "국·탕류": [
+      "맑은국류",
+      "된장국류",
+      "어패류국",
+      "곰국·탕류",
+      "어패류탕",
+      "국밥류"
+    ],
+    "찌개류": [
+      "된장찌개류",
+      "찌개류",
+      "고추장찌개류"
+    ],
+    "전골류": [
+      "전골류"
+    ],
+    "찜류": [
+      "어패류찜",
+      "육류찜",
+      "난류찜",
+      "기타찜",
+      "채소류찜",
+      "두류찜"
+    ],
+    "조림류": [
+      "어패류조림",
+      "채소류조림",
+      "두류조림",
+      "난류조림",
+      "육류조림"
+    ],
+    "튀김류": [
+      "어패류튀김",
+      "육류튀김",
+      "채소류튀김",
+      "기타튀김",
+      "만두튀김",
+      "디저트",
+      "두류튀김",
+      "난류튀김"
+    ],
+    "구이류": [
+      "어패류구이",
+      "육류구이",
+      "채소류구이",
+      "기타구이",
+      "두류구이"
+    ],
+    "전·부침류": [
+      "어패류전",
+      "기타전",
+      "육류전",
+      "채소류전",
+      "두류전",
+      "곡류전",
+      "난류"
+    ],
+    "볶음류": [
+      "어패류볶음",
+      "육류볶음",
+      "기타볶음",
+      "난류볶음",
+      "채소류볶음"
+    ]
+  },
+  "cuisineTypes": [
+    "한식",
+    "일식",
+    "양식",
+    "아시아",
+    "중식"
+  ],
+  "menus": [
+    {
+      "name": "누룬밥",
+      "group": "밥류",
+      "category": "쌀밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "누룽지",
+      "group": "밥류",
+      "category": "쌀밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쌀밥",
+      "group": "밥류",
+      "category": "쌀밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "찰밥",
+      "group": "밥류",
+      "category": "쌀밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "현미밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "흑미밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "강낭콩밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "녹두밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "밤밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "밤팥밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "보리밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "수수밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오곡밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "옥수수밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "완두콩밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "율무밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "잡곡밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "조밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "차수수밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "차조밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "콩밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "팥밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "기장잡곡밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쑥쌀잡곡밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "귀리밥",
+      "group": "밥류",
+      "category": "잡곡밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자밥",
+      "group": "밥류",
+      "category": "쌀밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고구마밥",
+      "group": "밥류",
+      "category": "쌀밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "야채밥",
+      "group": "밥류",
+      "category": "쌀밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "영양밥(돌솥밥)",
+      "group": "밥류",
+      "category": "쌀밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "콩나물밥",
+      "group": "밥류",
+      "category": "쌀밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "연잎밥",
+      "group": "밥류",
+      "category": "쌀밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "은행밥",
+      "group": "밥류",
+      "category": "쌀밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "곤드레밥",
+      "group": "밥류",
+      "category": "쌀밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "시래기밥",
+      "group": "밥류",
+      "category": "쌀밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "무밥",
+      "group": "밥류",
+      "category": "쌀밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김치볶음밥",
+      "group": "밥류",
+      "category": "볶음밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "야채볶음밥",
+      "group": "밥류",
+      "category": "볶음밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "비빔밥",
+      "group": "밥류",
+      "category": "비빔밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "새우볶음밥",
+      "group": "밥류",
+      "category": "볶음밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기볶음밥",
+      "group": "밥류",
+      "category": "볶음밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "열무비빔밥",
+      "group": "밥류",
+      "category": "비빔밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오므라이스",
+      "group": "밥류",
+      "category": "볶음밥류",
+      "cuisine": "일식"
+    },
+    {
+      "name": "참치볶음밥",
+      "group": "밥류",
+      "category": "볶음밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "콩나물비빔밥",
+      "group": "밥류",
+      "category": "비빔밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "새우필라프",
+      "group": "밥류",
+      "category": "볶음밥류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "햄필라프",
+      "group": "밥류",
+      "category": "볶음밥류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "강된장비빔밥",
+      "group": "밥류",
+      "category": "비빔밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "해물볶음밥",
+      "group": "밥류",
+      "category": "볶음밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "낙지볶음밥",
+      "group": "밥류",
+      "category": "볶음밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "목살필라프",
+      "group": "밥류",
+      "category": "볶음밥류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "꼬막비빔밥",
+      "group": "밥류",
+      "category": "비빔밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "아보카도명란비빔밥",
+      "group": "밥류",
+      "category": "비빔밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쭈꾸미미나리볶음밥",
+      "group": "밥류",
+      "category": "볶음밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돌솥비빔밥",
+      "group": "밥류",
+      "category": "비빔밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "육회비빔밥",
+      "group": "밥류",
+      "category": "비빔밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "햄계란볶음밥",
+      "group": "밥류",
+      "category": "볶음밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기주먹밥",
+      "group": "밥류",
+      "category": "주먹밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "리조또",
+      "group": "밥류",
+      "category": "기타밥류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "해물빠에야",
+      "group": "밥류",
+      "category": "기타밥류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "전복톳밥",
+      "group": "밥류",
+      "category": "쌀밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "파인애플볶음밥",
+      "group": "밥류",
+      "category": "볶음밥류",
+      "cuisine": "아시아"
+    },
+    {
+      "name": "국밥",
+      "group": "덮밥·국밥류",
+      "category": "국밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "계란덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭고기덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돈육카레라이스",
+      "group": "덮밥·국밥류",
+      "category": "카레라이스",
+      "cuisine": "일식"
+    },
+    {
+      "name": "두부덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "두부카레라이스",
+      "group": "덮밥·국밥류",
+      "category": "카레라이스",
+      "cuisine": "일식"
+    },
+    {
+      "name": "버섯덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기야채덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "순대국밥",
+      "group": "덮밥·국밥류",
+      "category": "국밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오징어덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "잡채밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "잡탕밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "중식"
+    },
+    {
+      "name": "짜장밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "중식"
+    },
+    {
+      "name": "참치회덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "한치회덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "해물덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "불고기덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "제육덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "참치덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "회덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "알밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돼지머리국밥",
+      "group": "덮밥·국밥류",
+      "category": "국밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "굴국밥",
+      "group": "덮밥·국밥류",
+      "category": "국밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오징어카레라이스",
+      "group": "덮밥·국밥류",
+      "category": "카레라이스",
+      "cuisine": "일식"
+    },
+    {
+      "name": "하이라이스",
+      "group": "덮밥·국밥류",
+      "category": "카레라이스",
+      "cuisine": "일식"
+    },
+    {
+      "name": "김치국밥",
+      "group": "덮밥·국밥류",
+      "category": "국밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "콩나물국밥",
+      "group": "덮밥·국밥류",
+      "category": "국밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "짬뽕밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "중식"
+    },
+    {
+      "name": "연어덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "야채카레라이스",
+      "group": "덮밥·국밥류",
+      "category": "카레라이스",
+      "cuisine": "일식"
+    },
+    {
+      "name": "닭고기카레라이스",
+      "group": "덮밥·국밥류",
+      "category": "카레라이스",
+      "cuisine": "일식"
+    },
+    {
+      "name": "쇠고기카레라이스",
+      "group": "덮밥·국밥류",
+      "category": "카레라이스",
+      "cuisine": "일식"
+    },
+    {
+      "name": "소머리국밥",
+      "group": "덮밥·국밥류",
+      "category": "국밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "어향가지덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "중식"
+    },
+    {
+      "name": "부타동(간장돼지고기덮밥)",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "일식"
+    },
+    {
+      "name": "텐동(튀김덮밥)",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "일식"
+    },
+    {
+      "name": "에비동(새우튀김덮밥)",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "일식"
+    },
+    {
+      "name": "낙지덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "도토리묵밥",
+      "group": "밥류",
+      "category": "기타밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "치킨마요덮밥",
+      "group": "덮밥·국밥류",
+      "category": "덮밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김초밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "생선초밥",
+      "group": "밥류",
+      "category": "초밥",
+      "cuisine": "일식"
+    },
+    {
+      "name": "유부초밥",
+      "group": "밥류",
+      "category": "초밥",
+      "cuisine": "일식"
+    },
+    {
+      "name": "김치김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "샐러드김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "소고기김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "참치김밥(완)",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고추장불고기삼각김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "숯불갈비삼각김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "참치마요삼각김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "광어초밥",
+      "group": "밥류",
+      "category": "초밥",
+      "cuisine": "일식"
+    },
+    {
+      "name": "모듬초밥",
+      "group": "밥류",
+      "category": "초밥",
+      "cuisine": "일식"
+    },
+    {
+      "name": "참치고추김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "두부유부초밥",
+      "group": "밥류",
+      "category": "초밥",
+      "cuisine": "일식"
+    },
+    {
+      "name": "치즈김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "날치알김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돈까스김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고추김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "참치김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "묵은지김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "유부김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "멸치김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "참치마요김밥",
+      "group": "밥류",
+      "category": "김밥",
+      "cuisine": "한식"
+    },
+    {
+      "name": "건포도빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "고로케",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "곰보빵(소보로)",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "데니쉬페이스트리(과일)",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "데니쉬페이스트리(시나몬)",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "데니쉬페이스트리(치즈)",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "도우넛(링)",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "도우넛(팥)",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "롤빵(소프트롤)",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "롤빵(하드롤)",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "머핀",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "모카빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "바게뜨빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "버리토",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "베이글",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "블란서빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "비스켓",
+      "group": "빵·과자류",
+      "category": "과자류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "비스켓(KFC)",
+      "group": "빵·과자류",
+      "category": "과자류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "샌드위치(계란치즈)",
+      "group": "빵·과자류",
+      "category": "샌드위치",
+      "cuisine": "양식"
+    },
+    {
+      "name": "샌드위치(로스트비프)",
+      "group": "빵·과자류",
+      "category": "샌드위치",
+      "cuisine": "양식"
+    },
+    {
+      "name": "샌드위치(생선)",
+      "group": "빵·과자류",
+      "category": "샌드위치",
+      "cuisine": "양식"
+    },
+    {
+      "name": "샌드위치(치킨)",
+      "group": "빵·과자류",
+      "category": "샌드위치",
+      "cuisine": "양식"
+    },
+    {
+      "name": "샌드위치(햄치즈)",
+      "group": "빵·과자류",
+      "category": "샌드위치",
+      "cuisine": "양식"
+    },
+    {
+      "name": "슈크림",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "식빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "엔칠라다",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "옥수수빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "와플",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "잉글리쉬머핀",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "쨈빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "찐빵(고기)",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "찐빵(팥)",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "초코파이",
+      "group": "빵·과자류",
+      "category": "과자류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "카스테라",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "커스터드",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "당근케이크",
+      "group": "빵·과자류",
+      "category": "케이크",
+      "cuisine": "양식"
+    },
+    {
+      "name": "롤케이크",
+      "group": "빵·과자류",
+      "category": "케이크",
+      "cuisine": "양식"
+    },
+    {
+      "name": "바나나케이크",
+      "group": "빵·과자류",
+      "category": "케이크",
+      "cuisine": "양식"
+    },
+    {
+      "name": "생크림케이크",
+      "group": "빵·과자류",
+      "category": "케이크",
+      "cuisine": "양식"
+    },
+    {
+      "name": "쇼트케이크",
+      "group": "빵·과자류",
+      "category": "케이크",
+      "cuisine": "양식"
+    },
+    {
+      "name": "스폰지케이크",
+      "group": "빵·과자류",
+      "category": "케이크",
+      "cuisine": "양식"
+    },
+    {
+      "name": "엔젤케이크",
+      "group": "빵·과자류",
+      "category": "케이크",
+      "cuisine": "양식"
+    },
+    {
+      "name": "초코케이크",
+      "group": "빵·과자류",
+      "category": "케이크",
+      "cuisine": "양식"
+    },
+    {
+      "name": "치즈케이크",
+      "group": "빵·과자류",
+      "category": "케이크",
+      "cuisine": "양식"
+    },
+    {
+      "name": "컵케이크",
+      "group": "빵·과자류",
+      "category": "케이크",
+      "cuisine": "양식"
+    },
+    {
+      "name": "파운드케이크",
+      "group": "빵·과자류",
+      "category": "케이크",
+      "cuisine": "양식"
+    },
+    {
+      "name": "후르트케이크",
+      "group": "빵·과자류",
+      "category": "케이크",
+      "cuisine": "양식"
+    },
+    {
+      "name": "크로쌍",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "크로쌍(계란치즈)",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "크로쌍(버터)",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "크림빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "타코",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "토스트",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "고구마파이",
+      "group": "빵·과자류",
+      "category": "파이",
+      "cuisine": "양식"
+    },
+    {
+      "name": "딸기파이",
+      "group": "빵·과자류",
+      "category": "파이",
+      "cuisine": "양식"
+    },
+    {
+      "name": "블랙베리파이",
+      "group": "빵·과자류",
+      "category": "파이",
+      "cuisine": "양식"
+    },
+    {
+      "name": "블루베리파이",
+      "group": "빵·과자류",
+      "category": "파이",
+      "cuisine": "양식"
+    },
+    {
+      "name": "사과파이",
+      "group": "빵·과자류",
+      "category": "파이",
+      "cuisine": "양식"
+    },
+    {
+      "name": "애플파이",
+      "group": "빵·과자류",
+      "category": "파이",
+      "cuisine": "양식"
+    },
+    {
+      "name": "체리파이",
+      "group": "빵·과자류",
+      "category": "파이",
+      "cuisine": "양식"
+    },
+    {
+      "name": "파인애플파이",
+      "group": "빵·과자류",
+      "category": "파이",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피칸파이",
+      "group": "빵·과자류",
+      "category": "파이",
+      "cuisine": "양식"
+    },
+    {
+      "name": "호박파이",
+      "group": "빵·과자류",
+      "category": "파이",
+      "cuisine": "양식"
+    },
+    {
+      "name": "팥빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "패스트리",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "푸딩(커스터드)",
+      "group": "빵·과자류",
+      "category": "디저트",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(디럭스)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(소시지)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(쇠고기)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(슈프림)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(씬크리스피)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(치즈)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(슈퍼슈프림)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(씬크리스피슈퍼슈프림)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(씬크리스피슈프림)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(씬크리스피치즈)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(씬크리스피페퍼로니)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(야채)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(치즈)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(치즈쇠고기야채)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(콤비네이션)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(크러스트슈퍼슈프림)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(크러스트슈프림)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(크러스트치즈)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(크러스트페퍼로니)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(팬슈프림)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(팬치즈)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(팬페퍼로니)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(팬슈퍼슈프림)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자(페퍼로니)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "핫도그",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "핫도그(칠리)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "핫케익",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "햄버거(로이로저스)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "햄버거(맥도날드)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "햄버거(버거킹)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "햄버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "더블버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "더블와퍼",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "더블치즈와퍼",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "로스트비프버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "맥디엘티",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "바버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "베이컨치즈버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "와퍼샌드위치",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "와퍼주니어",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "와퍼주니어치즈",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "치즈버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "치킨샌드위치",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "쿼터파운더치즈",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "크로상샌드위치",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "햄치즈샌드위치",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "호밀빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "프렌치토스트",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "꽈배기빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "이스트도넛",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "케이크도넛",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "찹쌀도넛",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "밤만주",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "모닝빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "베이글(계란)",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "브레드스틱",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "비스켓(버거킹)",
+      "group": "빵·과자류",
+      "category": "과자류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "옥수수식빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "우유식빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "프렌치토스트",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "오징어버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "와플(쨈)",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "와플(커스터드)",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "단호박찐빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감카스테라",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "배케이크",
+      "group": "빵·과자류",
+      "category": "케이크",
+      "cuisine": "양식"
+    },
+    {
+      "name": "크로켓",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "감자크로켓",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "야채크로켓",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "크림크로켓",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "치즈크러스트피자",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "치킨슈프림피자",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "고기호빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "야채호빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "팥호빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭고기샌드위치",
+      "group": "빵·과자류",
+      "category": "샌드위치",
+      "cuisine": "양식"
+    },
+    {
+      "name": "치킨샌드위치(KFC)",
+      "group": "빵·과자류",
+      "category": "샌드위치",
+      "cuisine": "양식"
+    },
+    {
+      "name": "BK브로일러치킨샌드위치",
+      "group": "빵·과자류",
+      "category": "샌드위치",
+      "cuisine": "양식"
+    },
+    {
+      "name": "로스트비프샌드위치",
+      "group": "빵·과자류",
+      "category": "샌드위치",
+      "cuisine": "양식"
+    },
+    {
+      "name": "햄샌드위치",
+      "group": "빵·과자류",
+      "category": "샌드위치",
+      "cuisine": "양식"
+    },
+    {
+      "name": "볼로냐샌드위치",
+      "group": "빵·과자류",
+      "category": "샌드위치",
+      "cuisine": "양식"
+    },
+    {
+      "name": "데리버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "리브샌드",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "불고기버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "BB버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "베이컨더블치즈버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "치즈버거(롯데리아)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "더블치즈버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "더블치즈버거(버거킹)",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "빅킹샌드위치",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "치킨버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "쉑버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "치킨치즈샌드위치",
+      "group": "빵·과자류",
+      "category": "샌드위치",
+      "cuisine": "양식"
+    },
+    {
+      "name": "쿼터파운더",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "참치샌드위치",
+      "group": "빵·과자류",
+      "category": "샌드위치",
+      "cuisine": "양식"
+    },
+    {
+      "name": "BK빅피쉬샌드위치",
+      "group": "빵·과자류",
+      "category": "샌드위치",
+      "cuisine": "양식"
+    },
+    {
+      "name": "휘쉬버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "새우버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "휘시필레버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "감자빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "양파빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "쌀빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "치즈빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "호두과자",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "레몬마들렌",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "붕어빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오징어버거",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "감자빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "양파빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "쌀빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "치즈빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "호두과자",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "레몬마들렌",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "붕어빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "슈크림붕어빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "타코야끼",
+      "group": "빵·과자류",
+      "category": "기타",
+      "cuisine": "일식"
+    },
+    {
+      "name": "B.L.T.샌드위치",
+      "group": "빵·과자류",
+      "category": "샌드위치",
+      "cuisine": "양식"
+    },
+    {
+      "name": "베이글",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "츄러스",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "피자빵",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "호떡",
+      "group": "빵·과자류",
+      "category": "빵류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고르곤졸라피자",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "마르게리타피자",
+      "group": "빵·과자류",
+      "category": "패스트푸드",
+      "cuisine": "양식"
+    },
+    {
+      "name": "감자스낵",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "양식"
+    },
+    {
+      "name": "프링글즈",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "양식"
+    },
+    {
+      "name": "강정(들깨)",
+      "group": "과자류",
+      "category": "한과",
+      "cuisine": "한식"
+    },
+    {
+      "name": "강정(땅콩)",
+      "group": "과자류",
+      "category": "한과",
+      "cuisine": "한식"
+    },
+    {
+      "name": "강정(보리)",
+      "group": "과자류",
+      "category": "한과",
+      "cuisine": "한식"
+    },
+    {
+      "name": "강정(쌀)",
+      "group": "과자류",
+      "category": "한과",
+      "cuisine": "한식"
+    },
+    {
+      "name": "강정(엿)",
+      "group": "과자류",
+      "category": "한과",
+      "cuisine": "한식"
+    },
+    {
+      "name": "강정(콩)",
+      "group": "과자류",
+      "category": "한과",
+      "cuisine": "한식"
+    },
+    {
+      "name": "건빵",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "한식"
+    },
+    {
+      "name": "꼬깔콘",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "양식"
+    },
+    {
+      "name": "마가렛트",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "버터쿠키",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "빠다코코넛",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "애플잼과자",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "엄마손파이",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "젝크",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "쵸이스",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "쵸코칩쿠키",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "커스터드과자",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "프레즐",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "하비스트",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "나쵸",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "양식"
+    },
+    {
+      "name": "모나카",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "일식"
+    },
+    {
+      "name": "비스켓",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "산자",
+      "group": "과자류",
+      "category": "한과",
+      "cuisine": "한식"
+    },
+    {
+      "name": "센베이",
+      "group": "과자류",
+      "category": "한과",
+      "cuisine": "일식"
+    },
+    {
+      "name": "스낵(나쵸)",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "양식"
+    },
+    {
+      "name": "스낵(밀가루)",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "양식"
+    },
+    {
+      "name": "스낵(새우)",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "양식"
+    },
+    {
+      "name": "스낵(콘칩)",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "양식"
+    },
+    {
+      "name": "웨하스(바닐라)",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "유과(찹쌀)",
+      "group": "과자류",
+      "category": "한과",
+      "cuisine": "한식"
+    },
+    {
+      "name": "유과(콩)",
+      "group": "과자류",
+      "category": "한과",
+      "cuisine": "한식"
+    },
+    {
+      "name": "전병(김)",
+      "group": "과자류",
+      "category": "한과",
+      "cuisine": "한식"
+    },
+    {
+      "name": "전병(찹쌀)",
+      "group": "과자류",
+      "category": "한과",
+      "cuisine": "한식"
+    },
+    {
+      "name": "치즈나쵸",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "양식"
+    },
+    {
+      "name": "쿠키",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "쿠키(땅콩버터)",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "크래커",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "크래커(땅콩샌드)",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "크래커(치즈샌드)",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "다식(검정깨)",
+      "group": "과자류",
+      "category": "한과",
+      "cuisine": "한식"
+    },
+    {
+      "name": "다식(송화)",
+      "group": "과자류",
+      "category": "한과",
+      "cuisine": "한식"
+    },
+    {
+      "name": "약과",
+      "group": "과자류",
+      "category": "한과",
+      "cuisine": "한식"
+    },
+    {
+      "name": "참깨강정",
+      "group": "과자류",
+      "category": "한과",
+      "cuisine": "한식"
+    },
+    {
+      "name": "찹쌀산자",
+      "group": "과자류",
+      "category": "한과",
+      "cuisine": "한식"
+    },
+    {
+      "name": "다이제",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "소프트비스켓",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "하드비스켓",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "다이제초코",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "브라우닝비스켓",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "빈츠",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "샤브레",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "웨하스(딸기)",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "쿠크다스화이트",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "이츠초코",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "고래밥(매콤)",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고래밥(볶음)",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "한식"
+    },
+    {
+      "name": "왕소라형과자",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "한식"
+    },
+    {
+      "name": "꽃게랑",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "한식"
+    },
+    {
+      "name": "꿀꽈배기",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "한식"
+    },
+    {
+      "name": "맛동산",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "한식"
+    },
+    {
+      "name": "바나나킥",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "한식"
+    },
+    {
+      "name": "새우깡",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "한식"
+    },
+    {
+      "name": "스모키베이컨칩",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "양식"
+    },
+    {
+      "name": "썬칩",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "양식"
+    },
+    {
+      "name": "야채타임",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "한식"
+    },
+    {
+      "name": "엑서스",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "양식"
+    },
+    {
+      "name": "오징어땅콩",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "한식"
+    },
+    {
+      "name": "옥수수스낵",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "한식"
+    },
+    {
+      "name": "자키자키",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "한식"
+    },
+    {
+      "name": "치토스",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "양식"
+    },
+    {
+      "name": "양파링",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "양식"
+    },
+    {
+      "name": "포카칩",
+      "group": "과자류",
+      "category": "스낵",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쌀과자",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "한식"
+    },
+    {
+      "name": "튀김쌀과자",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "한식"
+    },
+    {
+      "name": "웨하스(감귤)",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "웨하스(크림)",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "칙촉",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "한식"
+    },
+    {
+      "name": "아몬드빼빼로",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "튀밥",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "한식"
+    },
+    {
+      "name": "몽쉘통통",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "사과파이(설탕16g)",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "애플잼쿠키",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "양식"
+    },
+    {
+      "name": "오예스",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "한식"
+    },
+    {
+      "name": "초코파이",
+      "group": "과자류",
+      "category": "과자",
+      "cuisine": "한식"
+    },
+    {
+      "name": "국수장국",
+      "group": "면·만두류",
+      "category": "국수",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭칼국수",
+      "group": "면·만두류",
+      "category": "면류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "도토리국수",
+      "group": "면·만두류",
+      "category": "면류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "라면",
+      "group": "면·만두류",
+      "category": "면류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "메밀국수",
+      "group": "면·만두류",
+      "category": "면류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "물냉면",
+      "group": "면·만두류",
+      "category": "면류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "비빔국수",
+      "group": "면·만두류",
+      "category": "면류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "비빔냉면",
+      "group": "면·만두류",
+      "category": "면류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "컵라면(대)",
+      "group": "면·만두류",
+      "category": "면류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "수제비",
+      "group": "면·만두류",
+      "category": "수제비",
+      "cuisine": "한식"
+    },
+    {
+      "name": "스파게티",
+      "group": "면·만두류",
+      "category": "파스타",
+      "cuisine": "양식"
+    },
+    {
+      "name": "미트볼스파게티",
+      "group": "면·만두류",
+      "category": "파스타",
+      "cuisine": "양식"
+    },
+    {
+      "name": "봉골레스파게티",
+      "group": "면·만두류",
+      "category": "파스타",
+      "cuisine": "양식"
+    },
+    {
+      "name": "토마토스파게티",
+      "group": "면·만두류",
+      "category": "파스타",
+      "cuisine": "양식"
+    },
+    {
+      "name": "크림스파게티",
+      "group": "면·만두류",
+      "category": "파스타",
+      "cuisine": "양식"
+    },
+    {
+      "name": "로제스파게티",
+      "group": "면·만두류",
+      "category": "파스타",
+      "cuisine": "양식"
+    },
+    {
+      "name": "팟타이",
+      "group": "면·만두류",
+      "category": "면류",
+      "cuisine": "아시아"
+    },
+    {
+      "name": "고기만두",
+      "group": "면·만두류",
+      "category": "만두류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "군만두",
+      "group": "면·만두류",
+      "category": "만두류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김치만두",
+      "group": "면·만두류",
+      "category": "만두류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김치만두국",
+      "group": "면·만두류",
+      "category": "만두류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "떡만두국",
+      "group": "면·만두류",
+      "category": "만두류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "만두국",
+      "group": "면·만두류",
+      "category": "만두류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "물만두",
+      "group": "면·만두류",
+      "category": "만두류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "비빔만두",
+      "group": "면·만두류",
+      "category": "만두류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "찐만두",
+      "group": "면·만두류",
+      "category": "만두류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "튀김만두",
+      "group": "면·만두류",
+      "category": "만두류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "사골만두국",
+      "group": "면·만두류",
+      "category": "만두류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "월남쌈",
+      "group": "기타",
+      "category": "기타",
+      "cuisine": "아시아"
+    },
+    {
+      "name": "감자죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고기죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "깨죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "단팥죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "버섯죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "새우죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "수수죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "야채죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "잣죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "전복죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "율무죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "흰죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "팥죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "호박죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "옥수수죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "미음",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "참치죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "게살죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기버섯죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "대합죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자범벅",
+      "group": "죽·스프류",
+      "category": "기타",
+      "cuisine": "한식"
+    },
+    {
+      "name": "녹두죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "땅콩죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "홍합죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "복어죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오리죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "굴죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "매생이죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "어죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "검정깨죽",
+      "group": "죽·스프류",
+      "category": "죽류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기스프",
+      "group": "죽·스프류",
+      "category": "스프",
+      "cuisine": "양식"
+    },
+    {
+      "name": "콩소메스프",
+      "group": "죽·스프류",
+      "category": "스프",
+      "cuisine": "양식"
+    },
+    {
+      "name": "아스파라거스크림스프",
+      "group": "죽·스프류",
+      "category": "스프",
+      "cuisine": "양식"
+    },
+    {
+      "name": "쇠고기야채스프",
+      "group": "죽·스프류",
+      "category": "스프",
+      "cuisine": "양식"
+    },
+    {
+      "name": "양송이스프",
+      "group": "죽·스프류",
+      "category": "스프",
+      "cuisine": "양식"
+    },
+    {
+      "name": "양파스프",
+      "group": "죽·스프류",
+      "category": "스프",
+      "cuisine": "양식"
+    },
+    {
+      "name": "크림스프",
+      "group": "죽·스프류",
+      "category": "스프",
+      "cuisine": "양식"
+    },
+    {
+      "name": "감자국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자당면국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자미역국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자수제비국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자어묵국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자호박국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "건새우미역국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "계란국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "계란파국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김당면국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김치국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김치무국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김치수제비국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김치콩나물국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "다시멸치미역국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "당면국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "대구국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "대합미역국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "대합찜국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "동태국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "두부계란탕",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "두부김치국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "두부어묵새우젓국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "떡국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "떡어묵국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "모시조개국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "무국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "무새우젓국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "무채어묵국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기미역국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "버섯국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "북어계란국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "북어국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "북어콩나물국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "새우젓호박국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기두부국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기무국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기콩나물국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "어묵국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오징어국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오징어무국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "유부국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "조개국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "조개살두부국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "조개살배추국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "참치김치국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "참치미역국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "콩나물국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "콩나물무채국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "토란국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "표고버섯북어국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "호박새우젓국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "홍합무국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "홍합미역국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "갈치국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "옥돔국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "보말국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "굴국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "들깨감자국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "매생이국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "배추들깨국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "메밀묵국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "청포묵국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "채소국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "버섯우엉들깨탕국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "곰치국",
+      "group": "국·탕류",
+      "category": "어패류국",
+      "cuisine": "한식"
+    },
+    {
+      "name": "황태국",
+      "group": "국·탕류",
+      "category": "어패류국",
+      "cuisine": "한식"
+    },
+    {
+      "name": "미역국",
+      "group": "국·탕류",
+      "category": "어패류국",
+      "cuisine": "한식"
+    },
+    {
+      "name": "성게국",
+      "group": "국·탕류",
+      "category": "어패류국",
+      "cuisine": "한식"
+    },
+    {
+      "name": "바지락미역국",
+      "group": "국·탕류",
+      "category": "어패류국",
+      "cuisine": "한식"
+    },
+    {
+      "name": "시금치계란국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "도다리쑥국",
+      "group": "국·탕류",
+      "category": "어패류국",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기맑은배추국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "순두부달걀탕",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "다시멸치무국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "버섯들깨탕국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "순두부백탕국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "머위새우국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "바지락맑은국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "들깨토란탕국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자고비된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자두부된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "건새우아욱국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "근대된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "근대조개국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "꽃게된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "냉이된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "단배추된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "달래된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "두부된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "시금치조개국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "무된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "미역된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "바지락냉이토장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "배추된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "얼갈이국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "시금치된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "시래기된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쑥국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "아욱국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "열무감자국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "열무두부국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "왜된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "우거지국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "재치조개국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "조개된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "콩나물된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "해물된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "호박달래찌개",
+      "group": "찌개류",
+      "category": "된장찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "호박된장찌개",
+      "group": "찌개류",
+      "category": "된장찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "호박잎된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "홍합우거지국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "양배추된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쑥된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "열무된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "올갱이국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "유부된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "재첩국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "머위국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "각재기국",
+      "group": "국·탕류",
+      "category": "맑은국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "소고기배추된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "애호박된장국",
+      "group": "국·탕류",
+      "category": "된장국류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "갈비탕",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자탕",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "곰탕",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "꼬리곰탕",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "꽃게탕",
+      "group": "국·탕류",
+      "category": "어패류탕",
+      "cuisine": "한식"
+    },
+    {
+      "name": "내장탕",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "도가니탕",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "설렁탕",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "우거지탕",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "육개장",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "해장국",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "선지해장국",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "뼈해장국",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "올갱이해장국",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "콩나물해장국",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "황태해장국",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "북어해장국",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자국밥",
+      "group": "국·탕류",
+      "category": "국밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "순대국",
+      "group": "국·탕류",
+      "category": "국밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돼지국밥",
+      "group": "국·탕류",
+      "category": "국밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "소머리국밥",
+      "group": "국·탕류",
+      "category": "국밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "내장국밥",
+      "group": "국·탕류",
+      "category": "국밥류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "해물탕",
+      "group": "국·탕류",
+      "category": "어패류탕",
+      "cuisine": "한식"
+    },
+    {
+      "name": "아구탕",
+      "group": "국·탕류",
+      "category": "어패류탕",
+      "cuisine": "한식"
+    },
+    {
+      "name": "동태탕",
+      "group": "국·탕류",
+      "category": "어패류탕",
+      "cuisine": "한식"
+    },
+    {
+      "name": "대구탕",
+      "group": "국·탕류",
+      "category": "어패류탕",
+      "cuisine": "한식"
+    },
+    {
+      "name": "복지리",
+      "group": "국·탕류",
+      "category": "어패류탕",
+      "cuisine": "한식"
+    },
+    {
+      "name": "복매운탕",
+      "group": "국·탕류",
+      "category": "어패류탕",
+      "cuisine": "한식"
+    },
+    {
+      "name": "매운탕",
+      "group": "국·탕류",
+      "category": "어패류탕",
+      "cuisine": "한식"
+    },
+    {
+      "name": "추어탕",
+      "group": "국·탕류",
+      "category": "어패류탕",
+      "cuisine": "한식"
+    },
+    {
+      "name": "장어탕",
+      "group": "국·탕류",
+      "category": "어패류탕",
+      "cuisine": "한식"
+    },
+    {
+      "name": "메기탕",
+      "group": "국·탕류",
+      "category": "어패류탕",
+      "cuisine": "한식"
+    },
+    {
+      "name": "붕어매운탕",
+      "group": "국·탕류",
+      "category": "어패류탕",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쏘가리매운탕",
+      "group": "국·탕류",
+      "category": "어패류탕",
+      "cuisine": "한식"
+    },
+    {
+      "name": "꽃게매운탕",
+      "group": "국·탕류",
+      "category": "어패류탕",
+      "cuisine": "한식"
+    },
+    {
+      "name": "버섯전골",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "불고기전골",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "샤브샤브",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "곱창전골",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김치전골",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "낙지전골",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "버섯불고기전골",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "소고기전골",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "해물전골",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "두부전골",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "동태전골",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "만두전골(소고기)",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "만두전골(김치)",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "알탕",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "부대찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "참치찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김치찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "꽁치김치찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "동태찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "두부찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "버섯찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "비지찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "삼겹살김치찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "애호박찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "청국장찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "차돌된장찌개",
+      "group": "찌개류",
+      "category": "된장찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "우렁된장찌개",
+      "group": "찌개류",
+      "category": "된장찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "차돌박이된장찌개",
+      "group": "찌개류",
+      "category": "된장찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "냉이된장찌개",
+      "group": "찌개류",
+      "category": "된장찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "순두부찌개(해물)",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "순두부찌개(돼지고기)",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고추장찌개(돼지고기)",
+      "group": "찌개류",
+      "category": "고추장찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고추장찌개(참치)",
+      "group": "찌개류",
+      "category": "고추장찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "꽁치고추장찌개",
+      "group": "찌개류",
+      "category": "고추장찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "애호박고추장찌개",
+      "group": "찌개류",
+      "category": "고추장찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "콩나물찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "햄김치찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "갈비탕",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "삼계탕",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭곰탕",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오리탕",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "토종닭백숙",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오리백숙",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭한마리",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭도리탕",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "보신탕",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "염소탕",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "장어백숙",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "해신탕",
+      "group": "국·탕류",
+      "category": "곰국·탕류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "코다리찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "아귀찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "해물찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "대구뽈찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "낙지찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "꽃게찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "전복찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "문어숙회",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "족발",
+      "group": "찜류",
+      "category": "육류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "보쌈",
+      "group": "찜류",
+      "category": "육류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "수육",
+      "group": "찜류",
+      "category": "육류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "편육",
+      "group": "찜류",
+      "category": "육류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돼지고기편육",
+      "group": "찜류",
+      "category": "육류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "소고기수육",
+      "group": "찜류",
+      "category": "육류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭백숙",
+      "group": "찜류",
+      "category": "육류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "훈제오리",
+      "group": "찜류",
+      "category": "육류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "족편",
+      "group": "찜류",
+      "category": "육류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "수란",
+      "group": "찜류",
+      "category": "난류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "계란찜(간장)",
+      "group": "찜류",
+      "category": "난류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "계란찜(치즈)",
+      "group": "찜류",
+      "category": "난류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "코다리조림",
+      "group": "조림류",
+      "category": "어패류조림",
+      "cuisine": "한식"
+    },
+    {
+      "name": "갈치조림",
+      "group": "조림류",
+      "category": "어패류조림",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고등어조림",
+      "group": "조림류",
+      "category": "어패류조림",
+      "cuisine": "한식"
+    },
+    {
+      "name": "꽁치조림",
+      "group": "조림류",
+      "category": "어패류조림",
+      "cuisine": "한식"
+    },
+    {
+      "name": "동태조림",
+      "group": "조림류",
+      "category": "어패류조림",
+      "cuisine": "한식"
+    },
+    {
+      "name": "삼치조림",
+      "group": "조림류",
+      "category": "어패류조림",
+      "cuisine": "한식"
+    },
+    {
+      "name": "아귀조림",
+      "group": "조림류",
+      "category": "어패류조림",
+      "cuisine": "한식"
+    },
+    {
+      "name": "연근조림",
+      "group": "조림류",
+      "category": "채소류조림",
+      "cuisine": "한식"
+    },
+    {
+      "name": "우엉조림",
+      "group": "조림류",
+      "category": "채소류조림",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자조림",
+      "group": "조림류",
+      "category": "채소류조림",
+      "cuisine": "한식"
+    },
+    {
+      "name": "두부조림",
+      "group": "조림류",
+      "category": "두류조림",
+      "cuisine": "한식"
+    },
+    {
+      "name": "메추리알조림",
+      "group": "조림류",
+      "category": "난류조림",
+      "cuisine": "한식"
+    },
+    {
+      "name": "장조림",
+      "group": "조림류",
+      "category": "육류조림",
+      "cuisine": "한식"
+    },
+    {
+      "name": "소고기장조림",
+      "group": "조림류",
+      "category": "육류조림",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돼지고기장조림",
+      "group": "조림류",
+      "category": "육류조림",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭장조림",
+      "group": "조림류",
+      "category": "육류조림",
+      "cuisine": "한식"
+    },
+    {
+      "name": "코다리강정",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭강정",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "깐풍기",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "중식"
+    },
+    {
+      "name": "탕수육",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "중식"
+    },
+    {
+      "name": "후라이드치킨",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "양념치킨",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "치킨너겟",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "양식"
+    },
+    {
+      "name": "새우튀김",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "일식"
+    },
+    {
+      "name": "오징어튀김",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고구마튀김",
+      "group": "튀김류",
+      "category": "채소류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자튀김",
+      "group": "튀김류",
+      "category": "채소류튀김",
+      "cuisine": "양식"
+    },
+    {
+      "name": "김말이튀김",
+      "group": "튀김류",
+      "category": "기타튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "야채튀김",
+      "group": "튀김류",
+      "category": "채소류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쥐포튀김",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "튀김만두",
+      "group": "튀김류",
+      "category": "만두튀김",
+      "cuisine": "중식"
+    },
+    {
+      "name": "연근튀김",
+      "group": "튀김류",
+      "category": "채소류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "은행튀김",
+      "group": "튀김류",
+      "category": "채소류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고추튀김",
+      "group": "튀김류",
+      "category": "채소류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭껍질튀김",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "가지튀김",
+      "group": "튀김류",
+      "category": "채소류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "아이스크림튀김",
+      "group": "튀김류",
+      "category": "디저트",
+      "cuisine": "일식"
+    },
+    {
+      "name": "호박튀김",
+      "group": "튀김류",
+      "category": "채소류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "새우볼튀김",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "중식"
+    },
+    {
+      "name": "크림새우",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "중식"
+    },
+    {
+      "name": "깐풍새우",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "중식"
+    },
+    {
+      "name": "칠리새우",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "중식"
+    },
+    {
+      "name": "닭똥집튀김",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오징어링튀김",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "양식"
+    },
+    {
+      "name": "꽃게튀김",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "조기튀김",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "전어튀김",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "대구튀김",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "미꾸라지튀김",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "장어튀김",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "일식"
+    },
+    {
+      "name": "생선까스",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "일식"
+    },
+    {
+      "name": "돈까스",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "일식"
+    },
+    {
+      "name": "치즈돈까스",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "일식"
+    },
+    {
+      "name": "치킨까스",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "일식"
+    },
+    {
+      "name": "고로케튀김",
+      "group": "튀김류",
+      "category": "기타튀김",
+      "cuisine": "일식"
+    },
+    {
+      "name": "멘치까스",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "일식"
+    },
+    {
+      "name": "감자고로케",
+      "group": "튀김류",
+      "category": "기타튀김",
+      "cuisine": "일식"
+    },
+    {
+      "name": "해물까스",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "일식"
+    },
+    {
+      "name": "새우까스",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "일식"
+    },
+    {
+      "name": "호박고로케",
+      "group": "튀김류",
+      "category": "기타튀김",
+      "cuisine": "일식"
+    },
+    {
+      "name": "어니언링튀김",
+      "group": "튀김류",
+      "category": "채소류튀김",
+      "cuisine": "양식"
+    },
+    {
+      "name": "닭날개튀김",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭다리튀김",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭가슴살튀김",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "생선튀김",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "갈치튀김",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고등어튀김",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "코다리튀김",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "미역튀김",
+      "group": "튀김류",
+      "category": "채소류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "깻잎튀김",
+      "group": "튀김류",
+      "category": "채소류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "버섯튀김",
+      "group": "튀김류",
+      "category": "채소류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "브로콜리튀김",
+      "group": "튀김류",
+      "category": "채소류튀김",
+      "cuisine": "양식"
+    },
+    {
+      "name": "연어튀김",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "양식"
+    },
+    {
+      "name": "두부튀김",
+      "group": "튀김류",
+      "category": "두류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "탕후루",
+      "group": "튀김류",
+      "category": "디저트",
+      "cuisine": "아시아"
+    },
+    {
+      "name": "산적튀김",
+      "group": "튀김류",
+      "category": "기타튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "어묵튀김",
+      "group": "튀김류",
+      "category": "어패류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "계란튀김",
+      "group": "튀김류",
+      "category": "난류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "베이컨튀김",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "양식"
+    },
+    {
+      "name": "햄튀김",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "양식"
+    },
+    {
+      "name": "유린기",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "중식"
+    },
+    {
+      "name": "칠리치킨",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "중식"
+    },
+    {
+      "name": "치킨텐더",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "양식"
+    },
+    {
+      "name": "닭강정(매운)",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭강정(간장)",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고추바사삭치킨",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "마늘치킨",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "파닭",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "양념닭날개",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "간장닭날개",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭봉튀김",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "허니버터치킨",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭가슴살강정",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "치킨볼",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "양식"
+    },
+    {
+      "name": "치킨팝콘",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "양식"
+    },
+    {
+      "name": "닭껍질강정",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭똥집강정",
+      "group": "튀김류",
+      "category": "육류튀김",
+      "cuisine": "한식"
+    },
+    {
+      "name": "치즈볼",
+      "group": "튀김류",
+      "category": "디저트",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고구마볼",
+      "group": "튀김류",
+      "category": "디저트",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자볼",
+      "group": "튀김류",
+      "category": "디저트",
+      "cuisine": "한식"
+    },
+    {
+      "name": "주꾸미샤브샤브",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "꿩샤브샤브",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "만두전골",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "갈낙전골",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "밀푀유나베",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "일식"
+    },
+    {
+      "name": "아귀전골",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오리전골",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "전모듬전골",
+      "group": "전골류",
+      "category": "전골류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "양송이버섯찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "섞어찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "순두부찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "연두부찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "콩비지찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고추장찌개",
+      "group": "찌개류",
+      "category": "고추장찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "두부고추장찌개",
+      "group": "찌개류",
+      "category": "고추장찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "콩나물찌개",
+      "group": "찌개류",
+      "category": "찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "호박고추장찌개",
+      "group": "찌개류",
+      "category": "고추장찌개류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "가오리찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "가자미찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "갈치찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고등어찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "꼬막찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "꽃게찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "대구찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "대합찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "도미찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "동태찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "망둥어찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "미더덕찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "바지락찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "북어찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "아구찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "알찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오징어순대",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오징어찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "우럭찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "자반고등어찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "조기찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "참치계란찜",
+      "group": "찜류",
+      "category": "기타찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "홍어찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "붕어찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "잉어찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "전갱이찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "정어리찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "가리비찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "문어찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고둥찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "홍합찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "랍스터찜",
+      "group": "찜류",
+      "category": "어패류찜",
+      "cuisine": "양식"
+    },
+    {
+      "name": "닭찜",
+      "group": "찜류",
+      "category": "육류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "도가니수육",
+      "group": "찜류",
+      "category": "육류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돼지갈비찜",
+      "group": "찜류",
+      "category": "육류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돼지고기찜",
+      "group": "찜류",
+      "category": "육류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기찜",
+      "group": "찜류",
+      "category": "육류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "간장찜닭",
+      "group": "찜류",
+      "category": "육류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "깻잎찜",
+      "group": "찜류",
+      "category": "채소류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "애호박찜",
+      "group": "찜류",
+      "category": "채소류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "양배추찜",
+      "group": "찜류",
+      "category": "채소류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "가지찜",
+      "group": "찜류",
+      "category": "채소류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "계란찜",
+      "group": "찜류",
+      "category": "난류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "두부찜",
+      "group": "찜류",
+      "category": "두류찜",
+      "cuisine": "한식"
+    },
+    {
+      "name": "순대",
+      "group": "기타",
+      "category": "기타",
+      "cuisine": "한식"
+    },
+    {
+      "name": "꽁치구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "넙치구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "도미구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "일식"
+    },
+    {
+      "name": "명태구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "민어구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "병어구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "볼락구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "삼치구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "연어구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "일식"
+    },
+    {
+      "name": "오징어양념구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "임연수구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "장어구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "일식"
+    },
+    {
+      "name": "전어구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "조기구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "참치구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "일식"
+    },
+    {
+      "name": "청어구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "꼬치고기",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "농어구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "대구구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "명태구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "코다리구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "방어구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "일식"
+    },
+    {
+      "name": "붕어구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "빙어구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "송어구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "양식"
+    },
+    {
+      "name": "숭어구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "은어구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "일식"
+    },
+    {
+      "name": "은어내장구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "일식"
+    },
+    {
+      "name": "점줄우럭구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "정어리구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "참다랑어구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "일식"
+    },
+    {
+      "name": "홍연어구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "일식"
+    },
+    {
+      "name": "황새치구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "일식"
+    },
+    {
+      "name": "백합구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "홍합구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "조개구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "키조개구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "삼치카레구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "일식"
+    },
+    {
+      "name": "황태구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "전갱이구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "일식"
+    },
+    {
+      "name": "전복버터구이",
+      "group": "구이류",
+      "category": "어패류구이",
+      "cuisine": "양식"
+    },
+    {
+      "name": "갈매기살구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "갈비구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "내장구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭갈비",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭불고기",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돼지고기구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돼지불고기",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "불고기",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "삼겹살구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기산적",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠등심구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오리고기로스",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "칠면조구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "양식"
+    },
+    {
+      "name": "통닭구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "햄구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "양식"
+    },
+    {
+      "name": "찹스테이크",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "양식"
+    },
+    {
+      "name": "닭구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "등갈비구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "안심스테이크",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "양식"
+    },
+    {
+      "name": "치마살구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "꽃갈비살구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "대패삼겹살구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "삼겹살고추장구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭고기대파꼬치구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "일식"
+    },
+    {
+      "name": "소곱창구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "치킨데리야끼",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "일식"
+    },
+    {
+      "name": "찹스테이크(300g)",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "양식"
+    },
+    {
+      "name": "간장양념닭다리구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돼지고기산적",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "떡갈비",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돼지갈비구이",
+      "group": "구이류",
+      "category": "육류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자구이",
+      "group": "구이류",
+      "category": "채소류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김구이",
+      "group": "구이류",
+      "category": "기타구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "더덕구이",
+      "group": "구이류",
+      "category": "채소류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "도라지구이",
+      "group": "구이류",
+      "category": "채소류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "두부양념구이",
+      "group": "구이류",
+      "category": "두류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "떡고치구이",
+      "group": "구이류",
+      "category": "기타구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "옥수수구이",
+      "group": "구이류",
+      "category": "채소류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "우엉구이",
+      "group": "구이류",
+      "category": "채소류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "새송이버섯구이",
+      "group": "구이류",
+      "category": "채소류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "파래김구이",
+      "group": "구이류",
+      "category": "기타구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "베이컨말이떡구이",
+      "group": "구이류",
+      "category": "기타구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "콘치즈구이",
+      "group": "구이류",
+      "category": "기타구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "타코야끼",
+      "group": "구이류",
+      "category": "기타구이",
+      "cuisine": "일식"
+    },
+    {
+      "name": "버섯구이",
+      "group": "구이류",
+      "category": "채소류구이",
+      "cuisine": "한식"
+    },
+    {
+      "name": "굴전",
+      "group": "전·부침류",
+      "category": "어패류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "맛살전",
+      "group": "전·부침류",
+      "category": "어패류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "새우전",
+      "group": "전·부침류",
+      "category": "어패류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "어묵전",
+      "group": "전·부침류",
+      "category": "어패류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오징어옥수수전",
+      "group": "전·부침류",
+      "category": "어패류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "전유어(동태전)",
+      "group": "전·부침류",
+      "category": "어패류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "조개파전",
+      "group": "전·부침류",
+      "category": "어패류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "해물채소전",
+      "group": "전·부침류",
+      "category": "어패류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "해물파전",
+      "group": "전·부침류",
+      "category": "어패류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "홍합쑥갓전",
+      "group": "전·부침류",
+      "category": "어패류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오코노미야끼",
+      "group": "전·부침류",
+      "category": "기타전",
+      "cuisine": "일식"
+    },
+    {
+      "name": "해물완자전",
+      "group": "전·부침류",
+      "category": "어패류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "주꾸미야채전",
+      "group": "전·부침류",
+      "category": "어패류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "치즈야채생선전",
+      "group": "전·부침류",
+      "category": "어패류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돼지고기완자전",
+      "group": "전·부침류",
+      "category": "육류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠간전",
+      "group": "전·부침류",
+      "category": "육류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기완자전",
+      "group": "전·부침류",
+      "category": "육류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "천엽전",
+      "group": "전·부침류",
+      "category": "육류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "참치완자전",
+      "group": "전·부침류",
+      "category": "어패류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "소고기육전",
+      "group": "전·부침류",
+      "category": "육류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭가슴살연근전",
+      "group": "전·부침류",
+      "category": "육류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "가지전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자채전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김치빈대떡",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김치전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "깻잎전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "녹두전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "더덕산적",
+      "group": "전·부침류",
+      "category": "기타전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "두릅적",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "두부빈대떡",
+      "group": "전·부침류",
+      "category": "두류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "버섯전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "부추전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "부추파전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "야채전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "양파전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "연근전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "파전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "풋고추표고전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "호박전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "화양적",
+      "group": "전·부침류",
+      "category": "기타전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "느타리산적",
+      "group": "전·부침류",
+      "category": "기타전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쑥전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "옥수수전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "취나물전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "풋고추전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "배추전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김치메밀전병",
+      "group": "전·부침류",
+      "category": "기타전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "갈은감자전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "메밀전",
+      "group": "전·부침류",
+      "category": "곡류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자치즈전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "계란스크램블",
+      "group": "전·부침류",
+      "category": "난류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "계란오믈렛",
+      "group": "전·부침류",
+      "category": "난류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "계란햄오믈렛",
+      "group": "전·부침류",
+      "category": "난류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "계란말이",
+      "group": "전·부침류",
+      "category": "난류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "계란채소말이",
+      "group": "전·부침류",
+      "category": "난류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "계란햄말이",
+      "group": "전·부침류",
+      "category": "난류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "계란후라이",
+      "group": "전·부침류",
+      "category": "난류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "햄부침",
+      "group": "전·부침류",
+      "category": "육류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고구마전",
+      "group": "전·부침류",
+      "category": "채소류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "홍어부침개",
+      "group": "전·부침류",
+      "category": "어패류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "달걀김말이",
+      "group": "전·부침류",
+      "category": "난류",
+      "cuisine": "한식"
+    },
+    {
+      "name": "토마토스크램블",
+      "group": "전·부침류",
+      "category": "난류",
+      "cuisine": "양식"
+    },
+    {
+      "name": "햄채소전",
+      "group": "전·부침류",
+      "category": "육류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "두부부침",
+      "group": "전·부침류",
+      "category": "두류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "두부전",
+      "group": "전·부침류",
+      "category": "두류전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "떡산적",
+      "group": "전·부침류",
+      "category": "기타전",
+      "cuisine": "한식"
+    },
+    {
+      "name": "건꼴뚜기볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "건새우볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "건새우케찹볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고추멸치볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "낙지볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "마늘쫑어묵볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "멸치야채볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "문어볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "잔멸치간장볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쥐포볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "참치김치볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "참치야채볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "호박홍합볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자멸치볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "껍질콩맛살볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "멸치풋고추볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "멸치마늘쫑볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "주꾸미볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "새우감바스",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "양식"
+    },
+    {
+      "name": "꽈리고추멸치볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "주꾸미양배추볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "멸치견과류간장볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "멸치견과류고추장볶음",
+      "group": "볶음류",
+      "category": "어패류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "곱창볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김치소세지볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭고추장볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭떡볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭살야채볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돈육두루치기",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돼지고기고추장볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돼지고기김치볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돼지고기볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돼지고기야채볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돼지곱창볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "베이컨볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "양식"
+    },
+    {
+      "name": "소간야채볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "소세지야채볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기고추장볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기마늘볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기버섯볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기야채볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기오이볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "쇠고기표고볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "철판구이볶음",
+      "group": "볶음류",
+      "category": "기타볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "칠면조볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "양식"
+    },
+    {
+      "name": "햄김치볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "햄야채볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "돼지고기오징어볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "순대볶음",
+      "group": "볶음류",
+      "category": "기타볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "삼겹살낙지볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "오리불고기",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "부추달걀볶음",
+      "group": "볶음류",
+      "category": "난류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "콩나물불고기",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "불족발",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "닭발볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "묵은지삼겹살볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "곱창청양고추볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "곱창순대볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "곱창순대양념볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "죽순쇠고기볶음",
+      "group": "볶음류",
+      "category": "육류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "가지볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자야채볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자어묵볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자채볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자풋고추볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "감자햄볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고구마줄기볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고비볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고사리볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "고춧잎볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "근대볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "김치볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "깻잎나물볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "느타리버섯볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "도라지볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "마늘쫑볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "무청볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "미역줄기볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "미역줄기잡채",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "버섯볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "버섯채소볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "부추볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "야채볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    },
+    {
+      "name": "양파볶음",
+      "group": "볶음류",
+      "category": "채소류볶음",
+      "cuisine": "한식"
+    }
+  ]
+}

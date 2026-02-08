@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/generate-food-data.js",
+    "prebuild": "node scripts/generate-food-data.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -12,7 +14,9 @@
     "firebase": "^12.8.0",
     "next": "16.1.4",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "react-naver-maps": "^0.1.4",
+    "zustand": "^5.0.11"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

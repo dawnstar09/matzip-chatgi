@@ -189,37 +189,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-200 flex flex-col">
-      {/* Navigation Bar */}
-      <nav className="bg-black text-white px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-            <span className="text-black font-bold text-xl">M</span>
-          </div>
-          <span className="text-xl font-medium">TITLE</span>
-        </Link>
-        <div className="flex gap-4">
-          <button className="w-10 h-10 hover:bg-gray-800 rounded-full flex items-center justify-center">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-            </svg>
-          </button>
-          <button className="w-10 h-10 hover:bg-gray-800 rounded-full flex items-center justify-center">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-            </svg>
-          </button>
-          <Link
-            href={profileHref}
-            className="w-10 h-10 hover:bg-gray-800 rounded-full flex items-center justify-center"
-            aria-label={isLoggedIn ? '마이페이지' : '로그인'}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-          </Link>
-        </div>
-      </nav>
-
       {/* Main Content */}
       <div className="flex-1 flex">
         {/* Left Panel */}
@@ -244,13 +213,6 @@ export default function Home() {
               />
             ))}
           </div>
-
-          <button
-            type="button"
-            className="w-full py-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-xl shadow transition-colors duration-200"
-          >
-            주변 음식점 추천받기
-          </button>
         </aside>
 
         {/* Map Placeholder */}
@@ -290,6 +252,16 @@ export default function Home() {
             </div>
           </div>
         )}
+
+        {/* Floating Food Recommendation Button */}
+        <Link 
+          href="/recommendation"
+          className="fixed bottom-8 left-8 z-40 group"
+        >
+          <div className="bg-gradient-to-br from-yellow-100 to-amber-100 px-20 py-5 rounded-3xl shadow-xl hover:shadow-xl hover:scale-105 transform transition-all duration-300 border-2 border-yellow-200">
+            <span className="font-black text-2xl text-gray-900 whitespace-nowrap">주변 음식점 추천받기</span>
+          </div>
+        </Link>
     </div>
   );
 }

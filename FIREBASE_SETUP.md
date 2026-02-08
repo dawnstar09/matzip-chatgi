@@ -32,7 +32,52 @@ NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
 NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
 ```
 
-## 5. 개발 서버 재시작
+## 5. Firestore 데이터베이스 설정
+1. Firebase Console에서 "Firestore Database" 클릭
+2. "데이터베이스 만들기" 클릭
+3. 프로덕션 모드로 시작 (규칙은 나중에 설정)
+4. Cloud Firestore 위치 선택 (예: asia-northeast3 - 서울)
+5. "사용 설정" 클릭
+
+### Firestore 보안 규칙 배포
+프로젝트에 `firestore.rules` 파일이 포함되어 있습니다. Firebase CLI를 사용하여 배포하세요:
+
+```bash
+# Firebase CLI 설치 (한 번만)
+npm install -g firebase-tools
+
+# Firebase 로그인
+firebase login
+
+# Firebase 프로젝트 초기화 (이미 firebase.json이 있으면 생략)
+firebase init firestore
+
+# Firestore 규칙 배포
+firebase deploy --only firestore:rules
+```
+
+또는 Firebase Console에서 수동으로 설정:
+1. Firestore Database > 규칙 탭
+2. 아래 규칙 복사 & 붙여넣기:
+
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    match /favorites/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+```
+
+## 6. 개발 서버 재시작
 환경 변수를 수정한 후에는 개발 서버를 재시작해야 합니다:
 ```bash
 npm run dev
