@@ -86,37 +86,37 @@ export default function Navbar() {
 
   if (loading || !foodData) {
     return (
-      <nav className="bg-black-800 p-4 text-white">
+      <nav className="bg-black-800 p-3 md:p-4 text-white">
         <div className="container mx-auto flex justify-between items-center">
-          <div className="text-2xl font-bold">맛집 찾기</div>
-          <div className="h-10 w-32 bg-black-700 animate-pulse rounded"></div>
+          <div className="text-lg md:text-2xl font-bold">맛집 찾기</div>
+          <div className="h-8 w-20 md:h-10 md:w-32 bg-black-700 animate-pulse rounded"></div>
         </div>
       </nav>
     );
   }
 
   return (
-    <nav className="bg-black p-4 text-white">
+    <nav className="bg-black p-3 md:p-4 text-white">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold hover:text-gray-300">
+        <Link href="/" className="text-lg md:text-2xl font-bold hover:text-gray-300">
           맛집 찾기
         </Link>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4">
           {user ? (
-            <div className="flex items-center space-x-4">
-              <span className="text-gray-300">{user.email}님</span>
-              <Link href="/mypage" className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded">
+            <div className="flex items-center space-x-2 md:space-x-4">
+              <span className="hidden md:inline text-gray-300">{user.email}님</span>
+              <Link href="/mypage" className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-1.5 px-3 md:py-2 md:px-4 rounded text-sm md:text-base">
                 마이페이지
               </Link>
               <button
                 onClick={handleLogout}
-                className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                className="bg-red-500 hover:bg-red-600 text-white font-bold py-1.5 px-3 md:py-2 md:px-4 rounded text-sm md:text-base"
               >
                 로그아웃
               </button>
             </div>
           ) : (
-            <Link href="/login" className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-full">
+            <Link href="/login" className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-1.5 px-4 md:py-2 md:px-4 rounded-full text-sm md:text-base">
               로그인
             </Link>
           )}

@@ -190,9 +190,9 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-200 flex flex-col">
       {/* Main Content */}
-      <div className="flex-1 flex">
+      <div className="flex-1 flex flex-col md:flex-row">
         {/* Left Panel */}
-        <aside className="w-full max-w-md bg-white shadow-xl rounded-r-2xl p-6 flex flex-col gap-4">
+        <aside className="w-full md:max-w-md bg-white shadow-xl md:rounded-r-2xl p-4 md:p-6 flex flex-col gap-4 max-h-[50vh] md:max-h-none">
           <div className="flex items-center justify-between text-xs text-gray-500">
             <div className="space-y-1">
               <div className="text-[11px] text-gray-500">반경 500m 이내</div>
@@ -216,7 +216,7 @@ export default function Home() {
         </aside>
 
         {/* Map Placeholder */}
-        <div className="flex-1 bg-slate-100 h-full">
+        <div className="flex-1 bg-slate-100 h-[50vh] md:h-full">
           <NaverMap 
             center={{ lat: 36.3504, lng: 127.3845 }}
             zoom={15}
@@ -254,10 +254,10 @@ export default function Home() {
         {/* Floating Food Recommendation Button */}
         <Link 
           href="/recommendation"
-          className="fixed bottom-8 left-8 z-40 group"
+          className="fixed bottom-4 left-1/2 -translate-x-1/2 md:left-8 md:translate-x-0 md:bottom-8 z-40 group"
         >
-          <div className="bg-gradient-to-br from-yellow-100 to-amber-100 px-20 py-5 rounded-3xl shadow-xl hover:shadow-xl hover:scale-105 transform transition-all duration-300 border-2 border-yellow-200">
-            <span className="font-black text-2xl text-gray-900 whitespace-nowrap">주변 음식점 추천받기</span>
+          <div className="bg-gradient-to-br from-yellow-100 to-amber-100 px-8 py-3 md:px-20 md:py-5 rounded-2xl md:rounded-3xl shadow-xl hover:shadow-xl hover:scale-105 transform transition-all duration-300 border-2 border-yellow-200">
+            <span className="font-black text-base md:text-2xl text-gray-900 whitespace-nowrap">주변 음식점 추천받기</span>
           </div>
         </Link>
     </div>
