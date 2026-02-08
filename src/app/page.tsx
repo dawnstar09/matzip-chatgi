@@ -218,10 +218,8 @@ export default function Home() {
         {/* Map Placeholder */}
         <div className="flex-1 bg-slate-100">
           <NaverMap 
-            lat={36.3504} 
-            lng={127.3845}
+            center={{ lat: 36.3504, lng: 127.3845 }}
             zoom={15}
-            className="w-full h-full"
           />
         </div>
       </div>

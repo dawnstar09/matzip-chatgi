@@ -15,7 +15,6 @@
     "next": "16.1.4",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-naver-maps": "^0.1.4",
     "zustand": "^5.0.11"
   },
   "devDependencies": {
