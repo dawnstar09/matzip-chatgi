@@ -83,10 +83,8 @@ export default function MapTestPage() {
       </div>
 
       <NaverMap 
-        lat={location.lat} 
-        lng={location.lng} 
+        center={{ lat: location.lat, lng: location.lng }}
         zoom={15}
-        className="w-full h-[500px] rounded-lg shadow-lg"
       />
     </div>
   );

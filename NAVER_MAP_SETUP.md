@@ -52,10 +52,8 @@ import NaverMap from '@/components/NaverMap';
 export default function MyPage() {
   return (
     <NaverMap 
-      lat={37.5665}  // 위도
-      lng={126.9780}  // 경도
-      zoom={15}       // 줌 레벨 (1-21)
-      className="w-full h-[400px]"
+      center={{ lat: 37.5665, lng: 126.9780 }}  // 위도, 경도
+      zoom={15}  // 줌 레벨 (1-21)
     />
   );
 }
