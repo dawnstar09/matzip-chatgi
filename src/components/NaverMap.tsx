@@ -1,74 +1,49 @@
 "use client";
 
-import { useRef, useState } from "react";
-import Script from "next/script";
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import { useEffect } from 'react';
+import L from 'leaflet';
 
 interface NaverMapProps {
   center?: { lat: number; lng: number };
   zoom?: number;
 }
 
+// Leaflet 아이콘 수정 (Next.js에서 아이콘이 안 보이는 문제 해결)
+const fixLeafletIcon = () => {
+  delete (L.Icon.Default.prototype as any)._getIconUrl;
+  L.Icon.Default.mergeOptions({
+    iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+  });
+};
+
 const NaverMap = ({ center, zoom = 15 }: NaverMapProps) => {
-  const mapRef = useRef<HTMLDivElement>(null);
-  const mapInstance = useRef<any>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const defaultCenter = center || { lat: 37.3595704, lng: 127.105399 };
 
-  const initMap = () => {
-    if (!mapRef.current || typeof window === 'undefined' || !window.Tmapv2) {
-      console.log("TMAP not ready");
-      return;
-    }
-
-    const defaultCenter = center || { lat: 37.3595704, lng: 127.105399 };
-
-    try {
-      console.log("Initializing TMAP...");
-      
-      mapInstance.current = new window.Tmapv2.Map(mapRef.current, {
-        center: new window.Tmapv2.LatLng(defaultCenter.lat, defaultCenter.lng),
-        width: "100%",
-        height: "400px",
-        zoom: zoom,
-      });
-      
-      console.log("TMAP initialized successfully");
-      setIsLoaded(true);
-    } catch (error) {
-      console.error("TMAP 초기화 오류:", error);
-    }
-  };
-
-  const apiKey = process.env.NEXT_PUBLIC_TMAP_API_KEY;
-
-  if (!apiKey) {
-    return (
-      <div style={{ width: '100%', height: '400px' }} className="flex items-center justify-center bg-gray-100">
-        <p className="text-red-600">TMAP API 키가 설정되지 않았습니다.</p>
-      </div>
-    );
-  }
+  useEffect(() => {
+    fixLeafletIcon();
+  }, []);
 
   return (
-    <>
-      <Script
-        src={`https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=${apiKey}`}
-        strategy="afterInteractive"
-        onLoad={() => {
-          console.log("TMAP script loaded");
-          setTimeout(initMap, 100);
-        }}
-        onError={(e) => {
-          console.error("TMAP script load error:", e);
-        }}
+    <MapContainer
+      center={[defaultCenter.lat, defaultCenter.lng]}
+      zoom={zoom}
+      scrollWheelZoom={true}
+      style={{ width: '100%', height: '400px', borderRadius: '8px' }}
+    >
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <div ref={mapRef} style={{ width: "100%", height: "400px", backgroundColor: '#f0f0f0' }}>
-        {!isLoaded && (
-          <div className="flex items-center justify-center h-full">
-            <p className="text-gray-500">지도를 불러오는 중...</p>
-          </div>
-        )}
-      </div>
-    </>
+      <Marker position={[defaultCenter.lat, defaultCenter.lng]}>
+        <Popup>
+          현재 위치
+        </Popup>
+      </Marker>
+    </MapContainer>
   );
 };
 
