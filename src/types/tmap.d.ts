@@ -3,16 +3,22 @@ declare global {
   interface Window {
     Tmapv2: {
       Map: new (container: HTMLElement, options: TmapOptions) => TmapInstance;
+      Point: new (lng: number, lat: number) => TmapPoint;
       LatLng: new (lat: number, lng: number) => TmapLatLng;
     };
   }
 }
 
 interface TmapOptions {
-  center: TmapLatLng;
+  center: TmapPoint | TmapLatLng;
   width: string;
   height: string;
   zoom: number;
+}
+
+interface TmapPoint {
+  _lng: number;
+  _lat: number;
 }
 
 interface TmapLatLng {
@@ -21,7 +27,7 @@ interface TmapLatLng {
 }
 
 interface TmapInstance {
-  setCenter(latlng: TmapLatLng): void;
+  setCenter(point: TmapPoint | TmapLatLng): void;
   setZoom(zoom: number): void;
 }
 

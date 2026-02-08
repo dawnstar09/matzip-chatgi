@@ -17,12 +17,16 @@ const NaverMap = ({ center, zoom = 15 }: NaverMapProps) => {
 
     const defaultCenter = center || { lat: 37.3595704, lng: 127.105399 };
 
-    mapInstance.current = new window.Tmapv2.Map(mapRef.current, {
-      center: new window.Tmapv2.LatLng(defaultCenter.lat, defaultCenter.lng),
-      width: "100%",
-      height: "400px",
-      zoom: zoom,
-    });
+    try {
+      mapInstance.current = new window.Tmapv2.Map(mapRef.current, {
+        center: new window.Tmapv2.Point(defaultCenter.lng, defaultCenter.lat),
+        width: "100%",
+        height: "400px",
+        zoom: zoom,
+      });
+    } catch (error) {
+      console.error("TMAP 초기화 오류:", error);
+    }
   };
 
   useEffect(() => {
