@@ -105,7 +105,7 @@ export default function Navbar() {
           {user ? (
             <div className="flex items-center space-x-4">
               <span className="text-gray-300">{user.email}님</span>
-              <Link href="/mypage" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+              <Link href="/mypage" className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded">
                 마이페이지
               </Link>
               <button
