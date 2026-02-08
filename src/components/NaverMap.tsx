@@ -1,42 +1,55 @@
 "use client";
 
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { useEffect, useRef } from "react";
+import Script from "next/script";
 
 interface NaverMapProps {
   center?: { lat: number; lng: number };
   zoom?: number;
 }
 
-const containerStyle = {
-  width: '100%',
-  height: '400px'
-};
+const NaverMap = ({ center, zoom = 15 }: NaverMapProps) => {
+  const mapRef = useRef<HTMLDivElement>(null);
+  const mapInstance = useRef<any>(null);
 
-const defaultCenter = {
-  lat: 37.3595704,
-  lng: 127.105399
-};
+  const initMap = () => {
+    if (!mapRef.current || typeof window === 'undefined' || !window.Tmapv2) return;
 
-const NaverMap = ({ center, zoom = 10 }: NaverMapProps) => {
-  const mapCenter = center || defaultCenter;
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+    const defaultCenter = center || { lat: 37.3595704, lng: 127.105399 };
+
+    mapInstance.current = new window.Tmapv2.Map(mapRef.current, {
+      center: new window.Tmapv2.LatLng(defaultCenter.lat, defaultCenter.lng),
+      width: "100%",
+      height: "400px",
+      zoom: zoom,
+    });
+  };
+
+  useEffect(() => {
+    if (window.Tmapv2 && mapRef.current) {
+      initMap();
+    }
+  }, [center, zoom]);
+
+  const apiKey = process.env.NEXT_PUBLIC_TMAP_API_KEY;
 
   if (!apiKey) {
     return (
-      <div style={containerStyle} className="flex items-center justify-center bg-gray-100">
-        <p className="text-red-600">Google Maps API 키가 설정되지 않았습니다.</p>
+      <div style={{ width: '100%', height: '400px' }} className="flex items-center justify-center bg-gray-100">
+        <p className="text-red-600">TMAP API 키가 설정되지 않았습니다.</p>
       </div>
     );
   }
 
   return (
-    <LoadScript googleMapsApiKey={apiKey}>
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={mapCenter}
-        zoom={zoom}
+    <>
+      <Script
+        src={`https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=${apiKey}`}
+        strategy="afterInteractive"
+        onLoad={initMap}
       />
-    </LoadScript>
+      <div ref={mapRef} style={{ width: "100%", height: "400px" }} />
+    </>
   );
 };
 
