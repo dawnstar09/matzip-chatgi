@@ -1,50 +1,28 @@
 "use client";
 
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import { useEffect } from 'react';
-import L from 'leaflet';
+import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 
 interface NaverMapProps {
   center?: { lat: number; lng: number };
   zoom?: number;
 }
 
-// Leaflet 아이콘 수정 (Next.js에서 아이콘이 안 보이는 문제 해결)
-const fixLeafletIcon = () => {
-  delete (L.Icon.Default.prototype as any)._getIconUrl;
-  L.Icon.Default.mergeOptions({
-    iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
-    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-  });
-};
+// Leaflet은 브라우저에서만 작동하므로 dynamic import 사용
+const MapComponent = dynamic(
+  () => import('./MapComponent'),
+  { 
+    ssr: false,
+    loading: () => (
+      <div style={{ width: '100%', height: '400px', backgroundColor: '#f0f0f0', borderRadius: '8px' }} className="flex items-center justify-center">
+        <p className="text-gray-500">지도를 불러오는 중...</p>
+      </div>
+    )
+  }
+);
 
 const NaverMap = ({ center, zoom = 15 }: NaverMapProps) => {
-  const defaultCenter = center || { lat: 37.3595704, lng: 127.105399 };
-
-  useEffect(() => {
-    fixLeafletIcon();
-  }, []);
-
-  return (
-    <MapContainer
-      center={[defaultCenter.lat, defaultCenter.lng]}
-      zoom={zoom}
-      scrollWheelZoom={true}
-      style={{ width: '100%', height: '400px', borderRadius: '8px' }}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={[defaultCenter.lat, defaultCenter.lng]}>
-        <Popup>
-          현재 위치
-        </Popup>
-      </Marker>
-    </MapContainer>
-  );
+  return <MapComponent center={center} zoom={zoom} />;
 };
 
 export default NaverMap;
