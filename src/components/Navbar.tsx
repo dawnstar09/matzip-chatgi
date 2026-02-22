@@ -10,7 +10,7 @@ import useUserStore from '@/store/userStore';
 const initialWeightValue = 1.0;
 
 export default function Navbar() {
-  const { user, setUser, setWeights, clearUser } = useUserStore();
+  const { user, setUser, setWeights, clearUser, toggleMobileMenu } = useUserStore();
   const [loading, setLoading] = useState(true);
   const [foodData, setFoodData] = useState<{ categories: Record<string, string[]>, cuisineTypes: string[] } | null>(null);
 
@@ -117,7 +117,7 @@ export default function Navbar() {
           </Link>
 
           {/* Menu Icon */}
-          <button className="hover:opacity-80">
+          <button onClick={toggleMobileMenu} className="hover:opacity-80">
             <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
