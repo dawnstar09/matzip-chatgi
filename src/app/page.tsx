@@ -212,65 +212,122 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen bg-gray-200 flex flex-col relative">
-      {/* Full Screen Map */}
-      <div className="absolute inset-0 top-[60px]">
-        {userLocation ? (
-          <NaverMap 
-            center={userLocation}
-            zoom={15}
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center text-gray-500 bg-gray-100">
-            위치 정보를 불러오는 중...
-          </div>
-        )}
-      </div>
-
-      {/* Floating Restaurant Card */}
-      <div className="absolute bottom-20 left-4 right-4 md:left-6 md:right-6 z-30 max-w-md mx-auto">
-        <div className="bg-white rounded-3xl shadow-2xl p-5 max-h-[60vh] flex flex-col">
-          <div className="mb-4">
-            <div className="text-xs text-gray-500 mb-1">반경 500m 이내</div>
-            <h2 className="text-lg font-bold text-gray-900">주변 음식점들</h2>
-          </div>
-
-          {/* Restaurant List */}
-          <div className="flex-1 space-y-2 overflow-y-auto mb-4">
-            {restaurants.map((restaurant) => (
-              <div key={restaurant.id} className="flex items-start justify-between py-2 border-b border-gray-100 last:border-0">
-                <div className="flex items-start gap-2 flex-1">
-                  <button
-                    type="button"
-                    onClick={() => handleFavoriteClick(restaurant.id)}
-                    className="mt-0.5"
-                  >
-                    <StarIcon filled={Boolean(restaurant.isFavorite)} />
-                  </button>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 text-sm">{restaurant.name}</h3>
-                    <p className="text-xs text-gray-500 mt-0.5 leading-tight">{restaurant.address}</p>
-                  </div>
-                </div>
-                <span className="text-xs text-gray-400 whitespace-nowrap ml-2">↑ A</span>
+    <div className="h-screen bg-gray-200 flex flex-col">
+      {/* 데스크톱: 사이드바 + 지도 레이아웃 */}
+      {/* 모바일: 전체화면 지도 + 플로팅 카드 */}
+      
+      {/* Desktop Layout */}
+      <div className="hidden md:flex flex-1 overflow-hidden">
+        {/* Left Panel - Desktop */}
+        <aside className="w-full max-w-md bg-white shadow-xl rounded-r-2xl p-6 flex flex-col gap-4 overflow-hidden">
+          <div className="flex items-center justify-between text-xs text-gray-500">
+            <div className="space-y-1">
+              <div className="text-[11px] text-gray-500">반경 500m 이내</div>
+              <div className="text-lg font-semibold text-gray-900">주변 음식점</div>
+              <div className="text-[11px] text-gray-400">
+                즐겨찾기 {favoriteCount}개 • 총 {restaurants.length}곳
               </div>
+            </div>
+            <span className="text-[11px] text-gray-400">Q · A</span>
+          </div>
+
+          <div className="flex-1 space-y-3 overflow-y-auto pr-1">
+            {restaurants.map((restaurant) => (
+              <RestaurantCard
+                key={restaurant.id}
+                restaurant={restaurant}
+                onToggleFavorite={handleFavoriteClick}
+              />
             ))}
           </div>
+        </aside>
 
-          {/* Recommendation Button */}
-          <Link 
-            href="/recommendation"
-            className="block"
-          >
-            <button
-              type="button"
-              className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 rounded-2xl transition-colors text-base"
-            >
-              주변 음식점 추천받기
-            </button>
-          </Link>
+        {/* Map - Desktop */}
+        <div className="flex-1 bg-slate-100">
+          {userLocation ? (
+            <NaverMap 
+              center={userLocation}
+              zoom={15}
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-gray-500">
+              위치 정보를 불러오는 중...
+            </div>
+          )}
         </div>
       </div>
+
+      {/* Mobile Layout */}
+      <div className="md:hidden flex-1 relative">
+        {/* Full Screen Map */}
+        <div className="absolute inset-0">
+          {userLocation ? (
+            <NaverMap 
+              center={userLocation}
+              zoom={15}
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-gray-500 bg-gray-100">
+              위치 정보를 불러오는 중...
+            </div>
+          )}
+        </div>
+
+        {/* Floating Restaurant Card - Mobile */}
+        <div className="absolute bottom-4 left-4 right-4 z-30">
+          <div className="bg-white rounded-3xl shadow-2xl p-5 max-h-[60vh] flex flex-col">
+            <div className="mb-4">
+              <div className="text-xs text-gray-500 mb-1">반경 500m 이내</div>
+              <h2 className="text-lg font-bold text-gray-900">주변 음식점들</h2>
+            </div>
+
+            {/* Restaurant List */}
+            <div className="flex-1 space-y-2 overflow-y-auto mb-4">
+              {restaurants.map((restaurant) => (
+                <div key={restaurant.id} className="flex items-start justify-between py-2 border-b border-gray-100 last:border-0">
+                  <div className="flex items-start gap-2 flex-1">
+                    <button
+                      type="button"
+                      onClick={() => handleFavoriteClick(restaurant.id)}
+                      className="mt-0.5"
+                    >
+                      <StarIcon filled={Boolean(restaurant.isFavorite)} />
+                    </button>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-900 text-sm">{restaurant.name}</h3>
+                      <p className="text-xs text-gray-500 mt-0.5 leading-tight">{restaurant.address}</p>
+                    </div>
+                  </div>
+                  <span className="text-xs text-gray-400 whitespace-nowrap ml-2">↑ A</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Recommendation Button */}
+            <Link 
+              href="/recommendation"
+              className="block"
+            >
+              <button
+                type="button"
+                className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 rounded-2xl transition-colors text-base"
+              >
+                주변 음식점 추천받기
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop Floating Button */}
+      <Link 
+        href="/recommendation"
+        className="hidden md:block fixed bottom-8 left-8 z-40 group"
+      >
+        <div className="bg-gradient-to-br from-yellow-100 to-amber-100 px-20 py-5 rounded-3xl shadow-xl hover:shadow-2xl hover:scale-105 transform transition-all duration-300 border-2 border-yellow-200">
+          <span className="font-black text-2xl text-gray-900 whitespace-nowrap">주변 음식점 추천받기</span>
+        </div>
+      </Link>
 
       {/* Login Prompt Modal */}
       {showLoginPrompt && (

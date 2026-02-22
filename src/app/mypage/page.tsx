@@ -213,7 +213,8 @@ export default function MyPage() {
 
   return (
     <div className="min-h-screen bg-gray-100 pb-6">
-      <main className="max-w-md mx-auto p-6">
+      {/* Mobile Layout */}
+      <main className="md:hidden max-w-md mx-auto p-6">
         {/* User Info Card */}
         <div className="bg-white rounded-3xl shadow-lg p-6 mb-4">
           <p className="text-xs text-gray-500 mb-1">{userEmail}</p>
@@ -266,6 +267,140 @@ export default function MyPage() {
         >
           로그아웃
         </button>
+      </main>
+
+      {/* Desktop Layout */}
+      <main className="hidden md:flex justify-center p-6">
+        <div className="w-full max-w-5xl space-y-4">
+          {/* Tab Navigation */}
+          <div className="bg-white rounded-2xl shadow border border-gray-100 p-2 flex gap-2">
+            <button
+              onClick={() => setActiveTab('restaurants')}
+              className={`flex-1 py-3 px-4 rounded-xl font-semibold transition-colors ${
+                activeTab === 'restaurants'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
+              음식점 관리
+            </button>
+            <button
+              onClick={() => setActiveTab('weights')}
+              className={`flex-1 py-3 px-4 rounded-xl font-semibold transition-colors ${
+                activeTab === 'weights'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
+              음식 추천 가중치
+            </button>
+          </div>
+
+          {/* Content based on active tab */}
+          {activeTab === 'restaurants' ? (
+            <>
+              {/* Favorites Card */}
+              <section className="bg-white rounded-2xl shadow p-6 border border-gray-100">
+                <div className="text-xs text-gray-500 mb-1">{userEmail}</div>
+                <h2 className="text-lg font-semibold text-gray-900">{userName || '마이페이지'}</h2>
+                <div className="mt-4 text-sm font-medium text-gray-800 flex items-center gap-2">
+                  즐겨찾기한 음식점들
+                  <span className="text-xs text-gray-400">Q · A</span>
+                </div>
+                <div className="mt-3 divide-y divide-gray-200 border border-gray-200 rounded-xl overflow-hidden">
+                  {favorites.map((fav) => (
+                    <div key={fav.id} className="flex items-start justify-between bg-white px-4 py-3">
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">{fav.name}</div>
+                        <div className="text-xs text-gray-500">{fav.address}</div>
+                      </div>
+                      <button
+                        type="button"
+                        className="text-gray-500 hover:text-yellow-500 transition-colors"
+                        onClick={() => toggleFavorite(fav.id)}
+                        aria-label={fav.isFavorite ? '즐겨찾기 해제' : '즐겨찾기 추가'}
+                      >
+                        <StarIcon filled={Boolean(fav.isFavorite)} />
+                      </button>
+                    </div>
+                  ))}
+                  {favorites.length === 0 && (
+                    <div className="px-4 py-3 text-sm text-gray-500">즐겨찾기한 음식점이 없습니다.</div>
+                  )}
+                </div>
+                <div className="mt-2 text-xs text-gray-500">즐겨찾기 {favoriteCount}개</div>
+              </section>
+
+              {/* Recommendation Options */}
+              <section className="bg-white rounded-2xl shadow p-6 border border-gray-100 space-y-4">
+                <div className="text-[11px] text-gray-500">본인만의 특징을 반영한 메뉴를 추천받으세요!</div>
+                <h3 className="text-sm font-semibold text-gray-900">음식점 추천 옵션 설정</h3>
+                <div className="flex items-center justify-between text-sm font-medium text-gray-800">
+                  <div className="flex items-center gap-2">
+                    <input
+                      id="menu-option-toggle"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-yellow-500 focus:ring-yellow-400"
+                      checked={checkedGroups['추천옵션'] ?? true}
+                      onChange={(e) =>
+                        setCheckedGroups((prev) => ({ ...prev, 추천옵션: e.target.checked }))
+                      }
+                    />
+                    <label htmlFor="menu-option-toggle">음식점 메뉴 추천 옵션</label>
+                  </div>
+                  <span className="text-xs text-gray-400">Q · A</span>
+                </div>
+
+                <div className="space-y-3">
+                  {optionGroups.map((group) => (
+                    <div key={group.title} className="bg-gray-100 border border-gray-300 rounded-lg overflow-hidden">
+                      <div className="grid grid-cols-12 divide-x divide-gray-300 text-sm">
+                        <button
+                          type="button"
+                          className={`col-span-2 py-3 font-semibold text-white ${isOptionActive(group.title, '전체') ? 'bg-blue-700' : 'bg-blue-500'} hover:bg-blue-600`}
+                          onClick={() => toggleGroupOption(group.title, '전체')}
+                        >
+                          전체
+                        </button>
+                        <div className="col-span-10 grid grid-cols-5">
+                          {group.options.map((opt) => (
+                            <button
+                              key={opt}
+                              type="button"
+                              className={`py-3 text-center transition-colors ${isOptionActive(group.title, opt) ? 'bg-blue-100 text-blue-900 font-semibold' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}
+                              onClick={() => toggleGroupOption(group.title, opt)}
+                            >
+                              {opt}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="w-full py-3 mt-6 bg-gray-700 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors duration-200"
+                >
+                  로그아웃
+                </button>
+              </section>
+            </>
+          ) : (
+            <section className="flex flex-col items-center justify-center p-6 bg-gray-50 min-h-[calc(100vh-300px)]">
+              <MyPageContent />
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="w-full max-w-2xl py-3 mt-6 bg-gray-700 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors duration-200"
+              >
+                로그아웃
+              </button>
+            </section>
+          )}
+        </div>
       </main>
     </div>
   );

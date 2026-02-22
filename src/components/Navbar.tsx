@@ -98,16 +98,17 @@ export default function Navbar() {
   return (
     <nav className="bg-black px-4 py-3 text-white">
       <div className="flex justify-between items-center max-w-screen-xl mx-auto">
-        {/* Logo */}
+        {/* Logo - 모바일: M + TITLE, 데스크톱: 맛집 찾기 */}
         <Link href="/" className="flex items-center gap-2 hover:opacity-80">
-          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center md:hidden">
             <span className="text-black font-bold text-xl">M</span>
           </div>
-          <span className="text-xl font-bold">TITLE</span>
+          <span className="text-xl font-bold md:hidden">TITLE</span>
+          <span className="hidden md:block text-lg md:text-2xl font-bold">맛집 찾기</span>
         </Link>
 
-        {/* Right Icons */}
-        <div className="flex items-center gap-4">
+        {/* Mobile Icons */}
+        <div className="flex items-center gap-4 md:hidden">
           {/* Recommendation Icon */}
           <Link href="/recommendation" className="hover:opacity-80">
             <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
@@ -128,6 +129,28 @@ export default function Navbar() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 4 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
           </Link>
+        </div>
+
+        {/* Desktop Buttons */}
+        <div className="hidden md:flex items-center gap-2 md:gap-4">
+          {user ? (
+            <div className="flex items-center space-x-2 md:space-x-4">
+              <span className="hidden md:inline text-gray-300">{user.email}님</span>
+              <Link href="/mypage" className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-1.5 px-3 md:py-2 md:px-4 rounded text-sm md:text-base">
+                마이페이지
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="bg-red-500 hover:bg-red-600 text-white font-bold py-1.5 px-3 md:py-2 md:px-4 rounded text-sm md:text-base"
+              >
+                로그아웃
+              </button>
+            </div>
+          ) : (
+            <Link href="/login" className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-1.5 px-4 md:py-2 md:px-4 rounded-full text-sm md:text-base">
+              로그인
+            </Link>
+          )}
         </div>
       </div>
     </nav>
