@@ -18,44 +18,16 @@ type Restaurant = {
   isFavorite?: boolean;
 };
 
-// 메인 페이지와 동일한 레스토랑 목록
-const allRestaurants: Restaurant[] = [
-  {
-    id: '1',
-    name: '보배반점',
-    address: '대전광역시 서구 둔산동 1491 1층',
+// API 데이터를 Restaurant 타입으로 변환하는 함수
+function mapApiDataToRestaurant(apiData: any, index: number): Restaurant {
+  return {
+    id: apiData.id?.toString() || apiData.BIZPLC_NM || index.toString(),
+    name: apiData.name || apiData.BIZPLC_NM || apiData.상호명 || '상호명 없음',
+    address: apiData.address || apiData.REFINE_ROADNM_ADDR || apiData.REFINE_LOTNO_ADDR || apiData.주소 || '주소 정보 없음',
     distance: 'A',
-    category: '중식',
-  },
-  {
-    id: '2',
-    name: '고봉민김밥',
-    address: '대전광역시 서구 둔산로 133 (둔산동, 109호)',
-    distance: 'A',
-    category: '한식',
-  },
-  {
-    id: '3',
-    name: '대선칼국수',
-    address: '대전 서구 둔산중로40번길 28 오성빌딩 2층',
-    distance: 'A',
-    category: '한식',
-  },
-  {
-    id: '4',
-    name: '기쁨이김밥',
-    address: '대전둔산점 대전 서구 둔산로 108',
-    distance: 'A',
-    category: '분식',
-  },
-  {
-    id: '5',
-    name: '김명태 고기의 철학',
-    address: '대전 서구 둔산중로46번길 38',
-    distance: 'A',
-    category: '고기',
-  },
-];
+    category: apiData.category || apiData.INDUTYPE_NM || apiData.업종 || '기타',
+  };
+}
 
 function StarIcon({ filled }: { filled: boolean }) {
   return (
@@ -80,7 +52,41 @@ export default function MyPage() {
   const [userEmail, setUserEmail] = useState('');
   const [userName, setUserName] = useState('');
   const [favorites, setFavorites] = useState<Restaurant[]>([]);
+  const [allRestaurants, setAllRestaurants] = useState<Restaurant[]>([]);
   const [activeTab, setActiveTab] = useState<'restaurants' | 'weights'>('restaurants');
+
+  // 음식점 데이터 가져오기
+  useEffect(() => {
+    const fetchRestaurants = async () => {
+      try {
+        const response = await fetch('/api/stores');
+        if (!response.ok) throw new Error('음식점 데이터 가져오기 실패');
+        
+        const data = await response.json();
+        
+        let storeList: any[] = [];
+        if (Array.isArray(data)) {
+          storeList = data;
+        } else if (data.data && Array.isArray(data.data)) {
+          storeList = data.data;
+        } else if (data.stores && Array.isArray(data.stores)) {
+          storeList = data.stores;
+        } else if (data.list && Array.isArray(data.list)) {
+          storeList = data.list;
+        }
+        
+        const mappedRestaurants = storeList
+          .map((store: any, index: number) => mapApiDataToRestaurant(store, index));
+        
+        setAllRestaurants(mappedRestaurants);
+      } catch (error) {
+        console.error('음식점 데이터 로드 실패:', error);
+        setAllRestaurants([]);
+      }
+    };
+    
+    fetchRestaurants();
+  }, []);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
@@ -92,30 +98,32 @@ export default function MyPage() {
       setUserName(user.displayName || user.email || '');
 
       // Firestore에서 즐겨찾기 불러오기
-      try {
-        const userFavRef = doc(db, 'favorites', user.uid);
-        const docSnap = await getDoc(userFavRef);
-        
-        if (docSnap.exists()) {
-          const favData = docSnap.data();
-          // 즐겨찾기된 레스토랑만 필터링
-          const favoriteRestaurants = allRestaurants.filter(
-            (restaurant) => favData[restaurant.id] === true
-          ).map(r => ({ ...r, isFavorite: true }));
+      if (allRestaurants.length > 0) {
+        try {
+          const userFavRef = doc(db, 'favorites', user.uid);
+          const docSnap = await getDoc(userFavRef);
           
-          setFavorites(favoriteRestaurants);
-        } else {
+          if (docSnap.exists()) {
+            const favData = docSnap.data();
+            // 즐겨찾기된 레스토랑만 필터링
+            const favoriteRestaurants = allRestaurants.filter(
+              (restaurant) => favData[restaurant.id] === true
+            ).map(r => ({ ...r, isFavorite: true }));
+            
+            setFavorites(favoriteRestaurants);
+          } else {
+            setFavorites([]);
+          }
+        } catch (error) {
+          console.error('즐겨찾기 불러오기 실패:', error);
           setFavorites([]);
         }
-      } catch (error) {
-        console.error('즐겨찾기 불러오기 실패:', error);
-        setFavorites([]);
       }
 
       setLoading(false);
     });
     return () => unsub();
-  }, [router]);
+  }, [router, allRestaurants]);
 
   const favoriteCount = useMemo(() => favorites.filter((f) => f.isFavorite).length, [favorites]);
 

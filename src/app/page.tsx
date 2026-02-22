@@ -23,53 +23,24 @@ type Restaurant = {
   calculatedDistance?: number; // 실제 계산된 거리 (미터)
 };
 
-const mockRestaurants: Restaurant[] = [
-  {
-    id: '1',
-    name: '보배반점',
-    address: '대전광역시 서구 둔산동 1491 1층',
+// API 응답 데이터 타입 (실제 API 구조에 맞게 조정 필요)
+interface ApiStoreData {
+  [key: string]: any; // API 응답 구조를 확인한 후 구체적으로 정의
+}
+
+// API 데이터를 Restaurant 타입으로 변환하는 함수
+function mapApiDataToRestaurant(apiData: any, index: number): Restaurant {
+  // API 응답 구조에 맞게 매핑 (실제 API 응답 확인 후 조정 필요)
+  return {
+    id: apiData.id?.toString() || apiData.BIZPLC_NM || index.toString(),
+    name: apiData.name || apiData.BIZPLC_NM || apiData.상호명 || '상호명 없음',
+    address: apiData.address || apiData.REFINE_ROADNM_ADDR || apiData.REFINE_LOTNO_ADDR || apiData.주소 || '주소 정보 없음',
     distance: 'A',
-    category: '중식',
-    lat: 36.3501,
-    lng: 127.3847,
-  },
-  {
-    id: '2',
-    name: '고봉민김밥',
-    address: '대전광역시 서구 둔산로 133 (둔산동, 109호)',
-    distance: 'A',
-    category: '한식',
-    lat: 36.3505,
-    lng: 127.3842,
-  },
-  {
-    id: '3',
-    name: '대선칼국수',
-    address: '대전 서구 둔산중로40번길 28 오성빌딩 2층',
-    distance: 'A',
-    category: '한식',
-    lat: 36.3510,
-    lng: 127.3850,
-  },
-  {
-    id: '4',
-    name: '기쁨이김밥',
-    address: '대전둔산점 대전 서구 둔산로 108',
-    distance: 'A',
-    category: '분식',
-    lat: 36.3498,
-    lng: 127.3838,
-  },
-  {
-    id: '5',
-    name: '김명태 고기의 철학',
-    address: '대전 서구 둔산중로46번길 38',
-    distance: 'A',
-    category: '고기',
-    lat: 36.3515,
-    lng: 127.3855,
-  },
-];
+    category: apiData.category || apiData.INDUTYPE_NM || apiData.업종 || '기타',
+    lat: apiData.lat || apiData.REFINE_WGS84_LAT || apiData.latitude || apiData.위도,
+    lng: apiData.lng || apiData.REFINE_WGS84_LOGT || apiData.longitude || apiData.경도,
+  };
+}
 
 function StarIcon({ filled }: { filled: boolean }) {
   return (
@@ -123,7 +94,8 @@ function RestaurantCard({ restaurant, onToggleFavorite }: RestaurantCardProps) {
 }
 
 export default function Home() {
-  const [restaurants, setRestaurants] = useState<Restaurant[]>(mockRestaurants);
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  const [loading, setLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUserName, setCurrentUserName] = useState<string>('');
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
@@ -157,6 +129,81 @@ export default function Home() {
       setUserLocation({ lat: 36.3504, lng: 127.3845 });
     }
   }, []);
+
+  // 대전 빅데이터 API에서 음식점 데이터 가져오기
+  useEffect(() => {
+    const fetchRestaurants = async () => {
+      console.log('🔄 음식점 데이터 로딩 중...');
+      setLoading(true);
+      
+      try {
+        const response = await fetch('/api/stores');
+        
+        if (!response.ok) {
+          throw new Error('음식점 데이터 가져오기 실패');
+        }
+        
+        const data = await response.json();
+        console.log('📦 API 응답 데이터:', data);
+        
+        // API 응답 구조 확인 후 매핑
+        let storeList: any[] = [];
+        
+        // 다양한 API 응답 구조 처리
+        if (Array.isArray(data)) {
+          storeList = data;
+        } else if (data.data && Array.isArray(data.data)) {
+          storeList = data.data;
+        } else if (data.stores && Array.isArray(data.stores)) {
+          storeList = data.stores;
+        } else if (data.list && Array.isArray(data.list)) {
+          storeList = data.list;
+        } else {
+          console.warn('⚠️ 예상치 못한 API 응답 구조:', data);
+        }
+        
+        // 대전 서구 지역 음식점만 필터링 (옵션)
+        const filteredStores = storeList.filter((store: any) => {
+          const address = store.address || store.REFINE_ROADNM_ADDR || store.REFINE_LOTNO_ADDR || '';
+          return address.includes('대전') && address.includes('서구');
+        });
+        
+        const mappedRestaurants = (filteredStores.length > 0 ? filteredStores : storeList.slice(0, 20))
+          .map((store: any, index: number) => mapApiDataToRestaurant(store, index));
+        
+        console.log(`✅ ${mappedRestaurants.length}개 음식점 로드 완료`);
+        setRestaurants(mappedRestaurants);
+      } catch (error) {
+        console.error('❌ 음식점 데이터 로드 실패:', error);
+        // 에러 시 기본 더미 데이터 사용
+        setRestaurants([
+          {
+            id: '1',
+            name: '보배반점',
+            address: '대전광역시 서구 둔산동 1491 1층',
+            distance: 'A',
+            category: '중식',
+            lat: 36.3501,
+            lng: 127.3847,
+          },
+          {
+            id: '2',
+            name: '고봉민김밥',
+            address: '대전광역시 서구 둔산로 133 (둔산동, 109호)',
+            distance: 'A',
+            category: '한식',
+            lat: 36.3505,
+            lng: 127.3842,
+          },
+        ]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchRestaurants();
+  }, []);
+
 
   // 음식점 주소 지오코딩 및 거리 계산
   useEffect(() => {
@@ -308,6 +355,18 @@ export default function Home() {
     toggleFavorite(id);
   };
 
+  // 로딩 중 UI
+  if (loading) {
+    return (
+      <div className="h-screen bg-gray-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600 text-lg">음식점 데이터를 불러오는 중...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="h-screen bg-gray-200 flex flex-col">
       {/* 데스크톱: 사이드바 + 지도 레이아웃 */}
@@ -379,9 +438,20 @@ export default function Home() {
           }`}
         >
           <div className="bg-white rounded-t-3xl shadow-2xl p-5 max-h-[70vh] flex flex-col">
-            <div className="mb-4">
-              <div className="text-xs text-gray-500 mb-1">반경 500m 이내</div>
-              <h2 className="text-lg font-bold text-gray-900">주변 음식점들</h2>
+            <div className="mb-4 flex items-center justify-between">
+              <div>
+                <div className="text-xs text-gray-500 mb-1">반경 500m 이내</div>
+                <h2 className="text-lg font-bold text-gray-900">주변 음식점들</h2>
+              </div>
+              <button
+                onClick={toggleMobileMenu}
+                className="text-gray-400 hover:text-gray-600 transition-colors p-1"
+                aria-label="메뉴 닫기"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
             </div>
 
             {/* Restaurant List */}
