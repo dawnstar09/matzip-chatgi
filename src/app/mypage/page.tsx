@@ -18,11 +18,6 @@ type Restaurant = {
   isFavorite?: boolean;
 };
 
-type OptionGroup = {
-  title: string;
-  options: string[];
-};
-
 // 메인 페이지와 동일한 레스토랑 목록
 const allRestaurants: Restaurant[] = [
   {
@@ -62,12 +57,6 @@ const allRestaurants: Restaurant[] = [
   },
 ];
 
-const optionGroups: OptionGroup[] = [
-  { title: '음식 유형', options: ['식사', '요리', '간식'] },
-  { title: '카테고리', options: ['한식', '중식', '일식', '양식', '아시아'] },
-  { title: '상황', options: ['혼밥', '친구', '연인', '가족', '모임'] },
-];
-
 function StarIcon({ filled }: { filled: boolean }) {
   return (
     <svg
@@ -91,14 +80,6 @@ export default function MyPage() {
   const [userEmail, setUserEmail] = useState('');
   const [userName, setUserName] = useState('');
   const [favorites, setFavorites] = useState<Restaurant[]>([]);
-  const [checkedGroups, setCheckedGroups] = useState<Record<string, boolean>>({});
-  const [selectedOptions, setSelectedOptions] = useState<Record<string, Set<string>>>(() => {
-    const initial: Record<string, Set<string>> = {};
-    optionGroups.forEach((group) => {
-      initial[group.title] = new Set();
-    });
-    return initial;
-  });
   const [activeTab, setActiveTab] = useState<'restaurants' | 'weights'>('restaurants');
 
   useEffect(() => {
@@ -181,26 +162,6 @@ export default function MyPage() {
     } catch (error) {
       console.error('즐겨찾기 저장 실패:', error);
     }
-  };
-
-  const toggleGroupOption = (group: string, option: string) => {
-    setSelectedOptions((prev) => {
-      const current = new Set(prev[group]);
-      if (option === '전체') {
-        current.clear();
-        return { ...prev, [group]: current };
-      }
-      if (current.has(option)) current.delete(option);
-      else current.add(option);
-      return { ...prev, [group]: current };
-    });
-  };
-
-  const isOptionActive = (group: string, option: string) => {
-    const current = selectedOptions[group];
-    if (!current) return false;
-    if (option === '전체') return current.size === 0;
-    return current.has(option);
   };
 
   if (loading) {
@@ -331,58 +292,12 @@ export default function MyPage() {
                 <div className="mt-2 text-xs text-gray-500">즐겨찾기 {favoriteCount}개</div>
               </section>
 
-              {/* Recommendation Options */}
-              <section className="bg-white rounded-2xl shadow p-6 border border-gray-100 space-y-4">
-                <div className="text-[11px] text-gray-500">본인만의 특징을 반영한 메뉴를 추천받으세요!</div>
-                <h3 className="text-sm font-semibold text-gray-900">음식점 추천 옵션 설정</h3>
-                <div className="flex items-center justify-between text-sm font-medium text-gray-800">
-                  <div className="flex items-center gap-2">
-                    <input
-                      id="menu-option-toggle"
-                      type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-yellow-500 focus:ring-yellow-400"
-                      checked={checkedGroups['추천옵션'] ?? true}
-                      onChange={(e) =>
-                        setCheckedGroups((prev) => ({ ...prev, 추천옵션: e.target.checked }))
-                      }
-                    />
-                    <label htmlFor="menu-option-toggle">음식점 메뉴 추천 옵션</label>
-                  </div>
-                  <span className="text-xs text-gray-400">Q · A</span>
-                </div>
-
-                <div className="space-y-3">
-                  {optionGroups.map((group) => (
-                    <div key={group.title} className="bg-gray-100 border border-gray-300 rounded-lg overflow-hidden">
-                      <div className="grid grid-cols-12 divide-x divide-gray-300 text-sm">
-                        <button
-                          type="button"
-                          className={`col-span-2 py-3 font-semibold text-white ${isOptionActive(group.title, '전체') ? 'bg-blue-700' : 'bg-blue-500'} hover:bg-blue-600`}
-                          onClick={() => toggleGroupOption(group.title, '전체')}
-                        >
-                          전체
-                        </button>
-                        <div className="col-span-10 grid grid-cols-5">
-                          {group.options.map((opt) => (
-                            <button
-                              key={opt}
-                              type="button"
-                              className={`py-3 text-center transition-colors ${isOptionActive(group.title, opt) ? 'bg-blue-100 text-blue-900 font-semibold' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}
-                              onClick={() => toggleGroupOption(group.title, opt)}
-                            >
-                              {opt}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
+              {/* Logout Button */}
+              <section className="bg-white rounded-2xl shadow p-6 border border-gray-100">
                 <button
                   type="button"
                   onClick={handleLogout}
-                  className="w-full py-3 mt-6 bg-gray-700 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors duration-200"
+                  className="w-full py-3 bg-gray-700 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors duration-200"
                 >
                   로그아웃
                 </button>
