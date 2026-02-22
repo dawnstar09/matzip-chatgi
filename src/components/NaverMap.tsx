@@ -1,28 +1,67 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
+import { useEffect, useRef } from "react";
+import Script from "next/script";
+
+declare global {
+  interface Window {
+    naver: any;
+  }
+}
 
 interface NaverMapProps {
   center?: { lat: number; lng: number };
   zoom?: number;
 }
 
-// Leaflet은 브라우저에서만 작동하므로 dynamic import 사용
-const MapComponent = dynamic(
-  () => import('./MapComponent'),
-  { 
-    ssr: false,
-    loading: () => (
-      <div style={{ width: '100%', height: '100%', minHeight: '400px', backgroundColor: '#f0f0f0' }} className="flex items-center justify-center">
-        <p className="text-gray-500">지도를 불러오는 중...</p>
-      </div>
-    )
-  }
-);
+export default function NaverMap({ 
+  center = { lat: 37.5665, lng: 126.9780 }, // 기본값: 서울 시청
+  zoom = 15 
+}: NaverMapProps) {
+  console.log('Naver Map Client ID:', process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID);
+  
+  const mapRef = useRef<HTMLDivElement | null>(null);
+  const mapInstance = useRef<any>(null);
 
-const NaverMap = ({ center, zoom = 15 }: NaverMapProps) => {
-  return <MapComponent center={center} zoom={zoom} />;
-};
+  const initMap = () => {
+    if (!window.naver || !mapRef.current) return;
 
-export default NaverMap;
+    const mapCenter = new window.naver.maps.LatLng(center.lat, center.lng);
+
+    mapInstance.current = new window.naver.maps.Map(mapRef.current, {
+      center: mapCenter,
+      zoom,
+    });
+
+    new window.naver.maps.Marker({
+      position: mapCenter,
+      map: mapInstance.current,
+    });
+  };
+
+  useEffect(() => {
+    if (window.naver?.maps) {
+      initMap();
+    }
+  }, [center.lat, center.lng, zoom]);
+
+  return (
+    <>
+      {/* 네이버 맵 SDK 로드 */}
+      <Script
+        strategy="afterInteractive"
+        src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID}`}
+        onLoad={initMap}
+      />
+
+      <div
+        ref={mapRef}
+        style={{
+          width: "100%",
+          height: "400px",
+          borderRadius: "12px",
+        }}
+      />
+    </>
+  );
+}
