@@ -31,14 +31,18 @@ interface ApiStoreData {
 // API 데이터를 Restaurant 타입으로 변환하는 함수
 function mapApiDataToRestaurant(apiData: any, index: number): Restaurant {
   // API 응답 구조에 맞게 매핑 (실제 API 응답 확인 후 조정 필요)
+  const lat = apiData.lat || apiData.REFINE_WGS84_LAT || apiData.latitude || apiData.위도;
+  const lng = apiData.lng || apiData.REFINE_WGS84_LOGT || apiData.longitude || apiData.경도;
+  
   return {
     id: apiData.id?.toString() || apiData.BIZPLC_NM || index.toString(),
     name: apiData.name || apiData.BIZPLC_NM || apiData.상호명 || '상호명 없음',
     address: apiData.address || apiData.REFINE_ROADNM_ADDR || apiData.REFINE_LOTNO_ADDR || apiData.주소 || '주소 정보 없음',
     distance: 'A',
     category: apiData.category || apiData.INDUTYPE_NM || apiData.업종 || '기타',
-    lat: apiData.lat || apiData.REFINE_WGS84_LAT || apiData.latitude || apiData.위도,
-    lng: apiData.lng || apiData.REFINE_WGS84_LOGT || apiData.longitude || apiData.경도,
+    isFavorite: false, // 기본값은 즐겨찾기 안됨
+    lat: lat ? parseFloat(lat) : undefined,
+    lng: lng ? parseFloat(lng) : undefined,
   };
 }
 
@@ -152,6 +156,8 @@ export default function Home() {
         // 다양한 API 응답 구조 처리
         if (Array.isArray(data)) {
           storeList = data;
+        } else if (data.results && Array.isArray(data.results)) {
+          storeList = data.results;
         } else if (data.data && Array.isArray(data.data)) {
           storeList = data.data;
         } else if (data.stores && Array.isArray(data.stores)) {
@@ -162,11 +168,20 @@ export default function Home() {
           console.warn('⚠️ 예상치 못한 API 응답 구조:', data);
         }
         
+        console.log(`📊 전체 음식점 수: ${storeList.length}개`);
+        
+        // 첫 번째 데이터 샘플 확인
+        if (storeList.length > 0) {
+          console.log('📋 데이터 샘플:', storeList[0]);
+        }
+        
         // 대전 서구 지역 음식점만 필터링 (옵션)
         const filteredStores = storeList.filter((store: any) => {
-          const address = store.address || store.REFINE_ROADNM_ADDR || store.REFINE_LOTNO_ADDR || '';
+          const address = store.address || store.REFINE_ROADNM_ADDR || store.REFINE_LOTNO_ADDR || store.주소 || '';
           return address.includes('대전') && address.includes('서구');
         });
+        
+        console.log(`🔍 대전 서구 필터링 결과: ${filteredStores.length}개`);
         
         const mappedRestaurants = (filteredStores.length > 0 ? filteredStores : storeList.slice(0, 20))
           .map((store: any, index: number) => mapApiDataToRestaurant(store, index));
@@ -433,7 +448,7 @@ export default function Home() {
 
         {/* Floating Restaurant Card - Mobile (슬라이드 메뉴) */}
         <div 
-          className={`absolute bottom-0 left-0 right-0 z-30 transition-transform duration-300 ease-in-out ${
+          className={`fixed bottom-0 inset-x-0 md:hidden z-40 transition-transform duration-300 ease-in-out ${
             showMobileMenu ? 'translate-y-0' : 'translate-y-full'
           }`}
         >

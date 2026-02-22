@@ -26,6 +26,7 @@ function mapApiDataToRestaurant(apiData: any, index: number): Restaurant {
     address: apiData.address || apiData.REFINE_ROADNM_ADDR || apiData.REFINE_LOTNO_ADDR || apiData.주소 || '주소 정보 없음',
     distance: 'A',
     category: apiData.category || apiData.INDUTYPE_NM || apiData.업종 || '기타',
+    isFavorite: false, // 기본값은 즐겨찾기 안됨
   };
 }
 
@@ -67,6 +68,8 @@ export default function MyPage() {
         let storeList: any[] = [];
         if (Array.isArray(data)) {
           storeList = data;
+        } else if (data.results && Array.isArray(data.results)) {
+          storeList = data.results;
         } else if (data.data && Array.isArray(data.data)) {
           storeList = data.data;
         } else if (data.stores && Array.isArray(data.stores)) {
