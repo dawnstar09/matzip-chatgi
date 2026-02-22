@@ -203,21 +203,21 @@ export default function RecommendationClient() {
 
   // 메인 UI 렌더링
   return (
-    <div className="w-full max-w-3xl p-8 space-y-8 bg-white rounded-lg shadow-2xl">
+    <div className="w-full max-w-3xl p-4 md:p-8 space-y-6 md:space-y-8 bg-white rounded-lg shadow-2xl">
       <div className="text-center">
-        <h1 className="text-4xl font-extrabold text-gray-900">오늘 저녁 뭐 먹지?</h1>
-        <p className="mt-2 text-lg text-gray-600">원하는 분류를 선택하고 메뉴를 추천받으세요!</p>
+        <h1 className="text-2xl md:text-4xl font-extrabold text-gray-900">오늘 저녁 뭐 먹지?</h1>
+        <p className="mt-2 text-sm md:text-lg text-gray-600">원하는 분류를 선택하고 메뉴를 추천받으세요!</p>
       </div>
 
       {/* 1단계: Cuisine Type 선택 (새로운 상위 분류) */}
-      <div className="p-4 border rounded-lg">
-        <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">1. 음식 종류 선택</h3>
-        <div className="flex flex-wrap justify-center gap-3">
+      <div className="p-3 md:p-4 border rounded-lg">
+        <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3 md:mb-4 text-center">1. 음식 종류 선택</h3>
+        <div className="flex flex-wrap justify-center gap-2 md:gap-3">
           {foodData.cuisineTypes.map((cuisine) => (
             <button
               key={cuisine}
               onClick={() => handleCuisineTypeSelect(cuisine)}
-              className={`px-4 py-2 text-base font-medium rounded-full transition-all duration-200 ease-in-out
+              className={`px-3 md:px-4 py-1.5 md:py-2 text-sm md:text-base font-medium rounded-full transition-all duration-200 ease-in-out
                 ${selectedCuisineType === cuisine
                   ? 'bg-purple-600 text-white shadow-lg transform scale-105'
                   : 'bg-gray-200 text-gray-800 hover:bg-gray-300 hover:shadow-md'
@@ -230,14 +230,14 @@ export default function RecommendationClient() {
       </div>
 
       {/* 2단계: Food Group 선택 */}
-      <div className="p-4 border rounded-lg">
-        <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">2. 큰 분류 선택</h3>
-        <div className="flex flex-wrap justify-center gap-3">
+      <div className="p-3 md:p-4 border rounded-lg">
+        <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3 md:mb-4 text-center">2. 큰 분류 선택</h3>
+        <div className="flex flex-wrap justify-center gap-2 md:gap-3">
           {Object.keys(foodData.categories).map((group) => (
             <button
               key={group}
               onClick={() => handleGroupSelect(group)}
-              className={`px-4 py-2 text-base font-medium rounded-full transition-all duration-200 ease-in-out
+              className={`px-3 md:px-4 py-1.5 md:py-2 text-sm md:text-base font-medium rounded-full transition-all duration-200 ease-in-out
                 ${selectedGroup === group
                   ? 'bg-indigo-600 text-white shadow-lg transform scale-105'
                   : 'bg-gray-200 text-gray-800 hover:bg-gray-300 hover:shadow-md'
@@ -251,14 +251,14 @@ export default function RecommendationClient() {
 
       {/* 3단계: Food Category 선택 */}
       {selectedGroup && (
-        <div className="p-4 border rounded-lg bg-gray-50">
-          <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">3. 세부 분류 선택</h3>
-          <div className="flex flex-wrap justify-center gap-3">
+        <div className="p-3 md:p-4 border rounded-lg bg-gray-50">
+          <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3 md:mb-4 text-center">3. 세부 분류 선택</h3>
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3">
             {foodData.categories[selectedGroup]?.map((category) => (
               <button
                 key={category}
                 onClick={() => handleCategorySelect(category)}
-                className={`px-4 py-2 text-base font-medium rounded-full transition-all duration-200 ease-in-out
+                className={`px-3 md:px-4 py-1.5 md:py-2 text-sm md:text-base font-medium rounded-full transition-all duration-200 ease-in-out
                   ${selectedCategory === category
                     ? 'bg-teal-500 text-white shadow-lg transform scale-105'
                     : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-100 hover:shadow-md'
@@ -272,11 +272,11 @@ export default function RecommendationClient() {
       )}
 
       {/* 추천 버튼 */}
-      <div className="flex gap-3">
+      <div className="flex flex-col md:flex-row gap-3">
         <button
           onClick={handleRecommend}
           disabled={loading}
-          className="flex-1 px-4 py-4 font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-xl shadow-lg"
+          className="flex-1 px-4 py-3 md:py-4 font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-base md:text-xl shadow-lg"
         >
           {loading ? '고민 중...' : '메뉴 추천받기!'}
         </button>
@@ -287,7 +287,7 @@ export default function RecommendationClient() {
               const searchUrl = `https://map.naver.com/v5/search/${encodeURIComponent(recommendation.name)}`;
               window.open(searchUrl, '_blank');
             }}
-            className="flex-1 px-4 py-4 font-bold text-white bg-green-600 rounded-lg hover:bg-green-700 text-xl shadow-lg"
+            className="flex-1 px-4 py-3 md:py-4 font-bold text-white bg-green-600 rounded-lg hover:bg-green-700 text-base md:text-xl shadow-lg"
           >
             주변 음식점 찾기
           </button>
@@ -302,17 +302,17 @@ export default function RecommendationClient() {
       )}
 
       {noRecommendationFound && !loading && (
-        <div className="p-8 mt-6 bg-red-50 rounded-lg border border-red-200 text-center shadow-inner">
-          <p className="text-xl font-semibold text-red-700">선택하신 조건에 맞는 추천 메뉴가 없어요 😥</p>
+        <div className="p-4 md:p-8 mt-4 md:mt-6 bg-red-50 rounded-lg border border-red-200 text-center shadow-inner">
+          <p className="text-base md:text-xl font-semibold text-red-700">선택하신 조건에 맞는 추천 메뉴가 없어요 😥</p>
         </div>
       )}
 
       {recommendation && ( // Only show recommendation and rating if a valid menu is recommended
-        <div className="p-8 mt-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-gray-200 text-center shadow-inner">
-          <h2 className="text-2xl font-semibold text-gray-800">오늘의 추천 메뉴는...</h2>
+        <div className="p-4 md:p-8 mt-4 md:mt-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-gray-200 text-center shadow-inner">
+          <h2 className="text-lg md:text-2xl font-semibold text-gray-800">오늘의 추천 메뉴는...</h2>
           <div className="mt-4">
-            <p className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700">{recommendation.name}</p>
-            <p className="mt-3 text-base text-gray-500">
+            <p className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700">{recommendation.name}</p>
+            <p className="mt-3 text-sm md:text-base text-gray-500">
               {recommendation.cuisine && `(${recommendation.cuisine} > `}
               {recommendation.group && `${recommendation.group} > `}
               {recommendation.category && `${recommendation.category})`}
@@ -322,13 +322,13 @@ export default function RecommendationClient() {
           {/* Rating UI */}
           {user && ( // Only show rating if user is logged in
             <div className="mt-6">
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">이 메뉴는 어떠셨나요? (1-10점)</h3>
-              <div className="flex justify-center gap-2">
+              <h3 className="text-base md:text-lg font-semibold text-gray-700 mb-2">이 메뉴는 어떠셨나요? (1-10점)</h3>
+              <div className="flex flex-wrap justify-center gap-2">
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((score) => (
                   <button
                     key={score}
                     onClick={() => handleRatingSubmit(score)}
-                    className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold
+                    className={`w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base
                       ${userRating === score ? 'bg-yellow-500' : 'bg-gray-400 hover:bg-gray-500'}
                     `}
                   >
