@@ -20,12 +20,15 @@ type Restaurant = {
 
 // API 데이터를 Restaurant 타입으로 변환하는 함수
 function mapApiDataToRestaurant(apiData: any, index: number): Restaurant {
+  // 대전 빅데이터 API 실제 필드명: REST_NM, ADDR, TOB_INFO, LAT, LOT, REST_ID
   return {
-    id: apiData.id?.toString() || apiData.BIZPLC_NM || index.toString(),
-    name: apiData.name || apiData.BIZPLC_NM || apiData.상호명 || '상호명 없음',
-    address: apiData.address || apiData.REFINE_ROADNM_ADDR || apiData.REFINE_LOTNO_ADDR || apiData.주소 || '주소 정보 없음',
+    id: apiData.REST_ID?.toString() || index.toString(),
+    name: apiData.REST_NM || '상호명 없음',
+    address: apiData.ADDR || '주소 정보 없음',
     distance: 'A',
-    category: apiData.category || apiData.INDUTYPE_NM || apiData.업종 || '기타',
+    category: apiData.TOB_INFO || '기타',
+    lat: apiData.LAT ? parseFloat(apiData.LAT) : undefined,
+    lng: apiData.LOT ? parseFloat(apiData.LOT) : undefined,
     isFavorite: false, // 기본값은 즐겨찾기 안됨
   };
 }
