@@ -96,30 +96,38 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="bg-black p-3 md:p-4 text-white">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="text-lg md:text-2xl font-bold hover:text-gray-300">
-          맛집 찾기
+    <nav className="bg-black px-4 py-3 text-white">
+      <div className="flex justify-between items-center max-w-screen-xl mx-auto">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2 hover:opacity-80">
+          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+            <span className="text-black font-bold text-xl">M</span>
+          </div>
+          <span className="text-xl font-bold">TITLE</span>
         </Link>
-        <div className="flex items-center gap-2 md:gap-4">
-          {user ? (
-            <div className="flex items-center space-x-2 md:space-x-4">
-              <span className="hidden md:inline text-gray-300">{user.email}님</span>
-              <Link href="/mypage" className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-1.5 px-3 md:py-2 md:px-4 rounded text-sm md:text-base">
-                마이페이지
-              </Link>
-              <button
-                onClick={handleLogout}
-                className="bg-red-500 hover:bg-red-600 text-white font-bold py-1.5 px-3 md:py-2 md:px-4 rounded text-sm md:text-base"
-              >
-                로그아웃
-              </button>
-            </div>
-          ) : (
-            <Link href="/login" className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-1.5 px-4 md:py-2 md:px-4 rounded-full text-sm md:text-base">
-              로그인
-            </Link>
-          )}
+
+        {/* Right Icons */}
+        <div className="flex items-center gap-4">
+          {/* Recommendation Icon */}
+          <Link href="/recommendation" className="hover:opacity-80">
+            <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/>
+            </svg>
+          </Link>
+
+          {/* Menu Icon */}
+          <button className="hover:opacity-80">
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
+          {/* User Icon */}
+          <Link href={user ? "/mypage" : "/login"} className="hover:opacity-80">
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 4 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </Link>
         </div>
       </div>
     </nav>

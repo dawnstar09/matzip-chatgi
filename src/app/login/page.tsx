@@ -50,22 +50,20 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-gray-200 flex flex-col">
-      {/* Navigation Bar */}
-
       {/* Main Content */}
       <div className="flex-1 flex items-center justify-center p-6">
-        <div className="bg-white rounded-3xl shadow-xl p-12 w-full max-w-md">
-          <h1 className="text-4xl font-bold text-center mb-12 text-gray-900">
+        <div className="bg-white rounded-3xl shadow-xl p-8 w-full max-w-md">
+          <h1 className="text-3xl font-bold text-center mb-10 text-gray-900">
             로그인
           </h1>
 
           {error && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg text-sm">
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg text-sm mb-6">
               {error}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {/* 이메일 */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
@@ -118,14 +116,14 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-full transition-colors duration-200 mt-8 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-4 bg-yellow-400 hover:bg-yellow-500 text-black font-bold rounded-full transition-colors duration-200 mt-8 disabled:opacity-50 disabled:cursor-not-allowed text-lg"
             >
               {loading ? '처리 중...' : '로그인'}
             </button>
           </form>
 
           {/* 회원가입 링크 */}
-          <p className="text-center mt-8 text-sm text-gray-600">
+          <p className="text-center mt-6 text-sm text-gray-600">
             계정이 없으신가요?{' '}
             <Link href="/signup" className="text-yellow-600 hover:text-yellow-700 font-medium">
               회원가입
