@@ -12,12 +12,14 @@ interface MarkerData {
   name: string;
   address: string;
   distance?: number; // 미터 단위
+  restaurantId?: string; // 레스토랑 ID
 }
 
 interface MapComponentProps {
   center?: { lat: number; lng: number };
   zoom?: number;
   markers?: MarkerData[]; // 여러 마커 표시
+  onMarkerClick?: (restaurantId: string) => void; // 마커 클릭 콜백
 }
 
 // Leaflet 아이콘 수정 (Next.js에서 아이콘이 안 보이는 문제 해결)
@@ -61,7 +63,7 @@ function ChangeView({ center, zoom }: { center: [number, number], zoom: number }
   return null;
 }
 
-const MapComponent = ({ center, zoom = 15, markers = [] }: MapComponentProps) => {
+const MapComponent = ({ center, zoom = 15, markers = [], onMarkerClick }: MapComponentProps) => {
   const defaultCenter = center || { lat: 37.5665, lng: 126.9780 }; // 서울 시청
   const position: [number, number] = [defaultCenter.lat, defaultCenter.lng];
 
@@ -98,14 +100,22 @@ const MapComponent = ({ center, zoom = 15, markers = [] }: MapComponentProps) =>
           icon={redIcon}
         >
           <Popup>
-            <div>
-              <strong className="text-base">{marker.name}</strong>
+            <div className="min-w-[200px]">
+              <strong className="text-base block mb-1">{marker.name}</strong>
               {marker.distance !== undefined && (
-                <div className="text-sm font-semibold text-blue-600 mt-1">
+                <div className="text-sm font-semibold text-blue-600 mb-1">
                   📍 {formatDistance(marker.distance)}
                 </div>
               )}
-              <div className="text-sm text-gray-600 mt-1">{marker.address}</div>
+              <div className="text-sm text-gray-600 mb-2">{marker.address}</div>
+              {marker.restaurantId && onMarkerClick && (
+                <button
+                  onClick={() => onMarkerClick(marker.restaurantId!)}
+                  className="w-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold py-2 px-3 rounded transition-colors mt-2"
+                >
+                  정보 보기
+                </button>
+              )}
             </div>
           </Popup>
         </Marker>

@@ -124,7 +124,8 @@ export default function Home() {
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
   const [authReady, setAuthReady] = useState(false);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
-  const [restaurantMarkers, setRestaurantMarkers] = useState<Array<{ lat: number; lng: number; name: string; address: string; distance: number }>>([]);
+  const [locationError, setLocationError] = useState<string | null>(null);
+  const [restaurantMarkers, setRestaurantMarkers] = useState<Array<{ lat: number; lng: number; name: string; address: string; distance: number; restaurantId: string }>>([]);
   const [sortBy, setSortBy] = useState<'distance' | 'name'>('distance'); // 정렬 기준
   const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null); // 선택된 음식점
   const { showMobileMenu, toggleMobileMenu } = useUserStore(); // zustand store 사용
@@ -133,26 +134,63 @@ export default function Home() {
   const profileHref = isLoggedIn ? '/mypage' : '/login';
 
   // 사용자 현재 위치 가져오기
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setUserLocation({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          });
-        },
-        (error) => {
-          console.error('위치 정보를 가져올 수 없습니다:', error);
-          // 기본 위치 (대전 둔산동)로 설정
-          setUserLocation({ lat: 36.3504, lng: 127.3845 });
-        }
-      );
-    } else {
-      // Geolocation을 지원하지 않는 브라우저
-      console.warn('브라우저가 위치 정보를 지원하지 않습니다.');
+  const requestLocation = () => {
+    setLocationError(null);
+    
+    if (!navigator.geolocation) {
+      setLocationError('브라우저가 위치 정보를 지원하지 않습니다.');
       setUserLocation({ lat: 36.3504, lng: 127.3845 });
+      return;
     }
+
+    // HTTPS 확인
+    if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') {
+      setLocationError('위치 정보는 HTTPS 환경에서만 사용할 수 있습니다.');
+      setUserLocation({ lat: 36.3504, lng: 127.3845 });
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setUserLocation({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+        setLocationError(null);
+        console.log('✅ 위치 정보 허용됨:', position.coords);
+      },
+      (error) => {
+        console.error('위치 정보를 가져올 수 없습니다:', error);
+        
+        let errorMsg = '';
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            errorMsg = '위치 정보 접근이 거부되었습니다. 브라우저 설정에서 위치 권한을 허용해주세요.';
+            break;
+          case error.POSITION_UNAVAILABLE:
+            errorMsg = '위치 정보를 사용할 수 없습니다.';
+            break;
+          case error.TIMEOUT:
+            errorMsg = '위치 정보 요청 시간이 초과되었습니다.';
+            break;
+          default:
+            errorMsg = '알 수 없는 오류가 발생했습니다.';
+        }
+        
+        setLocationError(errorMsg);
+        // 기본 위치 (대전 둔산동)로 설정
+        setUserLocation({ lat: 36.3504, lng: 127.3845 });
+      },
+      {
+        enableHighAccuracy: false,
+        timeout: 10000,
+        maximumAge: 0
+      }
+    );
+  };
+
+  useEffect(() => {
+    requestLocation();
   }, []);
 
   // 대전 빅데이터 API에서 음식점 데이터 가져오기
@@ -294,6 +332,7 @@ export default function Home() {
           name: restaurant.name,
           address: restaurant.address,
           distance: distanceInMeters,
+          restaurantId: restaurant.id,
         });
         
         updatedRestaurants.push({
@@ -328,6 +367,7 @@ export default function Home() {
             name: r.name,
             address: r.address,
             distance: r.calculatedDistance!,
+            restaurantId: r.id,
           }));
         setRestaurantMarkers(sortedMarkers);
       } else {
@@ -429,6 +469,13 @@ export default function Home() {
     toggleFavorite(id);
   };
 
+  const handleMarkerClick = (restaurantId: string) => {
+    const restaurant = restaurants.find(r => r.id === restaurantId);
+    if (restaurant) {
+      setSelectedRestaurant(restaurant);
+    }
+  };
+
   // 로딩 중 UI
   if (loading) {
     return (
@@ -499,16 +546,41 @@ export default function Home() {
         </aside>
 
         {/* Map - Desktop */}
-        <div className="flex-1 bg-slate-100">
+        <div className="flex-1 bg-slate-100 relative">
           {userLocation ? (
             <NaverMap 
               center={userLocation}
               zoom={15}
               markers={restaurantMarkers}
+              onMarkerClick={handleMarkerClick}
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-gray-500">
               위치 정보를 불러오는 중...
+            </div>
+          )}
+          
+          {/* 위치 에러 안내 */}
+          {locationError && (
+            <div className="absolute top-4 left-4 right-4 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg shadow-lg z-10">
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0">
+                  <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-sm font-medium text-yellow-800">위치 정보를 가져올 수 없습니다</h3>
+                  <p className="text-xs text-yellow-700 mt-1">{locationError}</p>
+                  <p className="text-xs text-yellow-600 mt-2">기본 위치(대전 둔산동)를 사용합니다.</p>
+                </div>
+                <button
+                  onClick={requestLocation}
+                  className="flex-shrink-0 bg-yellow-400 hover:bg-yellow-500 text-yellow-900 text-xs font-semibold px-3 py-1.5 rounded transition-colors"
+                >
+                  재시도
+                </button>
+              </div>
             </div>
           )}
         </div>
@@ -619,6 +691,7 @@ export default function Home() {
               center={userLocation}
               zoom={15}
               markers={restaurantMarkers}
+              onMarkerClick={handleMarkerClick}
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-gray-500 bg-gray-100">
@@ -626,6 +699,29 @@ export default function Home() {
             </div>
           )}
         </div>
+
+        {/* 위치 에러 안내 - Mobile */}
+        {locationError && (
+          <div className="absolute top-4 left-4 right-4 bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded-lg shadow-lg z-30">
+            <div className="flex items-start gap-2">
+              <div className="flex-shrink-0">
+                <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-xs font-medium text-yellow-800">위치 정보 오류</h3>
+                <p className="text-xs text-yellow-700 mt-0.5">{locationError}</p>
+              </div>
+              <button
+                onClick={requestLocation}
+                className="flex-shrink-0 bg-yellow-400 hover:bg-yellow-500 text-yellow-900 text-xs font-semibold px-2 py-1 rounded transition-colors"
+              >
+                재시도
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Floating Restaurant Card - Mobile (슬라이드 메뉴) */}
         <div 

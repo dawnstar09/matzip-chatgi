@@ -9,12 +9,14 @@ interface MarkerData {
   name: string;
   address: string;
   distance?: number;
+  restaurantId?: string;
 }
 
 interface NaverMapProps {
   center?: { lat: number; lng: number };
   zoom?: number;
   markers?: MarkerData[];
+  onMarkerClick?: (restaurantId: string) => void;
 }
 
 // Leaflet은 브라우저에서만 작동하므로 dynamic import 사용
@@ -30,8 +32,8 @@ const MapComponent = dynamic(
   }
 );
 
-const NaverMap = ({ center, zoom = 15, markers = [] }: NaverMapProps) => {
-  return <MapComponent center={center} zoom={zoom} markers={markers} />;
+const NaverMap = ({ center, zoom = 15, markers = [], onMarkerClick }: NaverMapProps) => {
+  return <MapComponent center={center} zoom={zoom} markers={markers} onMarkerClick={onMarkerClick} />;
 };
 
 export default NaverMap;
