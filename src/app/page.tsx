@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '@/lib/firebase';
@@ -130,6 +130,10 @@ export default function Home() {
   const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null); // 선택된 음식점
   const { showMobileMenu, toggleMobileMenu } = useUserStore(); // zustand store 사용
   const router = useRouter();
+
+  // Firebase 즐겨찾기 타이밍 문제 해결:
+  // Firestore 데이터가 음식점 API보다 먼저 도착할 수 있어 ref에 저장해 두고 나중에 적용
+  const storedFavoritesRef = useRef<Record<string, boolean>>({});
 
   const profileHref = isLoggedIn ? '/mypage' : '/login';
 
@@ -317,22 +321,32 @@ export default function Home() {
 
 
   // 음식점 주소 지오코딩 및 거리 계산
+  // restaurants와 userLocation 모두 준비되었을 때 실행
+  // 이미 calculatedDistance가 있으면 재실행 방지 (무한 루프 차단)
   useEffect(() => {
-    if (!userLocation) return;
-    
+    if (!userLocation || restaurants.length === 0) return;
+
+    // 이미 거리 계산 완료된 데이터면 스킵 (Firebase 업데이트 등으로 재실행 방지)
+    const alreadyProcessed = restaurants.some((r) => r.calculatedDistance !== undefined);
+    if (alreadyProcessed) return;
+
+    // 클로저 캡처 문제 방지: 이 시점의 restaurants 스냅샷 사용
+    const snapshot = [...restaurants];
+    const locationSnapshot = { ...userLocation };
+
     const geocodeRestaurants = async () => {
       const markers: Array<{ lat: number; lng: number; name: string; address: string; distance: number; restaurantId: string }> = [];
       const updatedRestaurants: Restaurant[] = [];
-      
-      for (const restaurant of restaurants) {
+
+      for (const restaurant of snapshot) {
         let lat = restaurant.lat;
         let lng = restaurant.lng;
-        
+
         // 좌표가 없으면 지오코딩 시도
         if (lat === undefined || lng === undefined) {
           console.log(`🔍 Geocoding: ${restaurant.name} - ${restaurant.address}`);
           const result = await geocodeAddress(restaurant.address);
-          
+
           if (result) {
             lat = result.lat;
             lng = result.lng;
@@ -342,25 +356,23 @@ export default function Home() {
             updatedRestaurants.push(restaurant);
             continue;
           }
-          
+
           // API rate limit 방지를 위한 딜레이
-          if (restaurant !== restaurants[restaurants.length - 1]) {
-            await new Promise(resolve => setTimeout(resolve, 1000));
+          if (restaurant !== snapshot[snapshot.length - 1]) {
+            await new Promise(resolve => setTimeout(resolve, 300));
           }
         } else {
           console.log(`📍 Using existing coords: ${restaurant.name} at (${lat}, ${lng})`);
         }
-        
+
         // 거리 계산
         const distanceInMeters = calculateDistance(
-          userLocation.lat,
-          userLocation.lng,
+          locationSnapshot.lat,
+          locationSnapshot.lng,
           lat,
           lng
         );
-        
-        console.log(`📏 Distance to ${restaurant.name}: ${formatDistance(distanceInMeters)}`);
-        
+
         markers.push({
           lat,
           lng,
@@ -369,7 +381,7 @@ export default function Home() {
           distance: distanceInMeters,
           restaurantId: restaurant.id,
         });
-        
+
         updatedRestaurants.push({
           ...restaurant,
           lat,
@@ -377,9 +389,9 @@ export default function Home() {
           calculatedDistance: distanceInMeters,
         });
       }
-      
-      console.log(`📍 Total markers: ${markers.length} / ${restaurants.length}`);
-      
+
+      console.log(`📍 Total markers: ${markers.length} / ${snapshot.length}`);
+
       // 거리순으로 정렬하고 가까운 50개만 유지
       if (updatedRestaurants.length > 0) {
         const sortedByDistance = updatedRestaurants
@@ -389,10 +401,19 @@ export default function Home() {
             return distA - distB;
           })
           .slice(0, 50);
-        
+
         console.log(`📍 가까운 거리순 50개로 필터링 완료`);
-        setRestaurants(sortedByDistance);
-        
+
+        // setRestaurants: 기존 isFavorite 상태를 보존하며 업데이트
+        setRestaurants((prev) => {
+          const favMap: Record<string, boolean> = {};
+          prev.forEach((r) => { favMap[r.id] = r.isFavorite ?? false; });
+          return sortedByDistance.map((r) => ({
+            ...r,
+            isFavorite: favMap[r.id] ?? r.isFavorite ?? false,
+          }));
+        });
+
         // markers도 정렬된 restaurants에 맞춰 업데이트
         const sortedMarkers = sortedByDistance
           .filter(r => r.lat !== undefined && r.lng !== undefined)
@@ -410,10 +431,9 @@ export default function Home() {
       }
     };
 
-    if (restaurants.length > 0) {
-      geocodeRestaurants();
-    }
-  }, [userLocation]); // userLocation 변경 시에만 실행
+    geocodeRestaurants();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userLocation, restaurants]); // restaurants 로드 후에도 트리거되도록 추가
 
   // 실사용 시 로그인 상태를 Firebase Auth로 동기화
   useEffect(() => {
@@ -427,23 +447,43 @@ export default function Home() {
         try {
           const userFavRef = doc(db, 'favorites', user.uid);
           const docSnap = await getDoc(userFavRef);
-          
+
           if (docSnap.exists()) {
-            const favData = docSnap.data();
+            const favData = docSnap.data() as Record<string, boolean>;
+            // ref에 저장 (음식점 로드 전에 도착해도 나중에 적용 가능)
+            storedFavoritesRef.current = favData;
+            // 현재 state에도 즉시 적용 (이미 로드된 경우 즉시 반영)
             setRestaurants((prev) =>
               prev.map((restaurant) => ({
                 ...restaurant,
                 isFavorite: favData[restaurant.id] === true,
               }))
             );
+            console.log('⭐ 즐겨찾기 로드 완료');
           }
         } catch (error) {
           console.error('즐겨찾기 불러오기 실패:', error);
+          // 에러가 나도 앱은 정상 작동 (isFavorite = false 유지)
         }
       }
     });
     return () => unsubscribe();
   }, []);
+
+  // 로딩 완료 후 즐겨찾기 재적용:
+  // Firestore 데이터가 음식점 API보다 먼저 왔다면 여기서 다시 적용
+  useEffect(() => {
+    if (!loading && Object.keys(storedFavoritesRef.current).length > 0) {
+      setRestaurants((prev) =>
+        prev.map((r) => ({
+          ...r,
+          isFavorite: storedFavoritesRef.current[r.id] === true,
+        }))
+      );
+      console.log('⭐ 즐겨찾기 재적용 완료 (loading 해제 후)');
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading]); // loading false가 되는 시점에 1회 실행
 
   const favoriteCount = useMemo(
     () => restaurants.filter((item) => item.isFavorite).length,
@@ -470,7 +510,13 @@ export default function Home() {
 
     const newFavoriteStatus = !restaurant.isFavorite;
 
-    // UI 업데이트
+    // ref에도 반영 (loading useEffect가 나중에 덮어쓰지 않도록)
+    storedFavoritesRef.current = {
+      ...storedFavoritesRef.current,
+      [id]: newFavoriteStatus,
+    };
+
+    // UI 즉시 업데이트
     setRestaurants((prev) =>
       prev.map((item) =>
         item.id === id ? { ...item, isFavorite: newFavoriteStatus } : item
@@ -485,13 +531,21 @@ export default function Home() {
       const userFavRef = doc(db, 'favorites', user.uid);
       await setDoc(
         userFavRef,
-        {
-          [id]: newFavoriteStatus,
-        },
+        { [id]: newFavoriteStatus },
         { merge: true }
       );
     } catch (error) {
       console.error('즐겨찾기 저장 실패:', error);
+      // 저장 실패 시 UI 롤백
+      storedFavoritesRef.current = {
+        ...storedFavoritesRef.current,
+        [id]: !newFavoriteStatus,
+      };
+      setRestaurants((prev) =>
+        prev.map((item) =>
+          item.id === id ? { ...item, isFavorite: !newFavoriteStatus } : item
+        )
+      );
     }
   };
 
@@ -511,13 +565,14 @@ export default function Home() {
     }
   };
 
-  // 로딩 중 UI
+  // 로딩 중 UI (h-full 사용: Navbar가 포함된 layout 안에서 남은 공간 채움)
   if (loading) {
     return (
-      <div className="h-screen bg-gray-100 flex items-center justify-center">
+      <div className="h-full bg-gray-100 flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-gray-600 text-lg">음식점 데이터를 불러오는 중...</p>
+          <p className="text-gray-400 text-sm mt-2">잠시만 기다려주세요</p>
         </div>
       </div>
     );
