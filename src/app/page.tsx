@@ -21,6 +21,12 @@ type Restaurant = {
   lat?: number;
   lng?: number;
   calculatedDistance?: number; // 실제 계산된 거리 (미터)
+  telno?: string; // 전화번호
+  openHours?: string; // 영업시간
+  representativeMenu?: string; // 대표메뉴
+  menuNames?: string[]; // 메뉴 이름 목록
+  menuPrices?: string[]; // 메뉴 가격 목록
+  naverUrl?: string; // 네이버 지도 URL
 };
 
 // API 응답 데이터 타입 (실제 API 구조에 맞게 조정 필요)
@@ -40,6 +46,12 @@ function mapApiDataToRestaurant(apiData: any, index: number): Restaurant {
     isFavorite: false, // 기본값은 즐겨찾기 안됨
     lat: apiData.LAT ? parseFloat(apiData.LAT) : undefined,
     lng: apiData.LOT ? parseFloat(apiData.LOT) : undefined,
+    telno: apiData.TELNO || undefined,
+    openHours: apiData.OPEN_HR_INFO || undefined,
+    representativeMenu: apiData.RPRS_MENU_NM || undefined,
+    menuNames: apiData.MENU_KORN_NM || [],
+    menuPrices: apiData.MENU_AMT || [],
+    naverUrl: apiData.SD_URL || undefined,
   };
 }
 
@@ -62,15 +74,22 @@ function StarIcon({ filled }: { filled: boolean }) {
 type RestaurantCardProps = {
   restaurant: Restaurant;
   onToggleFavorite: (id: string) => void;
+  onClick?: (restaurant: Restaurant) => void;
+  isSelected?: boolean;
 };
 
-function RestaurantCard({ restaurant, onToggleFavorite }: RestaurantCardProps) {
+function RestaurantCard({ restaurant, onToggleFavorite, onClick, isSelected }: RestaurantCardProps) {
   const distanceText = restaurant.calculatedDistance 
     ? formatDistance(restaurant.calculatedDistance)
     : '거리 계산 중...';
     
   return (
-    <div className="flex items-start justify-between rounded-xl border border-gray-100 bg-white px-4 py-3 shadow-sm">
+    <div 
+      className={`flex items-start justify-between rounded-xl border px-4 py-3 shadow-sm cursor-pointer transition-all ${
+        isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-100 bg-white hover:border-gray-300'
+      }`}
+      onClick={() => onClick?.(restaurant)}
+    >
       <div className="space-y-1">
         <div className="flex items-center gap-2 text-sm text-gray-500">
           <span className="text-xs font-semibold text-blue-600">{distanceText}</span>
@@ -83,7 +102,10 @@ function RestaurantCard({ restaurant, onToggleFavorite }: RestaurantCardProps) {
         <button
           type="button"
           className="text-gray-500 hover:text-yellow-500 transition-colors"
-          onClick={() => onToggleFavorite(restaurant.id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggleFavorite(restaurant.id);
+          }}
           aria-label={restaurant.isFavorite ? '즐겨찾기 해제' : '즐겨찾기 추가'}
         >
           <StarIcon filled={Boolean(restaurant.isFavorite)} />
@@ -103,6 +125,8 @@ export default function Home() {
   const [authReady, setAuthReady] = useState(false);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [restaurantMarkers, setRestaurantMarkers] = useState<Array<{ lat: number; lng: number; name: string; address: string; distance: number }>>([]);
+  const [sortBy, setSortBy] = useState<'distance' | 'name'>('distance'); // 정렬 기준
+  const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null); // 선택된 음식점
   const { showMobileMenu, toggleMobileMenu } = useUserStore(); // zustand store 사용
   const router = useRouter();
 
@@ -172,15 +196,17 @@ export default function Home() {
           console.log('📋 데이터 샘플:', storeList[0]);
         }
         
-        // 대전 서구 지역 음식점만 필터링 (옵션)
+        // 대전 지역 음식점만 필터링
         const filteredStores = storeList.filter((store: any) => {
           const address = store.ADDR || '';
-          return address.includes('대전') && address.includes('서구');
+          return address.includes('대전');
         });
         
-        console.log(`🔍 대전 서구 필터링 결과: ${filteredStores.length}개`);
+        console.log(`🔍 대전 필터링 결과: ${filteredStores.length}개`);
         
-        const mappedRestaurants = (filteredStores.length > 0 ? filteredStores : storeList.slice(0, 20))
+        // 필터링된 결과가 없으면 전체에서 50개, 있으면 필터링 결과 전체 사용
+        const mappedRestaurants = (filteredStores.length > 0 ? filteredStores : storeList)
+          .slice(0, 50)
           .map((store: any, index: number) => mapApiDataToRestaurant(store, index));
         
         console.log(`✅ ${mappedRestaurants.length}개 음식점 로드 완료`);
@@ -279,11 +305,33 @@ export default function Home() {
       }
       
       console.log(`📍 Total markers: ${markers.length} / ${restaurants.length}`);
-      setRestaurantMarkers(markers);
       
-      // 거리 정보가 추가된 restaurants 업데이트
+      // 거리순으로 정렬하고 가까운 50개만 유지
       if (updatedRestaurants.length > 0) {
-        setRestaurants(updatedRestaurants);
+        const sortedByDistance = updatedRestaurants
+          .sort((a, b) => {
+            const distA = a.calculatedDistance ?? Infinity;
+            const distB = b.calculatedDistance ?? Infinity;
+            return distA - distB;
+          })
+          .slice(0, 50);
+        
+        console.log(`📍 가까운 거리순 50개로 필터링 완료`);
+        setRestaurants(sortedByDistance);
+        
+        // markers도 정렬된 restaurants에 맞춰 업데이트
+        const sortedMarkers = sortedByDistance
+          .filter(r => r.lat !== undefined && r.lng !== undefined)
+          .map(r => ({
+            lat: r.lat!,
+            lng: r.lng!,
+            name: r.name,
+            address: r.address,
+            distance: r.calculatedDistance!,
+          }));
+        setRestaurantMarkers(sortedMarkers);
+      } else {
+        setRestaurantMarkers(markers);
       }
     };
 
@@ -326,6 +374,20 @@ export default function Home() {
     () => restaurants.filter((item) => item.isFavorite).length,
     [restaurants]
   );
+
+  // 정렬된 레스토랑 리스트
+  const sortedRestaurants = useMemo(() => {
+    const sorted = [...restaurants];
+    if (sortBy === 'distance') {
+      return sorted.sort((a, b) => {
+        const distA = a.calculatedDistance ?? Infinity;
+        const distB = b.calculatedDistance ?? Infinity;
+        return distA - distB;
+      });
+    } else {
+      return sorted.sort((a, b) => a.name.localeCompare(b.name, 'ko'));
+    }
+  }, [restaurants, sortBy]);
 
   const toggleFavorite = async (id: string) => {
     const restaurant = restaurants.find((r) => r.id === id);
@@ -391,7 +453,31 @@ export default function Home() {
           <div className="flex items-center justify-between text-xs text-gray-500">
             <div className="space-y-1">
               <div className="text-[11px] text-gray-500">반경 500m 이내</div>
-              <div className="text-lg font-semibold text-gray-900">주변 음식점</div>
+              <div className="flex items-center gap-2">
+                <div className="text-lg font-semibold text-gray-900">주변 음식점</div>
+                <div className="flex items-center rounded-lg overflow-hidden border border-gray-300">
+                  <button
+                    onClick={() => setSortBy('distance')}
+                    className={`px-3 py-1 text-xs font-medium transition-colors ${
+                      sortBy === 'distance'
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    거리순
+                  </button>
+                  <button
+                    onClick={() => setSortBy('name')}
+                    className={`px-3 py-1 text-xs font-medium transition-colors ${
+                      sortBy === 'name'
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    이름순
+                  </button>
+                </div>
+              </div>
               <div className="text-[11px] text-gray-400">
                 즐겨찾기 {favoriteCount}개 • 총 {restaurants.length}곳
               </div>
@@ -400,11 +486,13 @@ export default function Home() {
           </div>
 
           <div className="flex-1 space-y-3 overflow-y-auto pr-1">
-            {restaurants.map((restaurant) => (
+            {sortedRestaurants.map((restaurant) => (
               <RestaurantCard
                 key={restaurant.id}
                 restaurant={restaurant}
                 onToggleFavorite={handleFavoriteClick}
+                onClick={setSelectedRestaurant}
+                isSelected={selectedRestaurant?.id === restaurant.id}
               />
             ))}
           </div>
@@ -424,6 +512,102 @@ export default function Home() {
             </div>
           )}
         </div>
+
+        {/* Detail Panel - Desktop (오른쪽) */}
+        {selectedRestaurant && (
+          <aside className="w-full max-w-md bg-white shadow-xl rounded-l-2xl p-6 flex flex-col gap-4 overflow-y-auto">
+            {/* 닫기 버튼 */}
+            <div className="flex items-start justify-between">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900">{selectedRestaurant.name}</h2>
+                <p className="text-sm text-gray-500 mt-1">{selectedRestaurant.category}</p>
+              </div>
+              <button
+                onClick={() => setSelectedRestaurant(null)}
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+                aria-label="닫기"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* 기본 정보 */}
+            <div className="space-y-3 border-t pt-4">
+              {selectedRestaurant.calculatedDistance && (
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="text-gray-600">📍 거리</span>
+                  <span className="font-semibold text-blue-600">
+                    {formatDistance(selectedRestaurant.calculatedDistance)}
+                  </span>
+                </div>
+              )}
+              
+              <div className="flex items-start gap-2 text-sm">
+                <span className="text-gray-600">📍 주소</span>
+                <span className="text-gray-900">{selectedRestaurant.address}</span>
+              </div>
+
+              {selectedRestaurant.telno && (
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="text-gray-600">📞 전화</span>
+                  <a href={`tel:${selectedRestaurant.telno}`} className="text-blue-600 hover:underline">
+                    {selectedRestaurant.telno}
+                  </a>
+                </div>
+              )}
+
+              {selectedRestaurant.openHours && (
+                <div className="flex items-start gap-2 text-sm">
+                  <span className="text-gray-600">🕐 영업시간</span>
+                  <span className="text-gray-900">{selectedRestaurant.openHours}</span>
+                </div>
+              )}
+            </div>
+
+            {/* 대표 메뉴 */}
+            {selectedRestaurant.representativeMenu && (
+              <div className="border-t pt-4">
+                <h3 className="text-sm font-semibold text-gray-700 mb-2">🍽️ 대표메뉴</h3>
+                <p className="text-base font-medium text-gray-900">{selectedRestaurant.representativeMenu}</p>
+              </div>
+            )}
+
+            {/* 메뉴판 */}
+            {selectedRestaurant.menuNames && selectedRestaurant.menuNames.length > 0 && (
+              <div className="border-t pt-4">
+                <h3 className="text-sm font-semibold text-gray-700 mb-3">📋 메뉴</h3>
+                <div className="space-y-2 max-h-64 overflow-y-auto">
+                  {selectedRestaurant.menuNames.map((menuName, index) => (
+                    <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0">
+                      <span className="text-sm text-gray-900">{menuName}</span>
+                      {selectedRestaurant.menuPrices?.[index] && (
+                        <span className="text-sm font-semibold text-gray-700">
+                          {selectedRestaurant.menuPrices[index]}
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* 네이버 지도 링크 */}
+            {selectedRestaurant.naverUrl && (
+              <div className="border-t pt-4">
+                <a
+                  href={selectedRestaurant.naverUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-lg text-center transition-colors"
+                >
+                  네이버 지도에서 보기
+                </a>
+              </div>
+            )}
+          </aside>
+        )}
       </div>
 
       {/* Mobile Layout */}
@@ -453,7 +637,31 @@ export default function Home() {
             <div className="mb-4 flex items-center justify-between">
               <div>
                 <div className="text-xs text-gray-500 mb-1">반경 500m 이내</div>
-                <h2 className="text-lg font-bold text-gray-900">주변 음식점들</h2>
+                <div className="flex items-center gap-2">
+                  <h2 className="text-lg font-bold text-gray-900">주변 음식점들</h2>
+                  <div className="flex items-center rounded-lg overflow-hidden border border-gray-300">
+                    <button
+                      onClick={() => setSortBy('distance')}
+                      className={`px-3 py-1 text-xs font-medium transition-colors ${
+                        sortBy === 'distance'
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      }`}
+                    >
+                      거리순
+                    </button>
+                    <button
+                      onClick={() => setSortBy('name')}
+                      className={`px-3 py-1 text-xs font-medium transition-colors ${
+                        sortBy === 'name'
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      }`}
+                    >
+                      이름순
+                    </button>
+                  </div>
+                </div>
               </div>
               <button
                 onClick={toggleMobileMenu}
@@ -468,17 +676,24 @@ export default function Home() {
 
             {/* Restaurant List */}
             <div className="flex-1 space-y-2 overflow-y-auto mb-4">
-              {restaurants.map((restaurant) => {
+              {sortedRestaurants.map((restaurant) => {
                 const distanceText = restaurant.calculatedDistance 
                   ? formatDistance(restaurant.calculatedDistance)
                   : '계산 중...';
                   
                 return (
-                  <div key={restaurant.id} className="flex items-start justify-between py-2 border-b border-gray-100 last:border-0">
+                  <div 
+                    key={restaurant.id} 
+                    className="flex items-start justify-between py-2 border-b border-gray-100 last:border-0 cursor-pointer hover:bg-gray-50 active:bg-gray-100 transition-colors rounded-lg px-2"
+                    onClick={() => setSelectedRestaurant(restaurant)}
+                  >
                     <div className="flex items-start gap-2 flex-1">
                       <button
                         type="button"
-                        onClick={() => handleFavoriteClick(restaurant.id)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleFavoriteClick(restaurant.id);
+                        }}
                         className="mt-0.5"
                       >
                         <StarIcon filled={Boolean(restaurant.isFavorite)} />
@@ -544,6 +759,104 @@ export default function Home() {
                 로그인으로 이동
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Restaurant Detail Modal - Mobile */}
+      {selectedRestaurant && (
+        <div className="md:hidden fixed inset-0 z-50 bg-white overflow-y-auto">
+          <div className="p-5">
+            {/* 헤더 */}
+            <div className="flex items-start justify-between mb-4">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900">{selectedRestaurant.name}</h2>
+                <p className="text-sm text-gray-500 mt-1">{selectedRestaurant.category}</p>
+              </div>
+              <button
+                onClick={() => setSelectedRestaurant(null)}
+                className="text-gray-400 hover:text-gray-600 transition-colors p-2"
+                aria-label="닫기"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* 기본 정보 */}
+            <div className="space-y-3 border-t pt-4">
+              {selectedRestaurant.calculatedDistance && (
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="text-gray-600">📍 거리</span>
+                  <span className="font-semibold text-blue-600">
+                    {formatDistance(selectedRestaurant.calculatedDistance)}
+                  </span>
+                </div>
+              )}
+              
+              <div className="flex items-start gap-2 text-sm">
+                <span className="text-gray-600">📍 주소</span>
+                <span className="text-gray-900">{selectedRestaurant.address}</span>
+              </div>
+
+              {selectedRestaurant.telno && (
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="text-gray-600">📞 전화</span>
+                  <a href={`tel:${selectedRestaurant.telno}`} className="text-blue-600 hover:underline">
+                    {selectedRestaurant.telno}
+                  </a>
+                </div>
+              )}
+
+              {selectedRestaurant.openHours && (
+                <div className="flex items-start gap-2 text-sm">
+                  <span className="text-gray-600">🕐 영업시간</span>
+                  <span className="text-gray-900 whitespace-pre-line">{selectedRestaurant.openHours}</span>
+                </div>
+              )}
+            </div>
+
+            {/* 대표 메뉴 */}
+            {selectedRestaurant.representativeMenu && (
+              <div className="border-t pt-4 mt-4">
+                <h3 className="text-sm font-semibold text-gray-700 mb-2">🍽️ 대표메뉴</h3>
+                <p className="text-base font-medium text-gray-900">{selectedRestaurant.representativeMenu}</p>
+              </div>
+            )}
+
+            {/* 메뉴판 */}
+            {selectedRestaurant.menuNames && selectedRestaurant.menuNames.length > 0 && (
+              <div className="border-t pt-4 mt-4">
+                <h3 className="text-sm font-semibold text-gray-700 mb-3">📋 메뉴</h3>
+                <div className="space-y-2">
+                  {selectedRestaurant.menuNames.map((menuName, index) => (
+                    <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0">
+                      <span className="text-sm text-gray-900">{menuName}</span>
+                      {selectedRestaurant.menuPrices?.[index] && (
+                        <span className="text-sm font-semibold text-gray-700">
+                          {selectedRestaurant.menuPrices[index]}
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* 네이버 지도 링크 */}
+            {selectedRestaurant.naverUrl && (
+              <div className="border-t pt-4 mt-4">
+                <a
+                  href={selectedRestaurant.naverUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-lg text-center transition-colors"
+                >
+                  네이버 지도에서 보기
+                </a>
+              </div>
+            )}
           </div>
         </div>
       )}

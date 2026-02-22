@@ -16,6 +16,14 @@ type Restaurant = {
   distance: string;
   category: string;
   isFavorite?: boolean;
+  lat?: number;
+  lng?: number;
+  telno?: string;
+  openHours?: string;
+  representativeMenu?: string;
+  menuNames?: string[];
+  menuPrices?: string[];
+  naverUrl?: string;
 };
 
 // API 데이터를 Restaurant 타입으로 변환하는 함수
@@ -29,6 +37,12 @@ function mapApiDataToRestaurant(apiData: any, index: number): Restaurant {
     category: apiData.TOB_INFO || '기타',
     lat: apiData.LAT ? parseFloat(apiData.LAT) : undefined,
     lng: apiData.LOT ? parseFloat(apiData.LOT) : undefined,
+    telno: apiData.TELNO || undefined,
+    openHours: apiData.OPEN_HR_INFO || undefined,
+    representativeMenu: apiData.RPRS_MENU_NM || undefined,
+    menuNames: apiData.MENU_KORN_NM || [],
+    menuPrices: apiData.MENU_AMT || [],
+    naverUrl: apiData.SD_URL || undefined,
     isFavorite: false, // 기본값은 즐겨찾기 안됨
   };
 }
