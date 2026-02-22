@@ -8,6 +8,8 @@ import { auth, db } from '@/lib/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import NaverMap from '@/components/NaverMap';
 import useUserStore from '@/store/userStore';
+import { geocodeAddress } from '@/lib/geocoding';
+import { calculateDistance, formatDistance } from '@/lib/distance';
 
 type Restaurant = {
   id: string;
@@ -16,6 +18,9 @@ type Restaurant = {
   distance: string;
   category: string;
   isFavorite?: boolean;
+  lat?: number;
+  lng?: number;
+  calculatedDistance?: number; // 실제 계산된 거리 (미터)
 };
 
 const mockRestaurants: Restaurant[] = [
@@ -25,6 +30,8 @@ const mockRestaurants: Restaurant[] = [
     address: '대전광역시 서구 둔산동 1491 1층',
     distance: 'A',
     category: '중식',
+    lat: 36.3501,
+    lng: 127.3847,
   },
   {
     id: '2',
@@ -32,6 +39,8 @@ const mockRestaurants: Restaurant[] = [
     address: '대전광역시 서구 둔산로 133 (둔산동, 109호)',
     distance: 'A',
     category: '한식',
+    lat: 36.3505,
+    lng: 127.3842,
   },
   {
     id: '3',
@@ -39,6 +48,8 @@ const mockRestaurants: Restaurant[] = [
     address: '대전 서구 둔산중로40번길 28 오성빌딩 2층',
     distance: 'A',
     category: '한식',
+    lat: 36.3510,
+    lng: 127.3850,
   },
   {
     id: '4',
@@ -46,6 +57,8 @@ const mockRestaurants: Restaurant[] = [
     address: '대전둔산점 대전 서구 둔산로 108',
     distance: 'A',
     category: '분식',
+    lat: 36.3498,
+    lng: 127.3838,
   },
   {
     id: '5',
@@ -53,6 +66,8 @@ const mockRestaurants: Restaurant[] = [
     address: '대전 서구 둔산중로46번길 38',
     distance: 'A',
     category: '고기',
+    lat: 36.3515,
+    lng: 127.3855,
   },
 ];
 
@@ -78,11 +93,15 @@ type RestaurantCardProps = {
 };
 
 function RestaurantCard({ restaurant, onToggleFavorite }: RestaurantCardProps) {
+  const distanceText = restaurant.calculatedDistance 
+    ? formatDistance(restaurant.calculatedDistance)
+    : '거리 계산 중...';
+    
   return (
     <div className="flex items-start justify-between rounded-xl border border-gray-100 bg-white px-4 py-3 shadow-sm">
       <div className="space-y-1">
         <div className="flex items-center gap-2 text-sm text-gray-500">
-          <span className="text-xs text-gray-500">반경 500m</span>
+          <span className="text-xs font-semibold text-blue-600">{distanceText}</span>
           <span className="text-[10px] text-gray-400">{restaurant.category}</span>
         </div>
         <div className="text-base font-semibold text-gray-900">{restaurant.name}</div>
@@ -110,6 +129,7 @@ export default function Home() {
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
   const [authReady, setAuthReady] = useState(false);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [restaurantMarkers, setRestaurantMarkers] = useState<Array<{ lat: number; lng: number; name: string; address: string; distance: number }>>([]);
   const { showMobileMenu, toggleMobileMenu } = useUserStore(); // zustand store 사용
   const router = useRouter();
 
@@ -137,6 +157,81 @@ export default function Home() {
       setUserLocation({ lat: 36.3504, lng: 127.3845 });
     }
   }, []);
+
+  // 음식점 주소 지오코딩 및 거리 계산
+  useEffect(() => {
+    if (!userLocation) return;
+    
+    const geocodeRestaurants = async () => {
+      const markers: Array<{ lat: number; lng: number; name: string; address: string; distance: number }> = [];
+      const updatedRestaurants: Restaurant[] = [];
+      
+      for (const restaurant of restaurants) {
+        let lat = restaurant.lat;
+        let lng = restaurant.lng;
+        
+        // 좌표가 없으면 지오코딩 시도
+        if (lat === undefined || lng === undefined) {
+          console.log(`🔍 Geocoding: ${restaurant.name} - ${restaurant.address}`);
+          const result = await geocodeAddress(restaurant.address);
+          
+          if (result) {
+            lat = result.lat;
+            lng = result.lng;
+            console.log(`✅ Success: ${restaurant.name} at (${lat}, ${lng})`);
+          } else {
+            console.warn(`❌ Failed to geocode: ${restaurant.name} - ${restaurant.address}`);
+            updatedRestaurants.push(restaurant);
+            continue;
+          }
+          
+          // API rate limit 방지를 위한 딜레이
+          if (restaurant !== restaurants[restaurants.length - 1]) {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+          }
+        } else {
+          console.log(`📍 Using existing coords: ${restaurant.name} at (${lat}, ${lng})`);
+        }
+        
+        // 거리 계산
+        const distanceInMeters = calculateDistance(
+          userLocation.lat,
+          userLocation.lng,
+          lat,
+          lng
+        );
+        
+        console.log(`📏 Distance to ${restaurant.name}: ${formatDistance(distanceInMeters)}`);
+        
+        markers.push({
+          lat,
+          lng,
+          name: restaurant.name,
+          address: restaurant.address,
+          distance: distanceInMeters,
+        });
+        
+        updatedRestaurants.push({
+          ...restaurant,
+          lat,
+          lng,
+          calculatedDistance: distanceInMeters,
+        });
+      }
+      
+      console.log(`📍 Total markers: ${markers.length} / ${restaurants.length}`);
+      setRestaurantMarkers(markers);
+      
+      // 거리 정보가 추가된 restaurants 업데이트
+      if (updatedRestaurants.length > 0) {
+        setRestaurants(updatedRestaurants);
+      }
+    };
+
+    if (restaurants.length > 0) {
+      geocodeRestaurants();
+    }
+  }, [userLocation]); // userLocation 변경 시에만 실행
 
   // 실사용 시 로그인 상태를 Firebase Auth로 동기화
   useEffect(() => {
@@ -250,6 +345,7 @@ export default function Home() {
             <NaverMap 
               center={userLocation}
               zoom={15}
+              markers={restaurantMarkers}
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-gray-500">
@@ -267,6 +363,7 @@ export default function Home() {
             <NaverMap 
               center={userLocation}
               zoom={15}
+              markers={restaurantMarkers}
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-gray-500 bg-gray-100">
@@ -304,24 +401,30 @@ export default function Home() {
 
             {/* Restaurant List */}
             <div className="flex-1 space-y-2 overflow-y-auto mb-4">
-              {restaurants.map((restaurant) => (
-                <div key={restaurant.id} className="flex items-start justify-between py-2 border-b border-gray-100 last:border-0">
-                  <div className="flex items-start gap-2 flex-1">
-                    <button
-                      type="button"
-                      onClick={() => handleFavoriteClick(restaurant.id)}
-                      className="mt-0.5"
-                    >
-                      <StarIcon filled={Boolean(restaurant.isFavorite)} />
-                    </button>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-gray-900 text-sm">{restaurant.name}</h3>
-                      <p className="text-xs text-gray-500 mt-0.5 leading-tight">{restaurant.address}</p>
+              {restaurants.map((restaurant) => {
+                const distanceText = restaurant.calculatedDistance 
+                  ? formatDistance(restaurant.calculatedDistance)
+                  : '계산 중...';
+                  
+                return (
+                  <div key={restaurant.id} className="flex items-start justify-between py-2 border-b border-gray-100 last:border-0">
+                    <div className="flex items-start gap-2 flex-1">
+                      <button
+                        type="button"
+                        onClick={() => handleFavoriteClick(restaurant.id)}
+                        className="mt-0.5"
+                      >
+                        <StarIcon filled={Boolean(restaurant.isFavorite)} />
+                      </button>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-gray-900 text-sm">{restaurant.name}</h3>
+                        <p className="text-xs text-gray-500 mt-0.5 leading-tight">{restaurant.address}</p>
+                      </div>
                     </div>
+                    <span className="text-xs font-semibold text-blue-600 whitespace-nowrap ml-2">{distanceText}</span>
                   </div>
-                  <span className="text-xs text-gray-400 whitespace-nowrap ml-2">↑ A</span>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Recommendation Button */}

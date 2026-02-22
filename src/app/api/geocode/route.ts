@@ -8,33 +8,26 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Address is required' }, { status: 400 });
   }
 
-  const clientId = process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID;
-  const clientSecret = process.env.NAVER_MAP_CLIENT_SECRET;
-
-  if (!clientId || !clientSecret) {
-    return NextResponse.json({ error: 'API credentials not configured' }, { status: 500 });
-  }
-
   try {
+    // Nominatim (OpenStreetMap) 무료 지오코딩 서비스 사용
     const response = await fetch(
-      `https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=${encodeURIComponent(address)}`,
+      `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json&limit=1&addressdetails=1`,
       {
         headers: {
-          'X-NCP-APIGW-API-KEY-ID': clientId,
-          'X-NCP-APIGW-API-KEY': clientSecret,
+          'User-Agent': 'MatZip-ChatGi-App', // Nominatim은 User-Agent 필수
         },
       }
     );
 
     const data = await response.json();
 
-    if (data.addresses && data.addresses.length > 0) {
-      const { x, y, roadAddress, jibunAddress } = data.addresses[0];
+    if (data && data.length > 0) {
+      const { lat, lon, display_name } = data[0];
       return NextResponse.json({
-        lat: parseFloat(y),
-        lng: parseFloat(x),
-        roadAddress,
-        jibunAddress,
+        lat: parseFloat(lat),
+        lng: parseFloat(lon),
+        roadAddress: display_name,
+        jibunAddress: display_name,
       });
     } else {
       return NextResponse.json({ error: 'Address not found' }, { status: 404 });

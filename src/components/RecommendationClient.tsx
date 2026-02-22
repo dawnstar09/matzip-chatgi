@@ -272,13 +272,27 @@ export default function RecommendationClient() {
       )}
 
       {/* 추천 버튼 */}
-      <button
-        onClick={handleRecommend}
-        disabled={loading}
-        className="w-full px-4 py-4 font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-xl shadow-lg"
-      >
-        {loading ? '고민 중...' : '메뉴 추천받기!'}
-      </button>
+      <div className="flex gap-3">
+        <button
+          onClick={handleRecommend}
+          disabled={loading}
+          className="flex-1 px-4 py-4 font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-xl shadow-lg"
+        >
+          {loading ? '고민 중...' : '메뉴 추천받기!'}
+        </button>
+        
+        {recommendation && (
+          <button
+            onClick={() => {
+              const searchUrl = `https://map.naver.com/v5/search/${encodeURIComponent(recommendation.name)}`;
+              window.open(searchUrl, '_blank');
+            }}
+            className="flex-1 px-4 py-4 font-bold text-white bg-green-600 rounded-lg hover:bg-green-700 text-xl shadow-lg"
+          >
+            주변 음식점 찾기
+          </button>
+        )}
+      </div>
 
       {/* 결과 표시 */}
       {loading && (

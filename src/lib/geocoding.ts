@@ -10,7 +10,9 @@ export async function geocodeAddress(address: string): Promise<GeocodingResult |
     const response = await fetch(`/api/geocode?address=${encodeURIComponent(address)}`);
     
     if (!response.ok) {
-      throw new Error('Geocoding failed');
+      const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+      console.error('Geocoding failed:', errorData);
+      return null;
     }
 
     const data = await response.json();
