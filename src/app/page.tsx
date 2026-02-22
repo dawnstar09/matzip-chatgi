@@ -579,7 +579,7 @@ export default function Home() {
   }
 
   return (
-    <div className="h-full bg-gray-200 flex flex-col">
+    <div className="h-full overflow-hidden bg-gray-200 flex flex-col">
       {/* 데스크톱: 사이드바 + 지도 레이아웃 */}
       {/* 모바일: 전체화면 지도 + 플로팅 카드 */}
       
