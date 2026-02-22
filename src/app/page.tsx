@@ -286,7 +286,7 @@ export default function Home() {
     if (!userLocation) return;
     
     const geocodeRestaurants = async () => {
-      const markers: Array<{ lat: number; lng: number; name: string; address: string; distance: number }> = [];
+      const markers: Array<{ lat: number; lng: number; name: string; address: string; distance: number; restaurantId: string }> = [];
       const updatedRestaurants: Restaurant[] = [];
       
       for (const restaurant of restaurants) {
@@ -489,7 +489,7 @@ export default function Home() {
   }
 
   return (
-    <div className="h-screen bg-gray-200 flex flex-col">
+    <div className="h-full bg-gray-200 flex flex-col">
       {/* 데스크톱: 사이드바 + 지도 레이아웃 */}
       {/* 모바일: 전체화면 지도 + 플로팅 카드 */}
       
