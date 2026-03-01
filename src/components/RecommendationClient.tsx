@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import useUserStore from '@/store/userStore';
+import Link from 'next/link';
 
 // 데이터 구조에 대한 타입 정의
 interface Menu {
@@ -52,6 +53,7 @@ export default function RecommendationClient() {
   }, []);
 
   // 핸들러 함수
+
   const handleGroupSelect = (group: string) => {
     setSelectedGroup((prevGroup) => (prevGroup === group ? null : group));
     setSelectedCategory(null); // 상위 카테고리 변경 시 하위 카테고리 선택 초기화
@@ -250,7 +252,7 @@ export default function RecommendationClient() {
       </div>
 
       {/* 3단계: Food Category 선택 */}
-      {selectedGroup && (
+      {selectedGroup && ( 
         <div className="p-3 md:p-4 border rounded-lg bg-gray-50">
           <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3 md:mb-4 text-center">3. 세부 분류 선택</h3>
           <div className="flex flex-wrap justify-center gap-2 md:gap-3">

@@ -116,6 +116,13 @@ export default function Navbar() {
             </svg>
           </Link>
 
+          {/* AI Recommendation Icon */}
+          <Link href="/food-game" className="hover:opacity-80">
+            <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+            </svg>
+          </Link>
+
           {/* Menu Icon */}
           <button onClick={toggleMobileMenu} className="hover:opacity-80">
             <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -133,6 +140,9 @@ export default function Navbar() {
 
         {/* Desktop Buttons */}
         <div className="hidden md:flex items-center gap-2 md:gap-4">
+          <Link href="/food-game" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-1.5 px-3 md:py-2 md:px-4 rounded text-sm md:text-base">
+            AI 추천
+          </Link>
           {user ? (
             <div className="flex items-center space-x-2 md:space-x-4">
               <span className="hidden md:inline text-gray-300">{user.email}님</span>
