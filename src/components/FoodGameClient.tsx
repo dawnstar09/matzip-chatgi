@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 
 interface ChatMessage {
   role: 'user' | 'assistant';
@@ -61,7 +60,6 @@ function parseAIResponse(content: string): { question: string; options: string[]
 export default function FoodGameClient() {
   const [foodData, setFoodData] = useState<FoodData>({ categories: {}, cuisineTypes: [], menus: [] });
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
-  const [userInput, setUserInput] = useState('');
   const [chatLoading, setChatLoading] = useState(false);
   const [dataLoading, setDataLoading] = useState(true);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
@@ -164,16 +162,30 @@ export default function FoodGameClient() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log('\ud83e\udd16 AI \uc751\ub2f5:', data.message);
+        console.log('🤖 AI 응답:', data.message);
         const parsed = parseAIResponse(data.message);
-        console.log('\ud83d\udccb \ud30c\uc2f1 \uacb0\uacfc:', parsed);
+        console.log('📋 파싱 결과:', parsed);
         
-        // \ucd94\ucc9c \uba54\ub274\uac00 \uc788\uc73c\uba74 \ub9ac\uc2a4\ud2b8\uc5d0 \ucd94\uac00
+        // 추천 메뉴가 있으면 리스트에 추가
         if (parsed.recommendations.length > 0) {
           setRecommendedMenus(prev => [...prev, ...parsed.recommendations]);
-        } else if (parsed.options.length > 0) {
-          // \uc120\ud0dd\uc9c0\uac00 \uc788\uc73c\uba74 \ucd94\uce21\uc744 \ud1b5\ud574 \uc77c\ubd80 \uba54\ub274 \ucd94\uac00
-          const matchedMenus = foodData.menus\n            .filter(menu => {\n              const userAnswers = userMessage.toLowerCase();\n              return userAnswers.includes(menu.cuisine.toLowerCase()) ||\n                     userAnswers.includes(menu.group.toLowerCase()) ||\n                     userAnswers.includes(menu.category.toLowerCase());\n            })\n            .slice(0, 1)\n            .map(m => m.name);\n          if (matchedMenus.length > 0) {\n            setRecommendedMenus(prev => [...prev, ...matchedMenus]);\n          }\n        }\n        \n        setChatMessages([...updatedMessages, { 
+        } else if (parsed.options.length > 0 && foodData.menus.length > 0) {
+          // 선택지가 있으면 추측을 통해 일부 메뉴 추가
+          const matchedMenus = foodData.menus
+            .filter((menu: Menu) => {
+              const userAnswers = userMessage.toLowerCase();
+              return userAnswers.includes(menu.cuisine.toLowerCase()) ||
+                     userAnswers.includes(menu.group.toLowerCase()) ||
+                     userAnswers.includes(menu.category.toLowerCase());
+            })
+            .slice(0, 1)
+            .map((m: Menu) => m.name);
+          if (matchedMenus.length > 0) {
+            setRecommendedMenus(prev => [...prev, ...matchedMenus]);
+          }
+        }
+        
+        setChatMessages([...updatedMessages, { 
           role: 'assistant', 
           content: data.message,
           question: parsed.question,
@@ -193,7 +205,6 @@ export default function FoodGameClient() {
 
   const resetGame = () => {
     setChatMessages([]);
-    setUserInput('');
     setSelectedOptions([]);
     setRecommendedMenus([]);
     // 게임을 다시 시작
@@ -214,35 +225,35 @@ export default function FoodGameClient() {
   return (
     <div className="w-full min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
-        {/* \uc0c1\ub2e8 \ud5e4\ub354 */}
+        {/* 상단 헤더 */}
         <div className="flex justify-between items-center mb-8">
           <div className="text-2xl md:text-3xl font-bold text-purple-900">
-            \uc74c\uc2dd \uc544\ud0a4\ub124\uc774\ud130 \ud83c\udf7d\ufe0f
+            음식 아키네이터 🍽️
           </div>
           <button
             onClick={resetGame}
             className="px-4 py-2 bg-white/80 backdrop-blur text-purple-700 rounded-lg hover:bg-white font-semibold transition shadow"
           >
-            \ub2e4\uc2dc \uc2dc\uc791
+            다시 시작
           </button>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* \uc67c\ucabd: \uce90\ub9ad\ud130\uc640 \uc9c8\ubb38 */}
+          {/* 왼쪽: 캐릭터와 질문 */}
           <div className="bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 rounded-3xl shadow-2xl p-6 md:p-8">
-            {/* \uce90\ub9ad\ud130 */}
+            {/* 캐릭터 */}
             <div className="flex justify-center mb-8">
               <div className="relative">
                 <div className="w-48 h-48 md:w-56 md:h-56 bg-gradient-to-br from-yellow-200 to-orange-200 rounded-full flex items-center justify-center shadow-2xl border-8 border-white">
-                  <div className="text-8xl md:text-9xl">\ud83c\udf5a</div>
+                  <div className="text-8xl md:text-9xl">🍚</div>
                 </div>
-                {/* \uc7a5\uc2dd \uc694\uc18c */}
+                {/* 장식 요소 */}
                 <div className="absolute -top-4 -right-4 w-12 h-12 bg-red-400 rounded-full shadow-lg"></div>
                 <div className="absolute -bottom-2 -left-2 w-10 h-10 bg-blue-400 rounded-full shadow-lg"></div>
               </div>
             </div>
 
-            {/* \ub85c\ub529 \uc0c1\ud0dc */}
+            {/* 로딩 상태 */}
             {chatLoading && (
               <div className="bg-white/90 backdrop-blur rounded-2xl shadow-xl p-8 text-center">
                 <div className="flex justify-center space-x-3 mb-4">
@@ -250,29 +261,29 @@ export default function FoodGameClient() {
                   <div className="w-4 h-4 bg-pink-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
                   <div className="w-4 h-4 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                 </div>
-                <p className="text-gray-600 font-medium">\uc0dd\uac01\ud558\ub294 \uc911...</p>
+                <p className="text-gray-600 font-medium">생각하는 중...</p>
               </div>
             )}
 
-            {/* \uc9c8\ubb38\uacfc \uc120\ud0dd\uc9c0 */}
+            {/* 질문과 선택지 */}
             {!chatLoading && chatMessages.length > 0 && chatMessages[chatMessages.length - 1].role === 'assistant' && (
               <div className="space-y-4">
-                {/* \uc9c8\ubb38 \ub9d0\ud48d\uc120 */}
+                {/* 질문 말풍선 */}
                 <div className="relative bg-gradient-to-br from-teal-700 to-teal-800 text-white p-6 rounded-2xl shadow-xl">
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-b-[20px] border-b-teal-700"></div>
                   <div className="flex items-start gap-2">
-                    <div className="text-3xl">\ud83d\udcac</div>
+                    <div className="text-3xl">💬</div>
                     <p className="text-lg md:text-xl font-medium flex-1">
                       {chatMessages[chatMessages.length - 1].question || chatMessages[chatMessages.length - 1].content}
                     </p>
                   </div>
                 </div>
 
-                {/* \uc120\ud0dd\uc9c0 \uc601\uc5ed */}
+                {/* 선택지 영역 */}
                 {chatMessages[chatMessages.length - 1].options && 
                  chatMessages[chatMessages.length - 1].options!.length > 0 && (
                   <div className="bg-white/90 backdrop-blur rounded-2xl shadow-xl p-6">
-                    <p className="text-sm text-gray-600 font-medium mb-3">\u2728 \ud574\ub2f9\ub418\ub294 \uac83\uc744 \uc120\ud0dd\ud574\uc8fc\uc138\uc694!</p>
+                    <p className="text-sm text-gray-600 font-medium mb-3">✨ 해당되는 것을 선택해주세요!</p>
                     <div className="space-y-3">
                       {chatMessages[chatMessages.length - 1].options!.map((option, optIdx) => (
                         <button
@@ -284,7 +295,7 @@ export default function FoodGameClient() {
                               : 'bg-gray-100 text-gray-800 border-4 border-gray-300 hover:border-purple-300 hover:bg-gray-200'
                           }`}
                         >
-                          {selectedOptions.includes(option) && '\u2713 '}
+                          {selectedOptions.includes(option) && '✓ '}
                           {option}
                         </button>
                       ))}
@@ -295,19 +306,19 @@ export default function FoodGameClient() {
             )}
           </div>
 
-          {/* \uc624\ub978\ucabd: \ucd94\ucc9c \uba54\ub274 */}
+          {/* 오른쪽: 추천 메뉴 */}
           <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-              <span>\ud83c\udf7d\ufe0f</span>
-              <span>\uc624\ub298\uc758 \ucd94\ucc9c \uba54\ub274</span>
+              <span>🍽️</span>
+              <span>오늘의 추천 메뉴</span>
             </h2>
 
             {recommendedMenus.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-64 text-center">
-                <div className="text-6xl mb-4">\ud83e\udd14</div>
+                <div className="text-6xl mb-4">🤔</div>
                 <p className="text-gray-500 text-lg">
-                  \uc9c8\ubb38\uc5d0 \ub2f5\ud558\uba74<br />
-                  \ub531 \ub9de\ub294 \uc74c\uc2dd\uc744 \ucd94\ucc9c\ud574\ub4dc\ub824\uc694!
+                  질문에 답하면<br />
+                  딱 맞는 음식을 추천해드려요!
                 </p>
               </div>
             ) : (
@@ -332,13 +343,13 @@ export default function FoodGameClient() {
               </div>
             )}
 
-            {/* \ucd94\ucc9c \uacb0\uacfc */}
+            {/* 추천 결과 */}
             {chatMessages.length > 0 && 
              chatMessages[chatMessages.length - 1].recommendations && 
              chatMessages[chatMessages.length - 1].recommendations!.length > 0 && (
               <div className="mt-6 bg-gradient-to-r from-yellow-50 to-orange-50 border-4 border-yellow-400 rounded-2xl p-6">
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-purple-700 mb-3">\ud83c\udf89 \uc644\ubcbd\ud55c \uba54\ub274\ub97c \ucc3e\uc558\uc5b4\uc694!</p>
+                  <p className="text-2xl font-bold text-purple-700 mb-3">🎉 완벽한 메뉴를 찾았어요!</p>
                   <p className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
                     {chatMessages[chatMessages.length - 1].recommendations!.join(', ')}
                   </p>
@@ -348,18 +359,18 @@ export default function FoodGameClient() {
           </div>
         </div>
 
-        {/* \ud558\ub2e8 \uc120\ud0dd \uc644\ub8cc \ubc84\ud2bc */}
+        {/* 하단 선택 완료 버튼 */}
         {selectedOptions.length > 0 && !chatLoading && (
           <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
             <button
               onClick={sendSelectedOptions}
               className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-bold text-lg hover:from-purple-700 hover:to-pink-700 shadow-2xl transform hover:scale-105 transition-all flex items-center gap-2"
             >
-              <span>\uc120\ud0dd \uc644\ub8cc</span>
+              <span>선택 완료</span>
               <span className="bg-white text-purple-600 px-3 py-1 rounded-full font-black">
                 {selectedOptions.length}
               </span>
-              <span>\u2192</span>
+              <span>→</span>
             </button>
           </div>
         )}
