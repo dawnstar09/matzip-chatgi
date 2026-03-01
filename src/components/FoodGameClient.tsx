@@ -39,13 +39,34 @@ function parseAIResponse(content: string): { question: string; options: string[]
     // 번호 형식 (1. 2. 3. 또는 1) 2) 3)) 파싱
     const numberPattern = /^(\d+[\.\)]\s*.+)$/gm;
     const numberedOptions = content.match(numberPattern);
-    if (numberedOptions) {
+    if (numberedOptions && numberedOptions.length >= 2) {
       options = numberedOptions.map(opt => opt.replace(/^\d+[\.\)]\s*/, '').trim()).filter(opt => opt);
       // 질문과 선택지 분리
       const lines = content.split('\n');
       const firstOptionIndex = lines.findIndex(line => /^\d+[\.\)]/.test(line));
       if (firstOptionIndex > 0) {
         question = lines.slice(0, firstOptionIndex).join('\n').trim();
+      }
+    } else {
+      // 쉼표나 '중에서' 키워드로 구분된 선택지 파싱
+      const commaPattern = /([가-힣\w]+)(?:,|、|\s*,\s*)/g;
+      const matches = content.match(commaPattern);
+      if (matches && matches.length >= 2) {
+        options = matches.map(m => m.replace(/[,、\s]+$/, '').trim()).filter(opt => opt && opt.length > 1);
+        // 마지막 선택지는 '중에서' 앞에 있을 수 있음
+        const lastOption = content.match(/,\s*([가-힣\w]+)\s*중에서/);
+        if (lastOption && !options.includes(lastOption[1])) {
+          options.push(lastOption[1]);
+        }
+      }
+      // 여전히 없으면 기본 선택지 생성
+      if (options.length === 0) {
+        // 질문 내용에서 음식 종류 키워드 찾기
+        const foodTypes = ['한식', '일식', '양식', '중식', '아시아', '분식', '패스트푸드', '카페'];
+        const found = foodTypes.filter(type => content.includes(type));
+        if (found.length >= 2) {
+          options = found;
+        }
       }
     }
   }
